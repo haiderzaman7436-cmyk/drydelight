@@ -1,0 +1,162 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isInitialAdmin() {
+      return isSignedIn() && request.auth.uid == 'svYgtGefRsR2SQgBmqaWyBXFhYO2';
+    }
+
+    function hasRole(roles) {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isActive == true
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in roles;
+    }
+
+    function isAuthorizedUser() {
+      return hasRole(['admin', 'manager', 'cashier']);
+    }
+
+    function isAdmin() {
+      return hasRole(['admin']);
+    }
+
+    function isManagerOrAdmin() {
+      return hasRole(['admin', 'manager']);
+    }
+
+    function nonNegativeNumber(val) {
+      return (val is int || val is float) && val >= 0;
+    }
+
+    // Users collection — no public registration; users can read their own profile
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow create: if isAdmin()
+        || (
+          isInitialAdmin()
+          && userId == request.auth.uid
+          && request.resource.data.role == 'admin'
+          && request.resource.data.isActive == true
+          && request.resource.data.email == request.auth.token.email
+        );
+      allow update, delete: if isAdmin();
+    }
+
+    // Categories
+    match /categories/{categoryId} {
+      allow read: if isAuthorizedUser();
+      allow create, update: if isManagerOrAdmin()
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 120;
+      allow delete: if isManagerOrAdmin();
+    }
+
+    // Products — prevent negative stock and invalid pricing
+    match /products/{productId} {
+      allow read: if isAuthorizedUser();
+      allow create: if isManagerOrAdmin()
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.sku is string
+        && request.resource.data.sku.size() > 0
+        && nonNegativeNumber(request.resource.data.purchasePrice)
+        && nonNegativeNumber(request.resource.data.sellingPrice)
+        && nonNegativeNumber(request.resource.data.availableQuantity)
+        && nonNegativeNumber(request.resource.data.minStockLevel);
+
+      // Authorized staff (cashiers) may update availableQuantity & updatedAt via POS/Return transactions;
+      // managers/admins may update all fields. Stock must never drop below 0.
+      allow update: if isAuthorizedUser()
+        && nonNegativeNumber(request.resource.data.availableQuantity)
+        && nonNegativeNumber(request.resource.data.purchasePrice)
+        && nonNegativeNumber(request.resource.data.sellingPrice)
+        && nonNegativeNumber(request.resource.data.minStockLevel)
+        && (
+          isManagerOrAdmin()
+          || request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['availableQuantity', 'updatedAt'])
+        );
+
+      allow delete: if isManagerOrAdmin();
+    }
+
+    // Sales
+    match /sales/{saleId} {
+      allow read: if isAuthorizedUser();
+      allow create: if isAuthorizedUser()
+        && request.resource.data.invoiceNumber is string
+        && request.resource.data.invoiceNumber.size() > 0
+        && request.resource.data.items is list
+        && request.resource.data.items.size() > 0
+        && nonNegativeNumber(request.resource.data.subtotal)
+        && nonNegativeNumber(request.resource.data.grandTotal)
+        && nonNegativeNumber(request.resource.data.paidAmount)
+        && nonNegativeNumber(request.resource.data.remainingAmount);
+
+      allow update: if isAuthorizedUser()
+        && request.resource.data.invoiceNumber == resource.data.invoiceNumber
+        && nonNegativeNumber(request.resource.data.subtotal)
+        && nonNegativeNumber(request.resource.data.grandTotal)
+        && nonNegativeNumber(request.resource.data.paidAmount)
+        && nonNegativeNumber(request.resource.data.remainingAmount);
+
+      allow delete: if isManagerOrAdmin();
+    }
+
+    // Sales Returns — immutable once created
+    match /salesReturns/{returnId} {
+      allow read: if isAuthorizedUser();
+      allow create: if isAuthorizedUser()
+        && request.resource.data.returnInvoiceNumber is string
+        && request.resource.data.originalSaleId is string
+        && request.resource.data.originalInvoiceNumber is string
+        && request.resource.data.items is list
+        && request.resource.data.items.size() > 0
+        && nonNegativeNumber(request.resource.data.totalReturnAmount);
+      allow update, delete: if false;
+    }
+
+    // Stock Movements — append-only ledger
+    match /stockMovements/{movementId} {
+      allow read: if isAuthorizedUser();
+      allow create: if isAuthorizedUser()
+        && request.resource.data.productId is string
+        && request.resource.data.transactionType is string
+        && nonNegativeNumber(request.resource.data.previousStock)
+        && nonNegativeNumber(request.resource.data.newStock);
+      allow update, delete: if false;
+    }
+
+    // Audit Logs — append-only trail for sale edits & deletions
+    match /auditLogs/{logId} {
+      allow read: if isManagerOrAdmin();
+      allow create: if isAuthorizedUser()
+        && request.resource.data.action is string
+        && request.resource.data.entityType is string;
+      allow update, delete: if false;
+    }
+
+    // Invoice & Return sequential counters
+    match /counters/{counterId} {
+      allow read: if isAuthorizedUser();
+      allow create, update: if isAuthorizedUser()
+        && request.resource.data.current is int
+        && request.resource.data.current >= 1;
+      allow delete: if false;
+    }
+
+    // Settings
+    match /settings/{settingsId} {
+      allow read: if isAuthorizedUser();
+      allow create, update: if isAdmin();
+      allow delete: if false;
+    }
+  }
+}

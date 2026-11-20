@@ -1,0 +1,590 @@
+# Project: Professional Inventory & POS Management System
+
+Act as a senior full-stack software engineer and UI/UX designer. Build a complete, professional, fast, and reliable Inventory Management System using React and Firebase.
+
+The system should be simple to operate, professionally designed, responsive, and suitable for daily business operations.
+
+Do not overcomplicate the application. Use clean, reusable components, optimized code, and a well-structured architecture.
+
+## 1. Technology Stack
+
+Frontend:
+- React.js (latest stable version)
+- Vite
+- JavaScript
+- Tailwind CSS
+- Lucide React icons
+
+Backend:
+- Firebase Authentication
+- Cloud Firestore
+- Firebase Security Rules
+
+Additional:
+- React Router
+- React Context or lightweight state management
+- React Hot Toast for notifications
+- jsPDF or a suitable thermal printing solution
+- Barcode scanning using a compatible USB barcode scanner
+
+## 2. Authentication System
+
+Create a professional login page.
+
+Features:
+- Email and password login.
+- Firebase Authentication.
+- Logout functionality.
+- Protected routes.
+- Persistent login session.
+- Redirect unauthenticated users to login.
+- Display proper error messages.
+- Only authenticated and authorized users can access the management system.
+
+Do not allow public registration. The initial administrator account will be created separately.
+
+## 3. Dashboard
+
+Create a professional dashboard displaying:
+
+Summary Cards:
+- Today's Sales.
+- Today's Total Transactions.
+- Monthly Sales.
+- Total Products.
+- Total Categories.
+- Low Stock Products.
+- Total Returns.
+
+Dashboard Analytics:
+- Daily sales chart.
+- Monthly sales chart.
+- Recent sales transactions.
+- Top-selling products.
+- Low-stock product alerts.
+
+All dashboard figures must be calculated from actual Firestore records.
+
+Provide date filters where appropriate.
+
+## 4. Category Management
+
+Create a complete CRUD category management module.
+
+Features:
+- Add category.
+- Edit category.
+- Delete category.
+- View all categories.
+- Category name.
+- Category description.
+- Creation date.
+- Search categories.
+
+Prevent accidental deletion of categories that contain products unless the products are reassigned or handled appropriately.
+
+## 5. Product Management
+
+Create a professional product management module.
+
+Product fields:
+- Product Name.
+- Product Code / SKU.
+- Barcode.
+- Category.
+- Purchase Price.
+- Selling Price.
+- Available Quantity.
+- Minimum Stock Level.
+- Product Description.
+- Creation Date.
+
+Features:
+- Add new products.
+- Edit products.
+- Delete products.
+- View product details.
+- Search by product name.
+- Search by SKU.
+- Search by barcode.
+- Filter by category.
+- Filter low-stock products.
+- Sort products.
+- Pagination.
+
+Barcode requirements:
+- Allow manual barcode entry.
+- Allow barcode generation for products without existing barcodes.
+- Support USB barcode scanners.
+- Detect scanned barcode automatically.
+- Prevent duplicate barcode assignments.
+
+Stock should never become negative through normal sales operations.
+
+## 6. Sales / POS Module
+
+This is one of the most important modules.
+
+Create a fast and professional Point of Sale interface.
+
+Layout:
+- Product search section.
+- Barcode scanning input.
+- Product selection area.
+- Shopping cart.
+- Customer name field.
+- Sale summary section.
+
+Sales workflow:
+
+1. Scan a product barcode using a USB barcode scanner.
+2. Automatically find the matching product.
+3. Add the product to the cart.
+4. If the same product is scanned again, increase its quantity.
+5. Allow manual product searching and selection.
+6. Allow quantity adjustments.
+7. Allow removing products from the cart.
+8. Automatically calculate subtotal.
+9. Allow discount entry.
+10. Calculate final payable amount.
+11. Enter customer name.
+12. Generate and save the sale.
+13. Automatically deduct sold quantities from inventory.
+14. Generate the invoice.
+15. Provide direct invoice printing.
+
+Sale information:
+
+- Unique Invoice Number.
+- Customer Name.
+- Sale Date and Time.
+- Product Name.
+- Product Barcode.
+- Quantity.
+- Unit Price.
+- Discount.
+- Subtotal.
+- Grand Total.
+- Payment Amount.
+- Remaining Amount (optional).
+- Payment Status.
+
+For the initial version, keep the payment process simple. Support cash sales and optional paid/remaining amounts.
+
+IMPORTANT:
+Use Firestore transactions or atomic write operations to ensure that stock deduction and sale creation remain consistent.
+
+Prevent duplicate submissions and overselling when multiple requests occur simultaneously.
+
+## 7. Sales Management
+
+Create a complete Sales History module.
+
+Features:
+- View all sales.
+- Search by invoice number.
+- Search by customer name.
+- Filter by date.
+- Filter by daily and monthly sales.
+- View complete invoice details.
+- Edit sales.
+- Delete sales.
+- Reprint invoices.
+
+Sale Editing Logic:
+
+When editing an existing sale:
+- Restore the original sold quantities to inventory.
+- Apply the updated sale quantities.
+- Calculate the new invoice total.
+- Update the sale record.
+- Maintain correct inventory quantities.
+
+Sale Deletion Logic:
+
+When deleting a sale:
+- Ask for confirmation.
+- Restore the sold quantities to inventory.
+- Delete or archive the transaction appropriately.
+- Maintain inventory consistency.
+
+All stock changes must be handled atomically.
+
+Maintain an audit trail of important sales edits and deletions.
+
+## 8. Sales Summary and Reports
+
+Create a dedicated Sales Reports module.
+
+Daily Summary:
+- Today's total sales.
+- Number of invoices.
+- Total items sold.
+- Total discounts.
+- Total returns.
+- Net sales.
+
+Monthly Summary:
+- Monthly total sales.
+- Total transactions.
+- Total products sold.
+- Total discounts.
+- Total returns.
+- Net sales.
+
+Additional:
+- Custom date range reports.
+- Product-wise sales reports.
+- Best-selling products.
+- Customer-wise sales reports.
+
+Provide professional charts and tables.
+
+Allow printing and exporting reports to PDF or CSV.
+
+All calculations must use actual transaction data and properly account for returns.
+
+## 9. Next Day Button
+
+Add a clearly visible "Next Day" button in the sales summary/report section.
+
+Expected behavior:
+- Move the report date forward by one day.
+- Update daily sales figures.
+- Update transaction count.
+- Update product quantities sold.
+- Update all related report information.
+
+Also provide:
+- Previous Day button.
+- Today button.
+- Date picker.
+
+The date navigation should not modify any actual sale records.
+
+## 10. Return Invoice Module
+
+Create a dedicated Sales Return module.
+
+Features:
+- Search original invoice using invoice number.
+- Display original invoice information.
+- Select products to return.
+- Enter return quantities.
+- Validate that returned quantities cannot exceed the originally sold quantities minus previous returns.
+- Calculate return amount automatically.
+- Generate a unique Return Invoice Number.
+- Save return transaction.
+- Print return invoice.
+
+Stock handling:
+- Returned products should automatically be added back to inventory.
+- Only valid returned quantities should be accepted.
+- Track partial and complete returns.
+- Maintain original sale records.
+
+Return invoice information:
+- Return Invoice Number.
+- Original Invoice Number.
+- Customer Name.
+- Return Date.
+- Returned Products.
+- Return Quantities.
+- Unit Prices.
+- Total Return Amount.
+
+Do not delete the original sale when processing a return.
+
+## 11. Professional Thermal Invoice Printing
+
+This is a critical requirement.
+
+Create a professional, clean thermal receipt layout.
+
+Target paper:
+- 2-inch thermal printer (approximately 58mm paper width).
+
+Invoice should include:
+- Business Name.
+- Business Address (configurable).
+- Contact Number (configurable).
+- Invoice Number.
+- Date and Time.
+- Customer Name.
+- Product Name.
+- Quantity.
+- Unit Price.
+- Line Total.
+- Subtotal.
+- Discount.
+- Grand Total.
+- Paid Amount.
+- Remaining Amount.
+- Thank You message.
+
+Printing requirements:
+
+- Direct thermal printing.
+- No PDF preview.
+- No new browser window.
+- No unnecessary print dialog if the hardware/browser supports silent printing.
+- Automatically format the invoice for 58mm paper.
+- Optimize font sizes and spacing.
+- Avoid unnecessary margins.
+- Prevent content clipping.
+- Support multiple products.
+- Support reprinting old invoices.
+
+IMPORTANT TECHNICAL NOTE:
+
+Implement browser-based thermal printing using a dedicated print component and CSS @media print with a 58mm page layout.
+
+Use a compatible printing integration such as QZ Tray or an appropriate local print bridge for actual silent printing.
+
+Do not falsely assume that normal browser JavaScript can bypass print dialogs. Provide a configurable direct-print integration for supported Windows environments.
+
+## 12. Barcode Scanner Integration
+
+Support standard USB barcode scanners that work as keyboard input devices.
+
+Requirements:
+- Automatically focus the barcode input.
+- Detect barcode input followed by Enter.
+- Search the Firestore product records.
+- Add matching products to the cart.
+- Increase quantity when the same barcode is scanned repeatedly.
+- Display a clear error for unknown barcodes.
+- Avoid duplicate scan events.
+- Maintain focus on the barcode input after adding products.
+
+The sales interface should be optimized for fast scanning and checkout.
+
+## 13. Inventory Management
+
+Create an inventory overview.
+
+Display:
+- Total products.
+- Total available stock.
+- Low-stock products.
+- Out-of-stock products.
+- Category-wise stock.
+- Stock movement history.
+
+Whenever a sale or return occurs, automatically update stock.
+
+Maintain stock movement records with:
+- Product ID.
+- Transaction Type.
+- Quantity Changed.
+- Previous Stock.
+- New Stock.
+- Reference Invoice.
+- Date and Time.
+
+## 14. Settings
+
+Create a simple settings section.
+
+Allow the administrator to configure:
+- Business Name.
+- Business Address.
+- Contact Number.
+- Invoice Header.
+- Invoice Footer.
+- Currency (default PKR).
+- Thermal Printer Settings.
+- Default Minimum Stock Level.
+
+## 15. User Interface / UX Design
+
+Design a premium professional business management interface.
+
+Design direction:
+- Clean and modern.
+- White and light-gray background.
+- Professional blue accent color.
+- Dark readable text.
+- Consistent spacing.
+- Minimal shadows.
+- Rounded cards.
+- Professional tables.
+- Clean typography.
+- Lucide icons.
+
+Layout:
+- Fixed sidebar navigation.
+- Top navigation bar.
+- Main content area.
+- Responsive design.
+
+Sidebar:
+1. Dashboard
+2. Categories
+3. Products
+4. Inventory
+5. New Sale / POS
+6. Sales History
+7. Sales Summary
+8. Sales Returns
+9. Reports
+10. Settings
+11. Logout
+
+Use professional confirmation dialogs for destructive actions.
+
+Include:
+- Loading states.
+- Empty states.
+- Error states.
+- Success notifications.
+- Form validation.
+- Search and filtering.
+
+Avoid unnecessary animations and heavy UI libraries.
+
+## 16. Firestore Database Structure
+
+Use a clean and scalable Firestore structure:
+
+users/
+  {userId}
+
+categories/
+  {categoryId}
+
+products/
+  {productId}
+
+sales/
+  {saleId}
+
+salesReturns/
+  {returnId}
+
+stockMovements/
+  {movementId}
+
+settings/
+  {settingsId}
+
+Each document must have appropriate IDs, timestamps, and relationships.
+
+Use Firestore indexes for common queries.
+
+Store product IDs inside sales rather than relying only on product names.
+
+For financial records, preserve historical product prices at the time of sale so that editing the current product price does not change old invoices.
+
+Use server timestamps where appropriate.
+
+## 17. Security and Data Integrity
+
+Implement:
+- Firebase Authentication.
+- Firestore Security Rules.
+- Authenticated access.
+- Input validation.
+- Role-based access structure for future expansion.
+- Atomic stock updates.
+- Duplicate invoice prevention.
+- Safe deletion and editing.
+- Proper error handling.
+
+Never expose Firebase Admin credentials or service account private keys in frontend code.
+
+Never trust frontend calculations alone for critical stock and financial operations. Use secure backend logic or trusted Firestore transactions as appropriate.
+
+## 18. Performance Optimization
+
+The application must be fast and responsive.
+
+Requirements:
+- Reusable React components.
+- Modular architecture.
+- Lazy-loaded routes.
+- Pagination.
+- Optimized Firestore queries.
+- Avoid unnecessary real-time listeners.
+- Avoid unnecessary component re-rendering.
+- Use indexes.
+- Keep code clean and maintainable.
+- Avoid huge single-file components.
+- Avoid redundant dependencies.
+
+## 19. Development and Testing Requirements
+
+Develop the system module by module.
+
+First prepare:
+1. Project architecture.
+2. Firestore schema.
+3. Authentication.
+4. Dashboard.
+5. Categories.
+6. Products.
+7. POS and barcode scanning.
+8. Sales history.
+9. Sales editing/deletion.
+10. Sales returns.
+11. Reports.
+12. Thermal invoice printing.
+13. Settings.
+
+Test the following workflows:
+
+- Login and logout.
+- Add, edit and delete categories.
+- Add, edit and delete products.
+- Barcode scanning.
+- Generate a sale.
+- Verify automatic stock deduction.
+- Edit an existing sale.
+- Verify inventory restoration and recalculation.
+- Delete a sale.
+- Verify stock restoration.
+- Generate partial returns.
+- Generate complete returns.
+- Verify return stock updates.
+- Daily and monthly sales calculations.
+- Previous Day and Next Day navigation.
+- Print 58mm invoices.
+- Reprint old invoices.
+- Security and unauthorized access testing.
+
+## 20. Final Deliverables
+
+Deliver a fully functional application, not just a UI prototype.
+
+Provide:
+- Complete React source code.
+- Proper folder structure.
+- Firebase configuration instructions.
+- Firestore database setup.
+- Security rules.
+- Required indexes.
+- Environment variable configuration.
+- Installation instructions.
+- Deployment instructions.
+- Testing instructions.
+
+Do not use dummy data as the final implementation.
+
+Do not leave buttons non-functional.
+
+Do not create placeholder modules.
+
+Do not skip business logic.
+
+IMPORTANT DEVELOPMENT INSTRUCTIONS:
+
+1. Keep the code concise, clean, and professional.
+2. Do not write unnecessarily long code.
+3. Avoid duplicating components and functions.
+4. Use reusable hooks and utility functions.
+5. Do not change existing working functionality when adding new modules.
+6. Test each module before moving to the next.
+7. Fix errors instead of hiding them.
+8. Prioritize data accuracy, speed, and reliability over unnecessary visual effects.
+
+The final result must be a professional, easy-to-manage Inventory and POS Management System ready for real business use.0
