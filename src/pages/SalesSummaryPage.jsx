@@ -155,13 +155,13 @@ export default function SalesSummaryPage() {
             />
           </section>
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-              <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-slate-900">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3.5 sm:gap-4">
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+              <div className="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+                <h3 className="text-xs sm:text-sm font-semibold text-slate-900">
                   Invoices on {formatDate(selectedDate)}
                 </h3>
-                <span className="text-xs text-slate-500">{daySales.length} invoice(s)</span>
+                <span className="text-[11px] text-slate-500">{daySales.length} invoice(s)</span>
               </div>
               {daySales.length === 0 ? (
                 <EmptyState
@@ -171,33 +171,33 @@ export default function SalesSummaryPage() {
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                    <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200">
                       <tr>
-                        <th className="px-4 py-3 font-semibold">Invoice #</th>
-                        <th className="px-4 py-3 font-semibold">Customer</th>
-                        <th className="px-4 py-3 font-semibold">Time</th>
-                        <th className="px-4 py-3 font-semibold text-right">Total</th>
-                        <th className="px-4 py-3 font-semibold text-right">Print</th>
+                        <th className="px-3.5 py-2 font-semibold">Invoice #</th>
+                        <th className="px-3.5 py-2 font-semibold">Customer</th>
+                        <th className="px-3.5 py-2 font-semibold">Time</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Total</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Print</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {daySales.map((s) => (
-                        <tr key={s.id} className="hover:bg-slate-50/70">
-                          <td className="px-4 py-2.5 font-mono font-semibold text-slate-900">
+                        <tr key={s.id} className="hover:bg-slate-50/70 transition-colors">
+                          <td className="px-3.5 py-2 font-mono font-semibold text-slate-900">
                             {s.invoiceNumber}
                           </td>
-                          <td className="px-4 py-2.5 text-slate-700">{s.customerName}</td>
-                          <td className="px-4 py-2.5 text-slate-500">
+                          <td className="px-3.5 py-2 text-slate-700">{s.customerName}</td>
+                          <td className="px-3.5 py-2 text-slate-500 text-[11px]">
                             {formatDateTime(s.createdAt)}
                           </td>
-                          <td className="px-4 py-2.5 text-right font-semibold text-slate-900">
+                          <td className="px-3.5 py-2 text-right font-bold text-slate-900">
                             {formatCurrency(s.grandTotal, currency)}
                           </td>
-                          <td className="px-4 py-2.5 text-right">
+                          <td className="px-3.5 py-2 text-right">
                             <button
                               type="button"
                               onClick={() => printReceipt(s, 'sale')}
-                              className="p-1 text-slate-500 hover:text-blue-600"
+                              className="p-1 text-slate-500 hover:text-blue-600 rounded-md hover:bg-blue-50 transition-colors"
                               title="Reprint invoice"
                             >
                               <Printer className="w-3.5 h-3.5" />
@@ -211,9 +211,9 @@ export default function SalesSummaryPage() {
               )}
             </div>
 
-            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-              <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-slate-900">
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+              <div className="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+                <h3 className="text-xs sm:text-sm font-semibold text-slate-900">
                   Products Sold on {formatDate(selectedDate)}
                 </h3>
                 <span className="text-xs text-slate-500">

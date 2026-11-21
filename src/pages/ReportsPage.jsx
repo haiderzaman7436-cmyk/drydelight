@@ -398,21 +398,21 @@ export default function ReportsPage() {
           />
 
           {trendChartData.length > 0 && (
-            <div className="bg-white border border-slate-200 rounded-xl p-5">
-              <h3 className="text-sm font-semibold text-slate-900 mb-3">
+            <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs">
+              <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-2.5">
                 Sales, Profit &amp; Returns Breakdown
               </h3>
-              <div className="h-64">
+              <div className="h-56 sm:h-60">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={trendChartData} margin={{ top: 8, right: 8, left: -12, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
-                    <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#64748b' }} />
-                    <YAxis tick={{ fontSize: 11, fill: '#64748b' }} />
+                    <XAxis dataKey="label" tick={{ fontSize: 10, fill: '#64748b' }} />
+                    <YAxis tick={{ fontSize: 10, fill: '#64748b' }} />
                     <Tooltip
                       formatter={(val) => formatCurrency(val, currency)}
-                      contentStyle={{ borderRadius: '8px', borderColor: '#e2e8f0', fontSize: '12px' }}
+                      contentStyle={{ borderRadius: '8px', borderColor: '#e2e8f0', fontSize: '11px' }}
                     />
-                    <Legend wrapperStyle={{ fontSize: '12px' }} />
+                    <Legend wrapperStyle={{ fontSize: '11px' }} />
                     <Bar dataKey="netSales" name="Net Sales" fill="#2563eb" radius={[4, 4, 0, 0]} isAnimationActive={false} />
                     <Bar dataKey="netProfit" name="Net Profit" fill="#10b981" radius={[4, 4, 0, 0]} isAnimationActive={false} />
                     <Bar dataKey="returns" name="Returns" fill="#dc2626" radius={[4, 4, 0, 0]} isAnimationActive={false} />
@@ -422,8 +422,8 @@ export default function ReportsPage() {
             </div>
           )}
 
-          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-            <div className="px-4 py-3 border-b border-slate-200 flex flex-wrap items-center gap-2 no-print">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+            <div className="px-3.5 py-2.5 border-b border-slate-200 flex flex-wrap items-center gap-1.5 no-print">
               {[
                 { id: 'products', label: `Product-Wise Sales (${summary.productReports.length})` },
                 { id: 'best', label: 'Best-Selling Products' },
@@ -434,9 +434,9 @@ export default function ReportsPage() {
                   key={t.id}
                   type="button"
                   onClick={() => setActiveTab(t.id)}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
+                  className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-colors ${
                     activeTab === t.id
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-blue-600 text-white shadow-xs'
                       : 'text-slate-600 hover:bg-slate-100'
                   }`}
                 >
@@ -452,16 +452,16 @@ export default function ReportsPage() {
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                    <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200">
                       <tr>
-                        <th className="px-4 py-3 font-semibold">#</th>
-                        <th className="px-4 py-3 font-semibold">Product</th>
-                        <th className="px-4 py-3 font-semibold text-center">Sold</th>
-                        <th className="px-4 py-3 font-semibold text-center">Returned</th>
-                        <th className="px-4 py-3 font-semibold text-center">Net Qty</th>
-                        <th className="px-4 py-3 font-semibold text-right">Net Cost</th>
-                        <th className="px-4 py-3 font-semibold text-right">Net Revenue</th>
-                        <th className="px-4 py-3 font-semibold text-right">Net Profit</th>
+                        <th className="px-3.5 py-2 font-semibold">#</th>
+                        <th className="px-3.5 py-2 font-semibold">Product</th>
+                        <th className="px-3.5 py-2 font-semibold text-center">Sold</th>
+                        <th className="px-3.5 py-2 font-semibold text-center">Returned</th>
+                        <th className="px-3.5 py-2 font-semibold text-center">Net Qty</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Net Cost</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Net Revenue</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Net Profit</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
@@ -469,27 +469,27 @@ export default function ReportsPage() {
                         ? summary.bestSellingProducts
                         : summary.productReports
                       ).map((p, idx) => (
-                        <tr key={p.productId} className="hover:bg-slate-50/70">
-                          <td className="px-4 py-3 text-slate-400 font-semibold">{idx + 1}</td>
-                          <td className="px-4 py-3">
-                            <p className="font-semibold text-slate-900">{p.productName}</p>
-                            <p className="font-mono text-[10px] text-slate-400">{p.sku}</p>
+                        <tr key={p.productId} className="hover:bg-slate-50/70 transition-colors">
+                          <td className="px-3.5 py-2 text-slate-400 font-semibold">{idx + 1}</td>
+                          <td className="px-3.5 py-2">
+                            <p className="font-semibold text-slate-900 leading-tight">{p.productName}</p>
+                            <p className="font-mono text-[10px] text-slate-400 mt-0.5">{p.sku}</p>
                           </td>
-                          <td className="px-4 py-3 text-center">{p.quantitySold}</td>
-                          <td className="px-4 py-3 text-center text-red-600">
+                          <td className="px-3.5 py-2 text-center">{p.quantitySold}</td>
+                          <td className="px-3.5 py-2 text-center text-red-600">
                             {p.quantityReturned}
                           </td>
-                          <td className="px-4 py-3 text-center font-bold text-slate-900">
+                          <td className="px-3.5 py-2 text-center font-bold text-slate-900">
                             {p.netQuantity}
                           </td>
-                          <td className="px-4 py-3 text-right text-slate-600">
+                          <td className="px-3.5 py-2 text-right text-slate-600">
                             {formatCurrency(p.netCost, currency)}
                           </td>
-                          <td className="px-4 py-3 text-right font-semibold text-slate-900">
+                          <td className="px-3.5 py-2 text-right font-semibold text-slate-900">
                             {formatCurrency(p.netRevenue, currency)}
                           </td>
                           <td
-                            className={`px-4 py-3 text-right font-bold ${
+                            className={`px-3.5 py-2 text-right font-bold ${
                               p.netProfit >= 0 ? 'text-emerald-700' : 'text-red-600'
                             }`}
                           >
@@ -507,43 +507,45 @@ export default function ReportsPage() {
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                    <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200">
                       <tr>
-                        <th className="px-4 py-3 font-semibold">Customer Name</th>
-                        <th className="px-4 py-3 font-semibold text-center">Invoices</th>
-                        <th className="px-4 py-3 font-semibold text-center">Items</th>
-                        <th className="px-4 py-3 font-semibold text-right">Gross</th>
-                        <th className="px-4 py-3 font-semibold text-right">Returns</th>
-                        <th className="px-4 py-3 font-semibold text-right">Net Sales</th>
-                        <th className="px-4 py-3 font-semibold text-right">Net Profit</th>
-                        <th className="px-4 py-3 font-semibold text-right">Outstanding</th>
+                        <th className="px-3.5 py-2 font-semibold">Customer Name</th>
+                        <th className="px-3.5 py-2 font-semibold text-center">Invoices</th>
+                        <th className="px-3.5 py-2 font-semibold text-center">Items</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Gross</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Returns</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Net Sales</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Net Profit</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Outstanding</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {summary.customerReports.map((c) => (
-                        <tr key={c.customerName} className="hover:bg-slate-50/70">
-                          <td className="px-4 py-3 font-semibold text-slate-900">
+                        <tr key={c.customerName} className="hover:bg-slate-50/70 transition-colors">
+                          <td className="px-3.5 py-2 font-semibold text-slate-900">
                             {c.customerName}
                           </td>
-                          <td className="px-4 py-3 text-center">{c.invoices}</td>
-                          <td className="px-4 py-3 text-center">{c.itemsPurchased}</td>
-                          <td className="px-4 py-3 text-right">
+                          <td className="px-3.5 py-2 text-center text-slate-600">{c.invoices}</td>
+                          <td className="px-3.5 py-2 text-center text-slate-600">
+                            {c.itemsPurchased}
+                          </td>
+                          <td className="px-3.5 py-2 text-right font-medium text-slate-700">
                             {formatCurrency(c.grossAmount, currency)}
                           </td>
-                          <td className="px-4 py-3 text-right text-red-600">
+                          <td className="px-3.5 py-2 text-right text-red-600">
                             {formatCurrency(c.returnAmount, currency)}
                           </td>
-                          <td className="px-4 py-3 text-right font-bold text-slate-900">
+                          <td className="px-3.5 py-2 text-right font-semibold text-slate-900">
                             {formatCurrency(c.netAmount, currency)}
                           </td>
                           <td
-                            className={`px-4 py-3 text-right font-bold ${
+                            className={`px-3.5 py-2 text-right font-bold ${
                               c.netProfit >= 0 ? 'text-emerald-700' : 'text-red-600'
                             }`}
                           >
                             {formatCurrency(c.netProfit, currency)}
                           </td>
-                          <td className="px-4 py-3 text-right text-amber-700 font-medium">
+                          <td className="px-3.5 py-2 text-right text-amber-700 font-medium">
                             {formatCurrency(c.outstandingAmount, currency)}
                           </td>
                         </tr>
@@ -552,44 +554,54 @@ export default function ReportsPage() {
                   </table>
                 </div>
               )
-            ) : sales.length === 0 ? (
-              <EmptyState title="No invoices in selected period" />
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                  <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200">
                     <tr>
-                      <th className="px-4 py-3 font-semibold">Invoice #</th>
-                      <th className="px-4 py-3 font-semibold">Date</th>
-                      <th className="px-4 py-3 font-semibold">Customer</th>
-                      <th className="px-4 py-3 font-semibold text-center">Items</th>
-                      <th className="px-4 py-3 font-semibold text-right">Grand Total</th>
-                      <th className="px-4 py-3 font-semibold text-right">Profit</th>
-                      <th className="px-4 py-3 font-semibold text-center">Payment</th>
+                      <th className="px-3.5 py-2 font-semibold">Invoice #</th>
+                      <th className="px-3.5 py-2 font-semibold">Date</th>
+                      <th className="px-3.5 py-2 font-semibold">Customer</th>
+                      <th className="px-3.5 py-2 font-semibold text-center">Items</th>
+                      <th className="px-3.5 py-2 font-semibold text-right">Grand Total</th>
+                      <th className="px-3.5 py-2 font-semibold text-right">Net Profit</th>
+                      <th className="px-3.5 py-2 font-semibold text-center">Status</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {sales.map((s) => {
                       const { profit } = computeSaleProfit(s);
                       return (
-                        <tr key={s.id} className="hover:bg-slate-50/70">
-                          <td className="px-4 py-3 font-mono font-semibold text-slate-900">
+                        <tr key={s.id} className="hover:bg-slate-50/70 transition-colors">
+                          <td className="px-3.5 py-2 font-mono font-semibold text-slate-900">
                             {s.invoiceNumber}
                           </td>
-                          <td className="px-4 py-3 text-slate-500">{s.saleDate}</td>
-                          <td className="px-4 py-3 text-slate-800">{s.customerName}</td>
-                          <td className="px-4 py-3 text-center">{s.totalItems}</td>
-                          <td className="px-4 py-3 text-right font-semibold text-slate-900">
+                          <td className="px-3.5 py-2 text-slate-500 text-[11px]">{s.saleDate}</td>
+                          <td className="px-3.5 py-2 text-slate-800 font-medium">{s.customerName}</td>
+                          <td className="px-3.5 py-2 text-center text-slate-600 font-medium">{s.totalItems}</td>
+                          <td className="px-3.5 py-2 text-right font-bold text-slate-900">
                             {formatCurrency(s.grandTotal, currency)}
                           </td>
                           <td
-                            className={`px-4 py-3 text-right font-semibold ${
+                            className={`px-3.5 py-2 text-right font-bold ${
                               profit >= 0 ? 'text-emerald-700' : 'text-red-600'
                             }`}
                           >
                             {formatCurrency(profit, currency)}
                           </td>
-                          <td className="px-4 py-3 text-center capitalize">{s.paymentStatus}</td>
+                          <td className="px-3.5 py-2 text-center">
+                            <span
+                              className={`inline-flex px-2 py-0.5 rounded-full text-[11px] font-semibold capitalize ${
+                                s.paymentStatus === 'paid'
+                                  ? 'bg-emerald-50 text-emerald-700'
+                                  : s.paymentStatus === 'partial'
+                                    ? 'bg-amber-100 text-amber-800'
+                                    : 'bg-red-100 text-red-700'
+                              }`}
+                            >
+                              {s.paymentStatus || 'paid'}
+                            </span>
+                          </td>
                         </tr>
                       );
                     })}

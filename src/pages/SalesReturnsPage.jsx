@@ -517,53 +517,53 @@ export default function SalesReturnsPage() {
             <>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                  <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200">
                     <tr>
-                      <th className="px-4 py-3 font-semibold">Return #</th>
-                      <th className="px-4 py-3 font-semibold">Original Invoice</th>
-                      <th className="px-4 py-3 font-semibold">Date &amp; Time</th>
-                      <th className="px-4 py-3 font-semibold">Customer</th>
-                      <th className="px-4 py-3 font-semibold text-center">Qty Returned</th>
-                      <th className="px-4 py-3 font-semibold text-right">Refund Total</th>
-                      <th className="px-4 py-3 font-semibold text-right">Actions</th>
+                      <th className="px-3.5 py-2 font-semibold">Return #</th>
+                      <th className="px-3.5 py-2 font-semibold">Original Invoice</th>
+                      <th className="px-3.5 py-2 font-semibold">Date &amp; Time</th>
+                      <th className="px-3.5 py-2 font-semibold">Customer</th>
+                      <th className="px-3.5 py-2 font-semibold text-center">Qty Returned</th>
+                      <th className="px-3.5 py-2 font-semibold text-right">Refund Total</th>
+                      <th className="px-3.5 py-2 font-semibold text-right">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {paginatedHistory.map((r) => (
-                      <tr key={r.id} className="hover:bg-slate-50/70">
-                        <td className="px-4 py-3 font-mono font-semibold text-red-700">
+                      <tr key={r.id} className="hover:bg-slate-50/70 transition-colors">
+                        <td className="px-3.5 py-2 font-mono font-semibold text-red-700">
                           {r.returnInvoiceNumber}
                         </td>
-                        <td className="px-4 py-3 font-mono text-slate-700">
+                        <td className="px-3.5 py-2 font-mono text-slate-700">
                           {r.originalInvoiceNumber}
                         </td>
-                        <td className="px-4 py-3 text-slate-500 whitespace-nowrap">
+                        <td className="px-3.5 py-2 text-slate-500 whitespace-nowrap text-[11px]">
                           {formatDateTime(r.createdAt)}
                         </td>
-                        <td className="px-4 py-3 font-medium text-slate-800">{r.customerName}</td>
-                        <td className="px-4 py-3 text-center font-semibold">
+                        <td className="px-3.5 py-2 font-medium text-slate-800">{r.customerName}</td>
+                        <td className="px-3.5 py-2 text-center font-semibold">
                           {r.totalReturnedQty}
                         </td>
-                        <td className="px-4 py-3 text-right font-semibold text-red-700">
+                        <td className="px-3.5 py-2 text-right font-bold text-red-700">
                           {formatCurrency(r.totalReturnAmount, currency)}
                         </td>
-                        <td className="px-4 py-3 text-right">
+                        <td className="px-3.5 py-2 text-right">
                           <div className="inline-flex items-center gap-1">
                             <button
                               type="button"
                               onClick={() => setViewReturn(r)}
-                              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100"
+                              className="p-1 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100"
                               title="View return details"
                             >
-                              <Eye className="w-4 h-4" />
+                              <Eye className="w-3.5 h-3.5" />
                             </button>
                             <button
                               type="button"
                               onClick={() => printReceipt(r, 'return')}
-                              className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-blue-50"
+                              className="p-1 rounded-md text-slate-500 hover:text-blue-600 hover:bg-blue-50"
                               title="Print 58mm return invoice"
                             >
-                              <Printer className="w-4 h-4" />
+                              <Printer className="w-3.5 h-3.5" />
                             </button>
                           </div>
                         </td>

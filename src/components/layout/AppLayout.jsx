@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Sidebar from './Sidebar';
@@ -8,10 +8,29 @@ import { useAuth } from '../../contexts/AuthContext';
 
 export default function AppLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem('dd_sidebar_collapsed') === 'true';
+    } catch {
+      return false;
+    }
+  });
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const { logout } = useAuth();
   const navigate = useNavigate();
+
+  const handleToggleSidebarCollapse = () => {
+    setSidebarCollapsed((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem('dd_sidebar_collapsed', String(next));
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+  };
 
   const handleConfirmLogout = async () => {
     setLoggingOut(true);
@@ -28,7 +47,7 @@ export default function AppLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 antialiased text-slate-900">
       <Sidebar
         mobileOpen={mobileOpen}
         onClose={() => setMobileOpen(false)}
@@ -36,11 +55,21 @@ export default function AppLayout() {
           setMobileOpen(false);
           setLogoutModalOpen(true);
         }}
+        collapsed={sidebarCollapsed}
+        onToggleCollapse={handleToggleSidebarCollapse}
       />
 
-      <div className="lg:pl-64 flex flex-col min-h-screen">
-        <TopBar onOpenMobileMenu={() => setMobileOpen(true)} />
-        <main className="flex-1 p-4 lg:p-6 max-w-[1600px] w-full mx-auto">
+      <div
+        className={`flex flex-col min-h-screen transition-[padding] duration-200 ${
+          sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-56'
+        }`}
+      >
+        <TopBar
+          onOpenMobileMenu={() => setMobileOpen(true)}
+          sidebarCollapsed={sidebarCollapsed}
+          onToggleSidebarCollapse={handleToggleSidebarCollapse}
+        />
+        <main className="flex-1 p-3 sm:p-4 lg:p-4.5 max-w-[1536px] w-full mx-auto">
           <Outlet />
         </main>
       </div>

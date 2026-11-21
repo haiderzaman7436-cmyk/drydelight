@@ -220,8 +220,8 @@ export default function InventoryPage() {
   if (!catalogLoaded) return <LoadingSpinner label="Loading inventory..." />;
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
         <StatCard
           title="Total Products"
           value={formatNumber(metrics.totalProducts)}
@@ -366,37 +366,37 @@ export default function InventoryPage() {
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                  <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200">
                     <tr>
-                      <th className="px-4 py-3 font-semibold">Category</th>
-                      <th className="px-4 py-3 font-semibold text-center">Products</th>
-                      <th className="px-4 py-3 font-semibold text-right">Units</th>
-                      <th className="px-4 py-3 font-semibold text-center">Low Stock</th>
-                      <th className="px-4 py-3 font-semibold text-right">Retail Value</th>
+                      <th className="px-3.5 py-2 font-semibold">Category</th>
+                      <th className="px-3.5 py-2 font-semibold text-center">Products</th>
+                      <th className="px-3.5 py-2 font-semibold text-right">Units</th>
+                      <th className="px-3.5 py-2 font-semibold text-center">Low Stock</th>
+                      <th className="px-3.5 py-2 font-semibold text-right">Retail Value</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {metrics.categoryBreakdown.map((row) => (
-                      <tr key={row.categoryName} className="hover:bg-slate-50/70">
-                        <td className="px-4 py-3 font-semibold text-slate-900">
+                      <tr key={row.categoryName} className="hover:bg-slate-50/70 transition-colors">
+                        <td className="px-3.5 py-2 font-semibold text-slate-900">
                           {row.categoryName}
                         </td>
-                        <td className="px-4 py-3 text-center text-slate-600">
+                        <td className="px-3.5 py-2 text-center text-slate-600">
                           {row.productCount}
                         </td>
-                        <td className="px-4 py-3 text-right font-semibold text-slate-800">
+                        <td className="px-3.5 py-2 text-right font-semibold text-slate-800">
                           {formatNumber(row.totalStock)}
                         </td>
-                        <td className="px-4 py-3 text-center">
+                        <td className="px-3.5 py-2 text-center">
                           {row.lowStockCount > 0 ? (
-                            <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-semibold">
+                            <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-semibold text-[11px]">
                               {row.lowStockCount}
                             </span>
                           ) : (
-                            <span className="text-emerald-600 font-medium">OK</span>
+                            <span className="text-emerald-600 font-medium text-[11px]">OK</span>
                           )}
                         </td>
-                        <td className="px-4 py-3 text-right font-medium text-slate-900">
+                        <td className="px-3.5 py-2 text-right font-medium text-slate-900">
                           {formatCurrency(row.stockValue, currency)}
                         </td>
                       </tr>
@@ -419,27 +419,27 @@ export default function InventoryPage() {
                 All products have healthy inventory levels.
               </div>
             ) : (
-              <div className="overflow-x-auto max-h-96 overflow-y-auto">
+              <div className="overflow-x-auto max-h-80 overflow-y-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-200 sticky top-0">
+                  <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200 sticky top-0">
                     <tr>
-                      <th className="px-4 py-3 font-semibold">Product</th>
-                      <th className="px-4 py-3 font-semibold text-center">Stock / Min</th>
+                      <th className="px-3.5 py-2 font-semibold">Product</th>
+                      <th className="px-3.5 py-2 font-semibold text-center">Stock / Min</th>
                       {isManagerOrAdmin && (
-                        <th className="px-4 py-3 font-semibold text-right">Action</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Action</th>
                       )}
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {lowAndOutProducts.map((p) => (
-                      <tr key={p.id} className="hover:bg-slate-50/70">
-                        <td className="px-4 py-3">
-                          <p className="font-semibold text-slate-900">{p.name}</p>
-                          <p className="text-[11px] font-mono text-slate-500">{p.sku}</p>
+                      <tr key={p.id} className="hover:bg-slate-50/70 transition-colors">
+                        <td className="px-3.5 py-2">
+                          <p className="font-semibold text-slate-900 leading-tight">{p.name}</p>
+                          <p className="text-[10px] font-mono text-slate-400 mt-0.5">{p.sku}</p>
                         </td>
-                        <td className="px-4 py-3 text-center">
+                        <td className="px-3.5 py-2 text-center">
                           <span
-                            className={`px-2 py-0.5 rounded-full font-semibold ${
+                            className={`px-2 py-0.5 rounded-full font-semibold text-[11px] ${
                               Number(p.availableQuantity || 0) === 0
                                 ? 'bg-red-100 text-red-700'
                                 : 'bg-amber-100 text-amber-800'
@@ -449,11 +449,11 @@ export default function InventoryPage() {
                           </span>
                         </td>
                         {isManagerOrAdmin && (
-                          <td className="px-4 py-3 text-right">
+                          <td className="px-3.5 py-2 text-right">
                             <button
                               type="button"
                               onClick={() => openAdjustModal(p)}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 hover:bg-blue-100 font-semibold"
+                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 hover:bg-blue-100 font-semibold text-xs"
                             >
                               <ArrowUpDown className="w-3 h-3" />
                               Adjust
@@ -512,53 +512,53 @@ export default function InventoryPage() {
                   No products match your filter.
                 </div>
               ) : (
-                <div className="overflow-x-auto max-h-96 overflow-y-auto">
+                <div className="overflow-x-auto max-h-80 overflow-y-auto">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-200 sticky top-0">
+                    <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200 sticky top-0">
                       <tr>
-                        <th className="px-4 py-3 font-semibold">Product</th>
-                        <th className="px-4 py-3 font-semibold">Barcode</th>
-                        <th className="px-4 py-3 font-semibold">Category</th>
-                        <th className="px-4 py-3 font-semibold text-center">Available</th>
-                        <th className="px-4 py-3 font-semibold text-center">Min Level</th>
-                        <th className="px-4 py-3 font-semibold text-right">Selling Price</th>
-                        <th className="px-4 py-3 font-semibold text-right">Stock Value</th>
-                        <th className="px-4 py-3 font-semibold text-right">Adjust</th>
+                        <th className="px-3.5 py-2 font-semibold">Product</th>
+                        <th className="px-3.5 py-2 font-semibold">Barcode</th>
+                        <th className="px-3.5 py-2 font-semibold">Category</th>
+                        <th className="px-3.5 py-2 font-semibold text-center">Available</th>
+                        <th className="px-3.5 py-2 font-semibold text-center">Min Level</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Selling Price</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Stock Value</th>
+                        <th className="px-3.5 py-2 font-semibold text-right">Adjust</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {sortedLedgerProducts.map((p) => (
-                        <tr key={p.id} className="hover:bg-slate-50/70">
-                          <td className="px-4 py-2.5">
-                            <span className="font-semibold text-slate-900">{p.name}</span>
-                            <span className="ml-2 font-mono text-[11px] text-slate-400">
+                        <tr key={p.id} className="hover:bg-slate-50/70 transition-colors">
+                          <td className="px-3.5 py-2">
+                            <span className="font-semibold text-slate-900 leading-tight">{p.name}</span>
+                            <span className="ml-2 font-mono text-[10px] text-slate-400">
                               {p.sku}
                             </span>
                           </td>
-                          <td className="px-4 py-2.5 font-mono text-[11px] text-slate-600">
+                          <td className="px-3.5 py-2 font-mono text-[11px] text-slate-600">
                             {p.barcode || '—'}
                           </td>
-                          <td className="px-4 py-2.5 text-slate-600">{p.categoryName}</td>
-                          <td className="px-4 py-2.5 text-center font-semibold text-slate-900">
+                          <td className="px-3.5 py-2 text-slate-600 text-[11px]">{p.categoryName}</td>
+                          <td className="px-3.5 py-2 text-center font-semibold text-slate-900">
                             {p.availableQuantity}
                           </td>
-                          <td className="px-4 py-2.5 text-center text-slate-500">
+                          <td className="px-3.5 py-2 text-center text-slate-500 text-xs">
                             {p.minStockLevel}
                           </td>
-                          <td className="px-4 py-2.5 text-right font-medium text-slate-800">
+                          <td className="px-3.5 py-2 text-right font-medium text-slate-800">
                             {formatCurrency(p.sellingPrice || 0, currency)}
                           </td>
-                          <td className="px-4 py-2.5 text-right font-semibold text-slate-900">
+                          <td className="px-3.5 py-2 text-right font-semibold text-slate-900">
                             {formatCurrency(
                               Number(p.availableQuantity || 0) * Number(p.sellingPrice || 0),
                               currency
                             )}
                           </td>
-                          <td className="px-4 py-2.5 text-right">
+                          <td className="px-3.5 py-2 text-right">
                             <button
                               type="button"
                               onClick={() => openAdjustModal(p)}
-                              className="px-2.5 py-1 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-100 font-medium transition-colors"
+                              className="px-2 py-0.5 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-100 font-medium text-xs transition-colors"
                             >
                               Adjust Stock
                             </button>

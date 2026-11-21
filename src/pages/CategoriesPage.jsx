@@ -142,15 +142,15 @@ export default function CategoriesPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search categories by name or description..."
-            className="w-full pl-9 pr-3 py-2 text-sm bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+            className="w-full pl-8.5 pr-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
           />
         </div>
 
@@ -158,7 +158,7 @@ export default function CategoriesPage() {
           <button
             type="button"
             onClick={openCreateModal}
-            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition-colors shadow-xs"
           >
             <Plus className="w-4 h-4" />
             Add Category
@@ -166,7 +166,7 @@ export default function CategoriesPage() {
         )}
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
         {!catalogLoaded ? (
           <LoadingSpinner label="Loading categories..." />
         ) : filtered.length === 0 ? (
@@ -184,7 +184,7 @@ export default function CategoriesPage() {
                 <button
                   type="button"
                   onClick={openCreateModal}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 text-white text-xs font-medium hover:bg-blue-700"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-medium hover:bg-blue-700"
                 >
                   <Plus className="w-4 h-4" />
                   Create First Category
@@ -194,15 +194,15 @@ export default function CategoriesPage() {
           />
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-slate-50 text-xs uppercase text-slate-500 border-b border-slate-200">
+            <table className="w-full text-left text-xs">
+              <thead className="bg-slate-50 text-[11px] uppercase tracking-wider text-slate-500 border-b border-slate-200">
                 <tr>
-                  <th className="px-5 py-3.5 font-semibold">Category Name</th>
-                  <th className="px-5 py-3.5 font-semibold">Description</th>
-                  <th className="px-5 py-3.5 font-semibold text-center">Products</th>
-                  <th className="px-5 py-3.5 font-semibold">Created</th>
+                  <th className="px-3.5 py-2 font-semibold">Category Name</th>
+                  <th className="px-3.5 py-2 font-semibold">Description</th>
+                  <th className="px-3.5 py-2 font-semibold text-center">Products</th>
+                  <th className="px-3.5 py-2 font-semibold">Created</th>
                   {isManagerOrAdmin && (
-                    <th className="px-5 py-3.5 font-semibold text-right">Actions</th>
+                    <th className="px-3.5 py-2 font-semibold text-right">Actions</th>
                   )}
                 </tr>
               </thead>
@@ -210,37 +210,37 @@ export default function CategoriesPage() {
                 {filtered.map((cat) => {
                   const count = productCountByCategory.get(cat.id) || 0;
                   return (
-                    <tr key={cat.id} className="hover:bg-slate-50/70">
-                      <td className="px-5 py-3.5 font-semibold text-slate-900">{cat.name}</td>
-                      <td className="px-5 py-3.5 text-slate-600 max-w-md truncate">
+                    <tr key={cat.id} className="hover:bg-slate-50/70 transition-colors">
+                      <td className="px-3.5 py-2.5 font-semibold text-slate-900 leading-tight">{cat.name}</td>
+                      <td className="px-3.5 py-2.5 text-slate-600 max-w-md truncate">
                         {cat.description || <span className="text-slate-400">—</span>}
                       </td>
-                      <td className="px-5 py-3.5 text-center">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700">
+                      <td className="px-3.5 py-2.5 text-center">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-700">
                           {count}
                         </span>
                       </td>
-                      <td className="px-5 py-3.5 text-xs text-slate-500">
+                      <td className="px-3.5 py-2.5 text-slate-500 text-[11px]">
                         {formatDate(cat.createdAt)}
                       </td>
                       {isManagerOrAdmin && (
-                        <td className="px-5 py-3.5 text-right">
+                        <td className="px-3.5 py-2.5 text-right">
                           <div className="inline-flex items-center gap-1">
                             <button
                               type="button"
                               onClick={() => openEditModal(cat)}
-                              className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-blue-50"
+                              className="p-1 rounded-md text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-colors"
                               title="Edit category"
                             >
-                              <Pencil className="w-4 h-4" />
+                              <Pencil className="w-3.5 h-3.5" />
                             </button>
                             <button
                               type="button"
                               onClick={() => openDeleteModal(cat)}
-                              className="p-1.5 rounded-lg text-slate-500 hover:text-red-600 hover:bg-red-50"
+                              className="p-1 rounded-md text-slate-500 hover:text-red-600 hover:bg-red-50 transition-colors"
                               title="Delete category"
                             >
-                              <Trash2 className="w-4 h-4" />
+                              <Trash2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
                         </td>
