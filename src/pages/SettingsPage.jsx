@@ -46,8 +46,8 @@ export default function SettingsPage() {
   }, []);
 
   const appOrigin = typeof window !== 'undefined' ? window.location.origin : 'https://drydelight.vercel.app';
-  const chromeKioskCmd = `"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" --kiosk-printing --app=${appOrigin}`;
-  const edgeKioskCmd = `"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" --kiosk-printing --app=${appOrigin}`;
+  const chromeKioskCmd = `"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" --user-data-dir=C:\\DryDelightPOS --kiosk-printing --app=${appOrigin}`;
+  const edgeKioskCmd = `"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" --user-data-dir=C:\\DryDelightEdgePOS --kiosk-printing --app=${appOrigin}`;
 
   const handleCopyCommand = async (cmd, label) => {
     try {
@@ -571,7 +571,7 @@ export default function SettingsPage() {
               <div>
                 <p className="font-bold">How to Print Directly Without Preview Dialog (30-Second Setup):</p>
                 <p className="mt-0.5 text-blue-800">
-                  Browsers block silent printing in normal tabs for security. To skip Chrome&apos;s print preview dialog completely, set your <strong>80mm printer as Windows Default Printer</strong>, then create a Desktop shortcut using one of these targets:
+                  Normal browser tabs always force a print preview popup due to Chrome/Edge security rules. Set your <strong>80mm printer as Windows Default Printer</strong>, create a Desktop shortcut using one of these targets (the isolated profile ensures it skips preview even when other browser windows are open), and open the POS from that shortcut:
                 </p>
               </div>
 
