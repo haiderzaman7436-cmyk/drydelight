@@ -154,6 +154,11 @@ export default function SalesHistoryPage() {
     setAddProductId('');
   };
 
+  const openDeleteModal = (sale) => {
+    setDeleteTarget(sale);
+    setDeleteReason('');
+  };
+
   const editTotals = useMemo(
     () =>
       calculateSaleTotals({
@@ -250,10 +255,15 @@ export default function SalesHistoryPage() {
     if (!deleteTarget) return;
     setDeleting(true);
     try {
-      const res = await deleteSale(deleteTarget.id, deleteReason, user);
-      setSales((prev) => prev.filter((s) => s.id !== deleteTarget.id));
-      applyStockUpdatesLocal(res.stockUpdates);
-      toast.success(`Invoice ${deleteTarget.invoiceNumber} deleted & stock restored`);
+      const targetId = deleteTarget.id;
+      const targetInv = deleteTarget.invoiceNumber;
+      const res = await deleteSale(targetId, deleteReason, user);
+      setSales((prev) => prev.filter((s) => s.id !== targetId));
+      if (viewSale?.id === targetId) setViewSale(null);
+      if (res.stockUpdates?.length) {
+        applyStockUpdatesLocal(res.stockUpdates);
+      }
+      toast.success(`Invoice ${targetInv} deleted & stock restored`);
       setDeleteTarget(null);
       setDeleteReason('');
     } catch (err) {
