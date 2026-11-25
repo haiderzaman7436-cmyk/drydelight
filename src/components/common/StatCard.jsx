@@ -35,10 +35,10 @@ export default function StatCard({
         </p>
         <p
           className={`text-lg sm:text-xl font-bold mt-0.5 tracking-tight truncate ${
-            locked ? 'text-slate-400 tracking-widest select-none' : 'text-slate-900'
+            locked ? 'text-slate-400 select-none' : 'text-slate-900'
           }`}
         >
-          {locked ? '••••••' : value}
+          {locked ? 'Protected' : value}
         </p>
         {(locked || subtitle) && (
           <p

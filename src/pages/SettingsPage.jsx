@@ -5,8 +5,6 @@ import {
   CheckCircle2,
   AlertCircle,
   RefreshCw,
-  UploadCloud,
-  Database,
   Lock,
   Eye,
   EyeOff,
@@ -23,7 +21,6 @@ import {
   isWebSerialSupported,
   requestSerialPrinterPort,
 } from '../services/printService';
-import CatalogImportModal from '../components/inventory/CatalogImportModal';
 
 export default function SettingsPage() {
   const { settings, updateSettings } = useSettings();
@@ -39,7 +36,6 @@ export default function SettingsPage() {
   const [qzStatus, setQzStatus] = useState({ checked: false, connected: false, printers: [], error: '' });
   const [checkingQz, setCheckingQz] = useState(false);
   const [serialCount, setSerialCount] = useState(0);
-  const [importModalOpen, setImportModalOpen] = useState(false);
 
   useEffect(() => {
     setForm(settings);
@@ -616,40 +612,6 @@ export default function SettingsPage() {
           )}
         </div>
 
-        {/* Scraped Register Catalog & Inventory Seeder */}
-        <div className="bg-white rounded-xl border border-slate-200 p-5 space-y-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Database className="w-4 h-4 text-emerald-600" />
-              <h3 className="text-sm font-semibold text-slate-900">
-                Register Inventory Import &amp; Database Tools
-              </h3>
-            </div>
-            <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold">
-              372 Scraped Products
-            </span>
-          </div>
-
-          <p className="text-xs text-slate-600 leading-relaxed">
-            All 32 handwritten register photos in <code className="font-mono bg-slate-100 px-1 py-0.5 rounded">img/</code> have been transcribed, categorized across 11 departments, assigned valid EAN-13 barcodes, and sorted alphabetically. You can populate or synchronize Firestore at any time.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3 pt-1">
-            <button
-              type="button"
-              disabled={!isAdmin}
-              onClick={() => setImportModalOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors disabled:opacity-50"
-            >
-              <UploadCloud className="w-4 h-4" />
-              Open Catalog Importer
-            </button>
-            <span className="text-[11px] text-slate-400">
-              Includes GS1 check-digit barcodes and initial notebook quantities
-            </span>
-          </div>
-        </div>
-
         {isAdmin && (
           <div className="flex justify-end">
             <button
@@ -663,11 +625,6 @@ export default function SettingsPage() {
           </div>
         )}
       </form>
-
-      <CatalogImportModal
-        isOpen={importModalOpen}
-        onClose={() => setImportModalOpen(false)}
-      />
     </div>
   );
 }

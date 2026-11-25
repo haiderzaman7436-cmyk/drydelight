@@ -47,7 +47,7 @@ const PosProductCard = memo(function PosProductCard({ prod, cartQty, currency, o
           <p className="text-xs font-semibold text-slate-900 line-clamp-2 leading-tight">{prod.name}</p>
           {cartQty > 0 && (
             <span className="px-1.5 py-0.2 rounded-md bg-blue-600 text-white text-[10px] font-bold shrink-0">
-              ×{cartQty}
+              x{cartQty}
             </span>
           )}
         </div>

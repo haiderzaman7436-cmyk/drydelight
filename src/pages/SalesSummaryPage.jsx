@@ -290,7 +290,7 @@ export default function SalesSummaryPage() {
                                 className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:underline"
                                 title="Click to unlock profit"
                               >
-                                <Lock className="w-3 h-3" /> ••••
+                                <Lock className="w-3 h-3" /> Locked
                               </button>
                             ) : (
                               formatCurrency(p.netProfit, currency)

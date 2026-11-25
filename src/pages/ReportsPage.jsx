@@ -530,7 +530,7 @@ export default function ReportsPage() {
                           </td>
                           <td className="px-3.5 py-2 text-right text-slate-600">
                             {isLocked ? (
-                              <span className="text-slate-400 select-none">••••</span>
+                              <span className="text-slate-400 select-none text-[11px]">Locked</span>
                             ) : (
                               formatCurrency(p.netCost, currency)
                             )}
@@ -554,7 +554,7 @@ export default function ReportsPage() {
                                 className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:underline"
                                 title="Click to unlock profit"
                               >
-                                <Lock className="w-3 h-3" /> ••••
+                                <Lock className="w-3 h-3" /> Locked
                               </button>
                             ) : (
                               formatCurrency(p.netProfit, currency)
@@ -619,7 +619,7 @@ export default function ReportsPage() {
                                 className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:underline"
                                 title="Click to unlock profit"
                               >
-                                <Lock className="w-3 h-3" /> ••••
+                                <Lock className="w-3 h-3" /> Locked
                               </button>
                             ) : (
                               formatCurrency(c.netProfit, currency)
@@ -678,7 +678,7 @@ export default function ReportsPage() {
                                 className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:underline"
                                 title="Click to unlock profit"
                               >
-                                <Lock className="w-3 h-3" /> ••••
+                                <Lock className="w-3 h-3" /> Locked
                               </button>
                             ) : (
                               formatCurrency(profit, currency)

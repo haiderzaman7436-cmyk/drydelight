@@ -9,8 +9,9 @@ import {
   RefreshCw,
   Filter,
   Barcode,
-  UploadCloud,
-  Sparkles,
+  ArrowRight,
+  Plus,
+  Minus,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import StatCard from '../components/common/StatCard';
@@ -18,9 +19,7 @@ import Modal from '../components/common/Modal';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import EmptyState from '../components/common/EmptyState';
 import Pagination from '../components/common/Pagination';
-import CatalogImportModal from '../components/inventory/CatalogImportModal';
 import { downloadBarcodesPdf } from '../utils/barcodePdfGenerator';
-import scrapedCatalog from '../data/scrapedCatalog.json';
 import { adjustProductStock } from '../services/productService';
 import { getRecentStockMovements } from '../services/inventoryService';
 import { invalidateCachePrefix } from '../services/queryCache';
@@ -55,7 +54,6 @@ export default function InventoryPage() {
   const [ledgerSearch, setLedgerSearch] = useState('');
   const deferredLedgerSearch = useDeferredValue(ledgerSearch);
   const [ledgerCategory, setLedgerCategory] = useState('all');
-  const [importModalOpen, setImportModalOpen] = useState(false);
 
   const [movementSearch, setMovementSearch] = useState('');
   const deferredMovementSearch = useDeferredValue(movementSearch);
@@ -282,12 +280,11 @@ export default function InventoryPage() {
           <button
             type="button"
             onClick={() => {
-              const targetList =
-                products.length > 0
-                  ? sortedLedgerProducts.length > 0
-                    ? sortedLedgerProducts
-                    : products
-                  : scrapedCatalog.products;
+              const targetList = sortedLedgerProducts.length > 0 ? sortedLedgerProducts : products;
+              if (targetList.length === 0) {
+                toast.error('No products available to export barcode PDF');
+                return;
+              }
               downloadBarcodesPdf(targetList, {
                 storeName: settings.storeName || 'DRY DELIGHT',
                 currency: settings.currency || 'PKR',
@@ -302,17 +299,6 @@ export default function InventoryPage() {
             Barcode Stickers PDF
           </button>
 
-          {isManagerOrAdmin && (
-            <button
-              type="button"
-              onClick={() => setImportModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
-              title="Import 372 scraped products from notebook register images"
-            >
-              <UploadCloud className="w-3.5 h-3.5" />
-              Import Register Catalog
-            </button>
-          )}
           <button
             type="button"
             onClick={() => {
@@ -326,34 +312,6 @@ export default function InventoryPage() {
           </button>
         </div>
       </div>
-
-      {products.length === 0 && (
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-blue-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-sm font-bold text-slate-900">
-                Register Inventory Ready for Import
-              </h4>
-              <p className="text-xs text-slate-600 mt-0.5">
-                372 products across 11 categories scraped from your 32 notebook photos can be added into the database with one click.
-              </p>
-            </div>
-          </div>
-          {isManagerOrAdmin && (
-            <button
-              type="button"
-              onClick={() => setImportModalOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shrink-0 transition-colors shadow-xs"
-            >
-              <UploadCloud className="w-4 h-4" />
-              Import 372 Items Now
-            </button>
-          )}
-        </div>
-      )}
 
       {activeTab === 'overview' ? (
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
@@ -476,7 +434,7 @@ export default function InventoryPage() {
                     All Products Stock Ledger
                   </h3>
                   <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">
-                    {sortedLedgerProducts.length} items (A → Z)
+                    {sortedLedgerProducts.length} items (A-Z)
                   </span>
                 </div>
 
@@ -617,7 +575,7 @@ export default function InventoryPage() {
                       <th className="px-4 py-3 font-semibold">Product</th>
                       <th className="px-4 py-3 font-semibold">Type</th>
                       <th className="px-4 py-3 font-semibold text-right">Change</th>
-                      <th className="px-4 py-3 font-semibold text-right">Prev → New</th>
+                      <th className="px-4 py-3 font-semibold text-right">Prev / New</th>
                       <th className="px-4 py-3 font-semibold">Reference</th>
                       <th className="px-4 py-3 font-semibold">Notes / By</th>
                     </tr>
@@ -653,7 +611,11 @@ export default function InventoryPage() {
                             {delta > 0 ? `+${delta}` : delta}
                           </td>
                           <td className="px-4 py-3 text-right font-mono text-slate-700">
-                            {m.previousStock} → <strong>{m.newStock}</strong>
+                            <span className="inline-flex items-center gap-1 justify-end">
+                              {m.previousStock}
+                              <ArrowRight className="w-3 h-3 text-slate-400" />
+                              <strong>{m.newStock}</strong>
+                            </span>
                           </td>
                           <td className="px-4 py-3 font-mono text-slate-700">
                             {m.referenceInvoice || '—'}
@@ -711,24 +673,26 @@ export default function InventoryPage() {
             <button
               type="button"
               onClick={() => setAdjustMode('add')}
-              className={`py-2 text-xs font-semibold rounded-lg border ${
+              className={`py-2 text-xs font-semibold rounded-lg border inline-flex items-center justify-center gap-1.5 ${
                 adjustMode === 'add'
                   ? 'bg-emerald-50 border-emerald-500 text-emerald-700'
                   : 'border-slate-200 text-slate-600 hover:bg-slate-50'
               }`}
             >
-              + Add Stock (Restock)
+              <Plus className="w-3.5 h-3.5" />
+              Add Stock (Restock)
             </button>
             <button
               type="button"
               onClick={() => setAdjustMode('deduct')}
-              className={`py-2 text-xs font-semibold rounded-lg border ${
+              className={`py-2 text-xs font-semibold rounded-lg border inline-flex items-center justify-center gap-1.5 ${
                 adjustMode === 'deduct'
                   ? 'bg-red-50 border-red-500 text-red-700'
                   : 'border-slate-200 text-slate-600 hover:bg-slate-50'
               }`}
             >
-              - Deduct Stock
+              <Minus className="w-3.5 h-3.5" />
+              Deduct Stock
             </button>
           </div>
 
@@ -762,11 +726,6 @@ export default function InventoryPage() {
           </div>
         </form>
       </Modal>
-
-      <CatalogImportModal
-        isOpen={importModalOpen}
-        onClose={() => setImportModalOpen(false)}
-      />
     </div>
   );
 }

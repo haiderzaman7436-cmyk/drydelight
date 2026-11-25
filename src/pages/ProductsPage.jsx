@@ -6,11 +6,9 @@ import {
   Trash2,
   Eye,
   Package,
-  Wand2,
+  RefreshCw,
   Barcode,
   Filter,
-  UploadCloud,
-  Sparkles,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Modal from '../components/common/Modal';
@@ -20,14 +18,12 @@ import LoadingSpinner from '../components/common/LoadingSpinner';
 import Pagination from '../components/common/Pagination';
 import BarcodeDisplay from '../components/common/BarcodeDisplay';
 import StockBadge from '../components/common/StockBadge';
-import CatalogImportModal from '../components/inventory/CatalogImportModal';
 import { createProduct, updateProduct, deleteProduct } from '../services/productService';
 import { useAuth } from '../contexts/AuthContext';
 import { useSettings } from '../contexts/SettingsContext';
 import { useData } from '../contexts/DataContext';
 import { generateInternalBarcode, generateSku } from '../utils/barcode';
 import { downloadBarcodesPdf } from '../utils/barcodePdfGenerator';
-import scrapedCatalog from '../data/scrapedCatalog.json';
 import { formatCurrency, formatDate } from '../utils/formatters';
 
 const PAGE_SIZE = 15;
@@ -70,7 +66,6 @@ export default function ProductsPage() {
   const [viewProduct, setViewProduct] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deleting, setDeleting] = useState(false);
-  const [importModalOpen, setImportModalOpen] = useState(false);
 
   const filteredProducts = useMemo(() => {
     const q = deferredSearch.trim().toLowerCase();
@@ -229,12 +224,11 @@ export default function ProductsPage() {
             <button
               type="button"
               onClick={() => {
-                const targetList =
-                  products.length > 0
-                    ? filteredProducts.length > 0
-                      ? filteredProducts
-                      : products
-                    : scrapedCatalog.products;
+                const targetList = filteredProducts.length > 0 ? filteredProducts : products;
+                if (targetList.length === 0) {
+                  toast.error('No products available to export barcode PDF');
+                  return;
+                }
                 downloadBarcodesPdf(targetList, {
                   storeName: settings.storeName || 'DRY DELIGHT',
                   currency: settings.currency || 'PKR',
@@ -250,25 +244,14 @@ export default function ProductsPage() {
             </button>
 
             {isManagerOrAdmin && (
-              <>
-                <button
-                  type="button"
-                  onClick={() => setImportModalOpen(true)}
-                  className="inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium transition-colors"
-                  title="Import 372 items scraped from register photos"
-                >
-                  <UploadCloud className="w-4 h-4" />
-                  Import Scraped Catalog
-                </button>
-                <button
-                  type="button"
-                  onClick={openCreateModal}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors"
-                >
-                  <Plus className="w-4 h-4" />
-                  Add Product
-                </button>
-              </>
+              <button
+                type="button"
+                onClick={openCreateModal}
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+                Add Product
+              </button>
             )}
           </div>
         </div>
@@ -326,33 +309,28 @@ export default function ProductsPage() {
         {!catalogLoaded ? (
           <LoadingSpinner label="Loading products..." />
         ) : paginated.length === 0 ? (
-          products.length === 0 ? (
-            <div className="p-8 text-center bg-white border border-dashed border-slate-300 rounded-xl space-y-3">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
-                <Sparkles className="w-6 h-6" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900">Your Catalog is Ready to Import</h3>
-              <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-                372 products and 11 categories have been scraped from your 32 register notebook photos with valid EAN-13 barcodes, stock quantities, and alphabetical sorting.
-              </p>
-              {isManagerOrAdmin && (
+          <EmptyState
+            icon={Package}
+            title={products.length === 0 ? 'No products yet' : 'No products found'}
+            description={
+              products.length === 0
+                ? 'Start by adding your first product to manage stock and sales.'
+                : 'Try clearing or adjusting your active search and filters.'
+            }
+            action={
+              products.length === 0 &&
+              isManagerOrAdmin && (
                 <button
                   type="button"
-                  onClick={() => setImportModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs transition-colors"
+                  onClick={openCreateModal}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 text-white text-xs font-medium hover:bg-blue-700"
                 >
-                  <UploadCloud className="w-4 h-4" />
-                  Import 372 Items Now
+                  <Plus className="w-4 h-4" />
+                  Add First Product
                 </button>
-              )}
-            </div>
-          ) : (
-            <EmptyState
-              icon={Package}
-              title="No products found"
-              description="Try clearing or adjusting your active search and filters."
-            />
-          )
+              )
+            }
+          />
         ) : (
           <>
             <div className="overflow-x-auto">
@@ -528,7 +506,7 @@ export default function ProductsPage() {
                   className="px-2.5 py-2 text-xs font-medium border border-slate-300 rounded-lg hover:bg-slate-50 text-slate-700"
                   title="Auto-generate SKU"
                 >
-                  <Wand2 className="w-4 h-4" />
+                  <RefreshCw className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -574,7 +552,7 @@ export default function ProductsPage() {
                   onClick={handleGenerateBarcode}
                   className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 shrink-0"
                 >
-                  <Wand2 className="w-3.5 h-3.5" />
+                  <RefreshCw className="w-3.5 h-3.5" />
                   Generate EAN-13
                 </button>
               </div>
@@ -762,11 +740,6 @@ export default function ProductsPage() {
         message={`Are you sure you want to delete "${deleteTarget?.name}" (SKU: ${deleteTarget?.sku})? Past sales invoices will remain intact.`}
         confirmLabel="Delete Product"
         loading={deleting}
-      />
-
-      <CatalogImportModal
-        isOpen={importModalOpen}
-        onClose={() => setImportModalOpen(false)}
       />
     </div>
   );

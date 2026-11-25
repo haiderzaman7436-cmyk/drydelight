@@ -5,7 +5,7 @@ import {
   AlertCircle,
   Package,
   Layers,
-  Sparkles,
+  Database,
   Barcode,
   Loader2,
 } from 'lucide-react';
@@ -85,7 +85,7 @@ export default function CatalogImportModal({ isOpen, onClose }) {
         {/* Banner summary */}
         <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200 text-blue-900 text-xs space-y-2">
           <div className="flex items-center gap-2 font-bold text-sm text-blue-950">
-            <Sparkles className="w-4 h-4 text-blue-600" />
+            <Database className="w-4 h-4 text-blue-600" />
             32 Register Images Transcribed &amp; Categorized
           </div>
           <p className="leading-relaxed">
@@ -107,7 +107,7 @@ export default function CatalogImportModal({ isOpen, onClose }) {
             </div>
             <div className="p-2 rounded bg-white border border-blue-100">
               <span className="text-slate-500 block">Sort Order:</span>
-              <span className="font-bold text-slate-900 text-sm">A → Z Sorted</span>
+              <span className="font-bold text-slate-900 text-sm">A-Z Sorted</span>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { CheckCircle2, AlertCircle } from 'lucide-react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { SettingsProvider } from './contexts/SettingsContext';
 import { ProfitLockProvider } from './contexts/ProfitLockContext';
@@ -81,6 +82,12 @@ export default function App() {
                       fontSize: '13px',
                       borderRadius: '10px',
                       border: '1px solid #e2e8f0',
+                    },
+                    success: {
+                      icon: <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />,
+                    },
+                    error: {
+                      icon: <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />,
                     },
                   }}
                 />
