@@ -78,21 +78,21 @@ function money(val, currency) {
  * Builds an array of ESC/POS strings ready to be sent to QZ Tray `qz.print(config, data)`.
  */
 export function buildEscPosReceipt({ documentData, type = 'sale', settings = {} }) {
-  const width = settings.paperWidth === '80mm' ? 42 : 32;
+  const width = settings.paperWidth === '58mm' ? 32 : 42;
   const currency = settings.currency || 'PKR';
   const divider = '-'.repeat(width);
   const thickDivider = '='.repeat(width);
   const lines = [];
 
   lines.push(CMD.INIT);
+  lines.push(CMD.BOLD_ON); // Keep everything bold for clear thermal readability
   lines.push(CMD.ALIGN_CENTER);
-  lines.push(CMD.BOLD_ON);
   lines.push(CMD.DOUBLE_HEIGHT_ON);
   for (const l of wrapText(settings.businessName || 'Dry Delight', width)) {
     lines.push(`${l}\n`);
   }
   lines.push(CMD.NORMAL_SIZE);
-  lines.push(CMD.BOLD_OFF);
+  lines.push(CMD.BOLD_ON);
 
   if (settings.businessAddress) {
     for (const l of wrapText(settings.businessAddress, width)) {
@@ -109,10 +109,8 @@ export function buildEscPosReceipt({ documentData, type = 'sale', settings = {} 
   }
 
   lines.push(`${thickDivider}\n`);
-  lines.push(CMD.BOLD_ON);
   lines.push(type === 'return' ? 'SALES RETURN RECEIPT\n' : 'SALES INVOICE\n');
-  lines.push(CMD.BOLD_OFF);
-  lines.push(`${divider}\n`);
+  lines.push(`${thickDivider}\n`);
 
   lines.push(CMD.ALIGN_LEFT);
 
@@ -127,28 +125,32 @@ export function buildEscPosReceipt({ documentData, type = 'sale', settings = {} 
     lines.push(`${padRow('Customer:', documentData.customerName || 'Walk-in', width)}\n`);
   }
 
-  lines.push(`${divider}\n`);
-  lines.push(CMD.BOLD_ON);
+  lines.push(`${thickDivider}\n`);
   lines.push(`${padRow('Item (Qty x Price)', 'Total', width)}\n`);
-  lines.push(CMD.BOLD_OFF);
-  lines.push(`${divider}\n`);
+  lines.push(`${thickDivider}\n`);
 
-  for (const item of documentData.items || []) {
+  const items = documentData.items || [];
+  let totalQty = 0;
+  items.forEach((item, idx) => {
     const qty = type === 'return' ? item.returnQuantity : item.quantity;
     const total = type === 'return' ? item.lineReturnTotal : item.lineTotal;
-    for (const nameLine of wrapText(item.productName, width)) {
+    totalQty += Number(qty || 0);
+    for (const nameLine of wrapText(`${idx + 1}. ${item.productName}`, width)) {
       lines.push(`${nameLine}\n`);
     }
-    const detail = `  ${qty} x ${roundMoney(item.unitPrice)}`;
+    const detail = `   ${qty} x ${roundMoney(item.unitPrice)}`;
     lines.push(`${padRow(detail, money(total, currency), width)}\n`);
-  }
+    lines.push(`${divider}\n`);
+  });
 
+  lines.push(`${padRow(`Items: ${items.length}`, `Qty: ${totalQty}`, width)}\n`);
   lines.push(`${divider}\n`);
 
   if (type === 'return') {
-    lines.push(CMD.BOLD_ON);
+    lines.push(CMD.DOUBLE_HEIGHT_ON);
     lines.push(`${padRow('TOTAL REFUND:', money(documentData.totalReturnAmount, currency), width)}\n`);
-    lines.push(CMD.BOLD_OFF);
+    lines.push(CMD.NORMAL_SIZE);
+    lines.push(CMD.BOLD_ON);
     if (documentData.reason) {
       lines.push(`${divider}\n`);
       for (const r of wrapText(`Reason: ${documentData.reason}`, width)) {
@@ -157,9 +159,10 @@ export function buildEscPosReceipt({ documentData, type = 'sale', settings = {} 
     }
   } else {
     lines.push(`${padRow('Subtotal:', money(documentData.subtotal, currency), width)}\n`);
-    lines.push(CMD.BOLD_ON);
+    lines.push(CMD.DOUBLE_HEIGHT_ON);
     lines.push(`${padRow('GRAND TOTAL:', money(documentData.grandTotal, currency), width)}\n`);
-    lines.push(CMD.BOLD_OFF);
+    lines.push(CMD.NORMAL_SIZE);
+    lines.push(CMD.BOLD_ON);
     lines.push(`${padRow('Paid:', money(documentData.paidAmount, currency), width)}\n`);
     if (Number(documentData.remainingAmount || 0) > 0) {
       lines.push(`${padRow('Remaining:', money(documentData.remainingAmount, currency), width)}\n`);
@@ -175,6 +178,7 @@ export function buildEscPosReceipt({ documentData, type = 'sale', settings = {} 
   for (const f of wrapText(footer, width)) {
     lines.push(`${f}\n`);
   }
+  lines.push(CMD.BOLD_OFF);
   lines.push(CMD.FEED_AND_CUT);
 
   return lines;

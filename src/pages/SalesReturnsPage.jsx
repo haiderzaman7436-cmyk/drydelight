@@ -561,7 +561,7 @@ export default function SalesReturnsPage() {
                               type="button"
                               onClick={() => printReceipt(r, 'return')}
                               className="p-1 rounded-md text-slate-500 hover:text-blue-600 hover:bg-blue-50"
-                              title="Print 58mm return invoice"
+                              title="Print thermal return invoice"
                             >
                               <Printer className="w-3.5 h-3.5" />
                             </button>

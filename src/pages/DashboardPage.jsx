@@ -12,6 +12,8 @@ import {
   Printer,
   ArrowRight,
   Wallet,
+  Lock,
+  Unlock,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -28,6 +30,7 @@ import StatCard from '../components/common/StatCard';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import EmptyState from '../components/common/EmptyState';
 import { useSettings } from '../contexts/SettingsContext';
+import { useProfitLock } from '../contexts/ProfitLockContext';
 import { useData } from '../contexts/DataContext';
 import { usePrint } from '../contexts/PrintContext';
 import { getSalesByDateRange } from '../services/salesService';
@@ -47,6 +50,7 @@ import {
 
 export default function DashboardPage() {
   const { settings } = useSettings();
+  const { lockEnabled, isLocked, openUnlockModal, lockNow } = useProfitLock();
   const { products, categories, refreshCatalog } = useData();
   const { printReceipt } = usePrint();
   const currency = settings.currency || 'PKR';
@@ -257,6 +261,21 @@ export default function DashboardPage() {
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
             Refresh
           </button>
+          {lockEnabled && (
+            <button
+              type="button"
+              onClick={isLocked ? openUnlockModal : lockNow}
+              className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg border transition-colors ${
+                isLocked
+                  ? 'bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100'
+                  : 'bg-emerald-50 border-emerald-300 text-emerald-800 hover:bg-emerald-100'
+              }`}
+              title={isLocked ? 'Unlock Today & Monthly Profit' : 'Lock Today & Monthly Profit'}
+            >
+              {isLocked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
+              {isLocked ? 'Unlock Profit' : 'Lock Profit'}
+            </button>
+          )}
         </div>
       </div>
 
@@ -279,6 +298,8 @@ export default function DashboardPage() {
           subtitle={`Margin: ${daySummary.profitMargin}% · Cost: ${formatCurrency(daySummary.netCost, currency)}`}
           icon={Wallet}
           tone={daySummary.netProfit >= 0 ? 'emerald' : 'red'}
+          locked={isLocked}
+          onClick={isLocked ? openUnlockModal : undefined}
         />
         <StatCard
           title="Today's Transactions"
@@ -300,6 +321,8 @@ export default function DashboardPage() {
           subtitle={`Margin: ${monthSummary.profitMargin}% · Cost: ${formatCurrency(monthSummary.netCost, currency)}`}
           icon={Wallet}
           tone={monthSummary.netProfit >= 0 ? 'emerald' : 'red'}
+          locked={isLocked}
+          onClick={isLocked ? openUnlockModal : undefined}
         />
         <StatCard
           title="Total Returns (Month)"
@@ -334,9 +357,22 @@ export default function DashboardPage() {
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
         <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs">
-          <div className="mb-3">
-            <h3 className="text-xs sm:text-sm font-semibold text-slate-900">Daily Net Sales &amp; Profit</h3>
-            <p className="text-[11px] text-slate-500">Last {dailyRangeDays} days ending {selectedDate}</p>
+          <div className="mb-3 flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-xs sm:text-sm font-semibold text-slate-900">
+                {isLocked ? 'Daily Net Sales' : 'Daily Net Sales & Profit'}
+              </h3>
+              <p className="text-[11px] text-slate-500">Last {dailyRangeDays} days ending {selectedDate}</p>
+            </div>
+            {isLocked && (
+              <button
+                type="button"
+                onClick={openUnlockModal}
+                className="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md hover:bg-amber-100"
+              >
+                <Lock className="w-3 h-3" /> Profit locked
+              </button>
+            )}
           </div>
           <div className="h-56 sm:h-60">
             <ResponsiveContainer width="100%" height="100%">
@@ -351,16 +387,33 @@ export default function DashboardPage() {
                 />
                 <Legend wrapperStyle={{ fontSize: '11px' }} />
                 <Bar dataKey="netSales" name="Net Sales" fill="#2563eb" radius={[4, 4, 0, 0]} isAnimationActive={false} />
-                <Bar dataKey="netProfit" name="Net Profit" fill="#10b981" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                {!isLocked && (
+                  <Bar dataKey="netProfit" name="Net Profit" fill="#10b981" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                )}
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs">
-          <div className="mb-3">
-            <h3 className="text-xs sm:text-sm font-semibold text-slate-900">Monthly Sales &amp; Profit Trend</h3>
-            <p className="text-[11px] text-slate-500">Last 6 months net revenue &amp; profit</p>
+          <div className="mb-3 flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-xs sm:text-sm font-semibold text-slate-900">
+                {isLocked ? 'Monthly Sales Trend' : 'Monthly Sales & Profit Trend'}
+              </h3>
+              <p className="text-[11px] text-slate-500">
+                {isLocked ? 'Last 6 months net revenue' : 'Last 6 months net revenue & profit'}
+              </p>
+            </div>
+            {isLocked && (
+              <button
+                type="button"
+                onClick={openUnlockModal}
+                className="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md hover:bg-amber-100"
+              >
+                <Lock className="w-3 h-3" /> Profit locked
+              </button>
+            )}
           </div>
           <div className="h-56 sm:h-60">
             <ResponsiveContainer width="100%" height="100%">
@@ -375,7 +428,9 @@ export default function DashboardPage() {
                 />
                 <Legend wrapperStyle={{ fontSize: '11px' }} />
                 <Bar dataKey="netSales" name="Net Sales" fill="#0f172a" radius={[4, 4, 0, 0]} isAnimationActive={false} />
-                <Bar dataKey="netProfit" name="Net Profit" fill="#10b981" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                {!isLocked && (
+                  <Bar dataKey="netProfit" name="Net Profit" fill="#10b981" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                )}
               </BarChart>
             </ResponsiveContainer>
           </div>

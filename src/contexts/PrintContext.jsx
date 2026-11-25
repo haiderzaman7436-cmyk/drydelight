@@ -44,11 +44,11 @@ export function PrintProvider({ children }) {
           }
         }
 
-        // Flush DOM synchronously so 58mm thermal receipt prints immediately with zero delay
+        // Flush DOM synchronously so thermal receipt prints immediately with zero delay
         flushSync(() => {
           setPrintJob({ documentData, type, settings: activeSettings });
         });
-        triggerBrowserThermalPrint(activeSettings.paperWidth || '58mm');
+        triggerBrowserThermalPrint(activeSettings.paperWidth || '80mm');
       } finally {
         setPrinting(false);
       }

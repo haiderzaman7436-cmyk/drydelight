@@ -13,6 +13,8 @@ import {
 } from '../src/utils/barcode';
 import { shiftDateKey, toLocalMonthKey } from '../src/utils/formatters';
 import { buildEscPosReceipt, padRow, wrapText } from '../src/utils/escpos';
+import { DEFAULT_PROFIT_PIN, hashProfitPin, verifyProfitPin } from '../src/utils/profitLock';
+import { DEFAULT_SETTINGS, normalizeBrandSettings } from '../src/services/settingsService';
 
 describe('Sales Calculation & Payment Integrity', () => {
   it('calculates subtotal, grand total, paid, remaining, and change accurately', () => {
@@ -261,5 +263,59 @@ describe('Barcode Generation & 58mm ESC/POS Receipt Formatting', () => {
     expect(fullText).toContain('INV-20261118-0001');
     expect(fullText).toContain('GRAND TOTAL:');
     expect(fullText).toContain('PKR 500');
+  });
+
+  it('defaults POS receipt to 80mm (42 columns) with bold commands active throughout', () => {
+    const receiptLines = buildEscPosReceipt({
+      type: 'sale',
+      settings: { businessName: 'Dry Delight', currency: 'PKR' },
+      documentData: {
+        invoiceNumber: 'INV-20261125-0002',
+        customerName: 'Ali',
+        subtotal: 1250,
+        grandTotal: 1250,
+        paidAmount: 1500,
+        remainingAmount: 0,
+        changeAmount: 250,
+        items: [{ productName: 'Almond Giri 500g', quantity: 1, unitPrice: 1250, lineTotal: 1250 }],
+      },
+    });
+
+    const fullText = receiptLines.join('');
+    expect(fullText).toContain('='.repeat(42));
+    expect(fullText).toContain('\x1BE\x01'); // ESC E 1 (BOLD_ON)
+    expect(fullText).toContain('1. Almond Giri 500g');
+    expect(fullText).toContain('Items: 1');
+    expect(fullText).toContain('Qty: 1');
+    // BOLD_OFF only emitted right before FEED_AND_CUT
+    const boldOffIndex = fullText.indexOf('\x1BE\x00');
+    expect(boldOffIndex).toBeGreaterThan(fullText.indexOf('INV-20261125-0002'));
+  });
+});
+
+describe('Profit Lock PIN & Store Settings Defaults', () => {
+  it('verifies default PIN and hashed custom PINs accurately', () => {
+    expect(verifyProfitPin(DEFAULT_PROFIT_PIN, '')).toBe(true);
+    expect(verifyProfitPin('0000', '')).toBe(false);
+    expect(verifyProfitPin('', '')).toBe(false);
+
+    const customHash = hashProfitPin('7890');
+    expect(customHash).toMatch(/^[a-f0-9]{64}$/);
+    expect(verifyProfitPin('7890', customHash)).toBe(true);
+    expect(verifyProfitPin(DEFAULT_PROFIT_PIN, customHash)).toBe(false);
+  });
+
+  it('defaults store settings to 80mm receipt width and profit lock enabled', () => {
+    expect(DEFAULT_SETTINGS.paperWidth).toBe('80mm');
+    expect(DEFAULT_SETTINGS.profitLockEnabled).toBe(true);
+
+    // Legacy 58mm setting without explicit choice upgrades automatically to 80mm
+    const upgraded = normalizeBrandSettings({ paperWidth: '58mm' });
+    expect(upgraded.paperWidth).toBe('80mm');
+    expect(upgraded.profitLockEnabled).toBe(true);
+
+    // Explicit 58mm choice by admin is respected
+    const explicit58 = normalizeBrandSettings({ paperWidth: '58mm', paperWidthExplicit: true });
+    expect(explicit58.paperWidth).toBe('58mm');
   });
 });

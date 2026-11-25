@@ -1,5 +1,6 @@
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { hashProfitPin } from '../utils/profitLock';
 
 export const DEFAULT_SETTINGS = {
   businessName: 'Dry Delight',
@@ -11,14 +12,18 @@ export const DEFAULT_SETTINGS = {
   defaultMinStockLevel: 5,
   printerMode: 'browser', // 'browser' | 'qz_tray'
   printerName: '',
-  paperWidth: '58mm', // '58mm' | '80mm'
+  paperWidth: '80mm', // '80mm' | '58mm'
+  paperWidthExplicit: false,
   autoPrintAfterSale: true,
   showBarcodeOnReceipt: false,
+  profitLockEnabled: true,
+  profitLockPinHash: '',
+  profitLockPinCustomized: false,
 };
 
 const SETTINGS_DOC_REF = () => doc(db, 'settings', 'storeConfig');
 
-function normalizeBrandSettings(raw) {
+export function normalizeBrandSettings(raw = {}) {
   const merged = { ...DEFAULT_SETTINGS, ...raw };
   if (!merged.businessName || merged.businessName === 'My Retail Store') {
     merged.businessName = 'Dry Delight';
@@ -32,6 +37,15 @@ function normalizeBrandSettings(raw) {
   ) {
     merged.invoiceFooter = DEFAULT_SETTINGS.invoiceFooter;
   }
+  // Upgrade legacy default 58mm receipts to 80mm unless explicitly saved by admin
+  if (!raw?.paperWidthExplicit) {
+    merged.paperWidth = '80mm';
+  } else {
+    merged.paperWidth = merged.paperWidth === '58mm' ? '58mm' : '80mm';
+  }
+  if (typeof raw?.profitLockEnabled !== 'boolean') {
+    merged.profitLockEnabled = true;
+  }
   return merged;
 }
 
@@ -44,6 +58,18 @@ export async function getStoreSettings() {
 }
 
 export async function saveStoreSettings(settingsData, userId) {
+  let profitLockPinHash = String(settingsData.profitLockPinHash || '');
+  let profitLockPinCustomized = Boolean(settingsData.profitLockPinCustomized);
+
+  const incomingPin = String(settingsData.newProfitPin || '').trim();
+  if (incomingPin) {
+    if (incomingPin.length < 4) {
+      throw new Error('Profit Lock PIN must be at least 4 characters or digits.');
+    }
+    profitLockPinHash = hashProfitPin(incomingPin);
+    profitLockPinCustomized = true;
+  }
+
   const payload = {
     businessName: String(settingsData.businessName || DEFAULT_SETTINGS.businessName).trim(),
     businessAddress: String(settingsData.businessAddress || '').trim(),
@@ -54,13 +80,18 @@ export async function saveStoreSettings(settingsData, userId) {
     defaultMinStockLevel: Math.max(0, Math.floor(Number(settingsData.defaultMinStockLevel) || 0)),
     printerMode: settingsData.printerMode === 'qz_tray' ? 'qz_tray' : 'browser',
     printerName: String(settingsData.printerName || '').trim(),
-    paperWidth: settingsData.paperWidth === '80mm' ? '80mm' : '58mm',
+    paperWidth: settingsData.paperWidth === '58mm' ? '58mm' : '80mm',
+    paperWidthExplicit: true,
     autoPrintAfterSale: Boolean(settingsData.autoPrintAfterSale),
     showBarcodeOnReceipt: Boolean(settingsData.showBarcodeOnReceipt),
+    profitLockEnabled: Boolean(settingsData.profitLockEnabled),
+    profitLockPinHash,
+    profitLockPinCustomized,
     updatedBy: userId || null,
     updatedAt: serverTimestamp(),
   };
 
   await setDoc(SETTINGS_DOC_REF(), payload, { merge: true });
-  return { ...DEFAULT_SETTINGS, ...payload };
+  const { updatedAt: _ignoredTs, ...cleanPayload } = payload;
+  return normalizeBrandSettings(cleanPayload);
 }

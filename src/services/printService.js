@@ -68,7 +68,7 @@ export async function printViaQzTray({ documentData, type = 'sale', settings = {
   return { mode: 'qz_tray', printerName };
 }
 
-export function triggerBrowserThermalPrint(paperWidth = '58mm') {
+export function triggerBrowserThermalPrint(paperWidth = '80mm') {
   const body = document.body;
   body.classList.remove('printing-report', 'thermal-80mm');
   body.classList.add('printing-thermal');

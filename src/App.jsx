@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { SettingsProvider } from './contexts/SettingsContext';
+import { ProfitLockProvider } from './contexts/ProfitLockContext';
 import { DataProvider } from './contexts/DataContext';
 import { PrintProvider } from './contexts/PrintContext';
 import ProtectedRoute from './components/common/ProtectedRoute';
@@ -68,55 +69,57 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <SettingsProvider>
-          <DataProvider>
-            <PrintProvider>
-              <RoutePrefetcher />
-              <Toaster
-                position="top-right"
-                toastOptions={{
-                  duration: 2400,
-                  style: {
-                    fontSize: '13px',
-                    borderRadius: '10px',
-                    border: '1px solid #e2e8f0',
-                  },
-                }}
-              />
+          <ProfitLockProvider>
+            <DataProvider>
+              <PrintProvider>
+                <RoutePrefetcher />
+                <Toaster
+                  position="top-right"
+                  toastOptions={{
+                    duration: 2400,
+                    style: {
+                      fontSize: '13px',
+                      borderRadius: '10px',
+                      border: '1px solid #e2e8f0',
+                    },
+                  }}
+                />
 
-              <Suspense
-                fallback={
-                  <div className="min-h-screen flex items-center justify-center bg-slate-50">
-                    <LoadingSpinner label="Loading..." compact />
-                  </div>
-                }
-              >
-                <Routes>
-                  <Route path="/login" element={<LoginPage />} />
+                <Suspense
+                  fallback={
+                    <div className="min-h-screen flex items-center justify-center bg-slate-50">
+                      <LoadingSpinner label="Loading..." compact />
+                    </div>
+                  }
+                >
+                  <Routes>
+                    <Route path="/login" element={<LoginPage />} />
 
-                  <Route
-                    element={
-                      <ProtectedRoute>
-                        <AppLayout />
-                      </ProtectedRoute>
-                    }
-                  >
-                    <Route index element={<DashboardPage />} />
-                    <Route path="/categories" element={<CategoriesPage />} />
-                    <Route path="/products" element={<ProductsPage />} />
-                    <Route path="/inventory" element={<InventoryPage />} />
-                    <Route path="/pos" element={<PosPage />} />
-                    <Route path="/sales" element={<SalesHistoryPage />} />
-                    <Route path="/sales-summary" element={<SalesSummaryPage />} />
-                    <Route path="/returns" element={<SalesReturnsPage />} />
-                    <Route path="/reports" element={<ReportsPage />} />
-                    <Route path="/settings" element={<SettingsPage />} />
-                  </Route>
+                    <Route
+                      element={
+                        <ProtectedRoute>
+                          <AppLayout />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<DashboardPage />} />
+                      <Route path="/categories" element={<CategoriesPage />} />
+                      <Route path="/products" element={<ProductsPage />} />
+                      <Route path="/inventory" element={<InventoryPage />} />
+                      <Route path="/pos" element={<PosPage />} />
+                      <Route path="/sales" element={<SalesHistoryPage />} />
+                      <Route path="/sales-summary" element={<SalesSummaryPage />} />
+                      <Route path="/returns" element={<SalesReturnsPage />} />
+                      <Route path="/reports" element={<ReportsPage />} />
+                      <Route path="/settings" element={<SettingsPage />} />
+                    </Route>
 
-                  <Route path="*" element={<Navigate to="/" replace />} />
-                </Routes>
-              </Suspense>
-            </PrintProvider>
-          </DataProvider>
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                </Suspense>
+              </PrintProvider>
+            </DataProvider>
+          </ProfitLockProvider>
         </SettingsProvider>
       </AuthProvider>
     </BrowserRouter>

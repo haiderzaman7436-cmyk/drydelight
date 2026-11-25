@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Download, FileText, Printer } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Download, FileText, Printer, Lock, Unlock } from 'lucide-react';
 import {
   ResponsiveContainer,
   BarChart,
@@ -18,6 +18,7 @@ import { getSalesByDate, getSalesByMonth, getSalesByDateRange } from '../service
 import { getReturnsByDate, getReturnsByMonth, getReturnsByDateRange } from '../services/returnService';
 import { triggerBrowserReportPrint } from '../services/printService';
 import { useSettings } from '../contexts/SettingsContext';
+import { useProfitLock } from '../contexts/ProfitLockContext';
 import { aggregatePeriodSummary, computeSaleProfit } from '../utils/calculations';
 import { exportSalesReportPdf, exportToCsv } from '../utils/exporters';
 import {
@@ -32,6 +33,7 @@ import {
 
 export default function ReportsPage() {
   const { settings } = useSettings();
+  const { lockEnabled, isLocked, openUnlockModal, lockNow } = useProfitLock();
   const currency = settings.currency || 'PKR';
 
   const [periodMode, setPeriodMode] = useState('custom');
@@ -201,6 +203,11 @@ export default function ReportsPage() {
   };
 
   const handleExportCsv = () => {
+    if (isLocked) {
+      toast.error('Please unlock profit figures first to export financial CSV.');
+      openUnlockModal();
+      return;
+    }
     const { tableTitle, columns, rows } = getExportTableData();
     if (rows.length === 0) {
       toast.error('No report rows available to export');
@@ -215,6 +222,11 @@ export default function ReportsPage() {
   };
 
   const handleExportPdf = async () => {
+    if (isLocked) {
+      toast.error('Please unlock profit figures first to export profit PDF.');
+      openUnlockModal();
+      return;
+    }
     setExportingPdf(true);
     try {
       const { tableTitle, columns, rows } = getExportTableData();
@@ -264,6 +276,20 @@ export default function ReportsPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            {lockEnabled && (
+              <button
+                type="button"
+                onClick={isLocked ? openUnlockModal : lockNow}
+                className={`inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border transition-colors ${
+                  isLocked
+                    ? 'bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100'
+                    : 'bg-emerald-50 border-emerald-300 text-emerald-800 hover:bg-emerald-100'
+                }`}
+              >
+                {isLocked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
+                {isLocked ? 'Unlock Profit' : 'Lock Profit'}
+              </button>
+            )}
             <button
               type="button"
               onClick={handleExportCsv}
@@ -283,7 +309,14 @@ export default function ReportsPage() {
             </button>
             <button
               type="button"
-              onClick={triggerBrowserReportPrint}
+              onClick={() => {
+                if (isLocked) {
+                  toast.error('Please unlock profit figures first to print report.');
+                  openUnlockModal();
+                  return;
+                }
+                triggerBrowserReportPrint();
+              }}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -399,9 +432,20 @@ export default function ReportsPage() {
 
           {trendChartData.length > 0 && (
             <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs">
-              <h3 className="text-xs sm:text-sm font-semibold text-slate-900 mb-2.5">
-                Sales, Profit &amp; Returns Breakdown
-              </h3>
+              <div className="flex items-center justify-between mb-2.5">
+                <h3 className="text-xs sm:text-sm font-semibold text-slate-900">
+                  {isLocked ? 'Sales & Returns Breakdown' : 'Sales, Profit & Returns Breakdown'}
+                </h3>
+                {isLocked && (
+                  <button
+                    type="button"
+                    onClick={openUnlockModal}
+                    className="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md hover:bg-amber-100"
+                  >
+                    <Lock className="w-3 h-3" /> Profit locked
+                  </button>
+                )}
+              </div>
               <div className="h-56 sm:h-60">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={trendChartData} margin={{ top: 8, right: 8, left: -12, bottom: 0 }}>
@@ -414,7 +458,9 @@ export default function ReportsPage() {
                     />
                     <Legend wrapperStyle={{ fontSize: '11px' }} />
                     <Bar dataKey="netSales" name="Net Sales" fill="#2563eb" radius={[4, 4, 0, 0]} isAnimationActive={false} />
-                    <Bar dataKey="netProfit" name="Net Profit" fill="#10b981" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                    {!isLocked && (
+                      <Bar dataKey="netProfit" name="Net Profit" fill="#10b981" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                    )}
                     <Bar dataKey="returns" name="Returns" fill="#dc2626" radius={[4, 4, 0, 0]} isAnimationActive={false} />
                   </BarChart>
                 </ResponsiveContainer>
@@ -483,17 +529,36 @@ export default function ReportsPage() {
                             {p.netQuantity}
                           </td>
                           <td className="px-3.5 py-2 text-right text-slate-600">
-                            {formatCurrency(p.netCost, currency)}
+                            {isLocked ? (
+                              <span className="text-slate-400 select-none">••••</span>
+                            ) : (
+                              formatCurrency(p.netCost, currency)
+                            )}
                           </td>
                           <td className="px-3.5 py-2 text-right font-semibold text-slate-900">
                             {formatCurrency(p.netRevenue, currency)}
                           </td>
                           <td
                             className={`px-3.5 py-2 text-right font-bold ${
-                              p.netProfit >= 0 ? 'text-emerald-700' : 'text-red-600'
+                              isLocked
+                                ? 'text-slate-400'
+                                : p.netProfit >= 0
+                                  ? 'text-emerald-700'
+                                  : 'text-red-600'
                             }`}
                           >
-                            {formatCurrency(p.netProfit, currency)}
+                            {isLocked ? (
+                              <button
+                                type="button"
+                                onClick={openUnlockModal}
+                                className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:underline"
+                                title="Click to unlock profit"
+                              >
+                                <Lock className="w-3 h-3" /> ••••
+                              </button>
+                            ) : (
+                              formatCurrency(p.netProfit, currency)
+                            )}
                           </td>
                         </tr>
                       ))}
@@ -540,10 +605,25 @@ export default function ReportsPage() {
                           </td>
                           <td
                             className={`px-3.5 py-2 text-right font-bold ${
-                              c.netProfit >= 0 ? 'text-emerald-700' : 'text-red-600'
+                              isLocked
+                                ? 'text-slate-400'
+                                : c.netProfit >= 0
+                                  ? 'text-emerald-700'
+                                  : 'text-red-600'
                             }`}
                           >
-                            {formatCurrency(c.netProfit, currency)}
+                            {isLocked ? (
+                              <button
+                                type="button"
+                                onClick={openUnlockModal}
+                                className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:underline"
+                                title="Click to unlock profit"
+                              >
+                                <Lock className="w-3 h-3" /> ••••
+                              </button>
+                            ) : (
+                              formatCurrency(c.netProfit, currency)
+                            )}
                           </td>
                           <td className="px-3.5 py-2 text-right text-amber-700 font-medium">
                             {formatCurrency(c.outstandingAmount, currency)}
@@ -584,10 +664,25 @@ export default function ReportsPage() {
                           </td>
                           <td
                             className={`px-3.5 py-2 text-right font-bold ${
-                              profit >= 0 ? 'text-emerald-700' : 'text-red-600'
+                              isLocked
+                                ? 'text-slate-400'
+                                : profit >= 0
+                                  ? 'text-emerald-700'
+                                  : 'text-red-600'
                             }`}
                           >
-                            {formatCurrency(profit, currency)}
+                            {isLocked ? (
+                              <button
+                                type="button"
+                                onClick={openUnlockModal}
+                                className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:underline"
+                                title="Click to unlock profit"
+                              >
+                                <Lock className="w-3 h-3" /> ••••
+                              </button>
+                            ) : (
+                              formatCurrency(profit, currency)
+                            )}
                           </td>
                           <td className="px-3.5 py-2 text-center">
                             <span

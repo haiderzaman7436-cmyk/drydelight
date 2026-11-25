@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Calendar, Printer } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, Printer, Lock, Unlock } from 'lucide-react';
 import toast from 'react-hot-toast';
 import SummaryStatsGrid from '../components/common/SummaryStatsGrid';
 import LoadingSpinner from '../components/common/LoadingSpinner';
@@ -7,6 +7,7 @@ import EmptyState from '../components/common/EmptyState';
 import { getSalesByDate, getSalesByMonth } from '../services/salesService';
 import { getReturnsByDate, getReturnsByMonth } from '../services/returnService';
 import { useSettings } from '../contexts/SettingsContext';
+import { useProfitLock } from '../contexts/ProfitLockContext';
 import { usePrint } from '../contexts/PrintContext';
 import { aggregatePeriodSummary } from '../utils/calculations';
 import {
@@ -21,6 +22,7 @@ import {
 
 export default function SalesSummaryPage() {
   const { settings } = useSettings();
+  const { lockEnabled, isLocked, openUnlockModal, lockNow } = useProfitLock();
   const { printReceipt } = usePrint();
   const currency = settings.currency || 'PKR';
 
@@ -126,6 +128,21 @@ export default function SalesSummaryPage() {
             Next Day
             <ChevronRight className="w-4 h-4" />
           </button>
+
+          {lockEnabled && (
+            <button
+              type="button"
+              onClick={isLocked ? openUnlockModal : lockNow}
+              className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg border transition-colors ${
+                isLocked
+                  ? 'bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100'
+                  : 'bg-emerald-50 border-emerald-300 text-emerald-800 hover:bg-emerald-100'
+              }`}
+            >
+              {isLocked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
+              {isLocked ? 'Unlock Profit' : 'Lock Profit'}
+            </button>
+          )}
         </div>
       </div>
 
@@ -259,10 +276,25 @@ export default function SalesSummaryPage() {
                           </td>
                           <td
                             className={`px-4 py-2.5 text-right font-semibold ${
-                              p.netProfit >= 0 ? 'text-emerald-700' : 'text-red-600'
+                              isLocked
+                                ? 'text-slate-400'
+                                : p.netProfit >= 0
+                                  ? 'text-emerald-700'
+                                  : 'text-red-600'
                             }`}
                           >
-                            {formatCurrency(p.netProfit, currency)}
+                            {isLocked ? (
+                              <button
+                                type="button"
+                                onClick={openUnlockModal}
+                                className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 hover:underline"
+                                title="Click to unlock profit"
+                              >
+                                <Lock className="w-3 h-3" /> ••••
+                              </button>
+                            ) : (
+                              formatCurrency(p.netProfit, currency)
+                            )}
                           </td>
                         </tr>
                       ))}

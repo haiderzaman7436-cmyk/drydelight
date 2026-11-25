@@ -1,5 +1,10 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
-import { DEFAULT_SETTINGS, getStoreSettings, saveStoreSettings } from '../services/settingsService';
+import {
+  DEFAULT_SETTINGS,
+  getStoreSettings,
+  normalizeBrandSettings,
+  saveStoreSettings,
+} from '../services/settingsService';
 import { useAuth } from './AuthContext';
 
 const SettingsContext = createContext(null);
@@ -9,11 +14,7 @@ function readCachedSettings() {
   try {
     const raw = localStorage.getItem(SETTINGS_STORAGE_KEY);
     if (!raw) return DEFAULT_SETTINGS;
-    const parsed = { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
-    if (!parsed.businessName || parsed.businessName === 'My Retail Store') {
-      parsed.businessName = 'Dry Delight';
-    }
-    return parsed;
+    return normalizeBrandSettings(JSON.parse(raw));
   } catch {
     return DEFAULT_SETTINGS;
   }

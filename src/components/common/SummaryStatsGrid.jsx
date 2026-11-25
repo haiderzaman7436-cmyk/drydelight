@@ -1,6 +1,7 @@
 import { Banknote, Receipt, Package, RotateCcw, TrendingUp, Wallet } from 'lucide-react';
 import StatCard from './StatCard';
 import { formatCurrency } from '../../utils/formatters';
+import { useProfitLock } from '../../contexts/ProfitLockContext';
 
 export default function SummaryStatsGrid({
   summary,
@@ -12,6 +13,7 @@ export default function SummaryStatsGrid({
   profitLabel = 'Net Profit',
   returnsSubtitle,
 }) {
+  const { isLocked, openUnlockModal } = useProfitLock();
   const netProfit = Number(summary.netProfit || 0);
   const margin = Number(summary.profitMargin || 0);
 
@@ -54,6 +56,8 @@ export default function SummaryStatsGrid({
         subtitle={`Margin: ${margin}%`}
         icon={Wallet}
         tone={netProfit >= 0 ? 'emerald' : 'red'}
+        locked={isLocked}
+        onClick={isLocked ? openUnlockModal : undefined}
       />
     </div>
   );

@@ -9,6 +9,7 @@ import {
   Plus,
   Minus,
   History,
+  Lock,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Modal from '../components/common/Modal';
@@ -27,6 +28,7 @@ import {
 import { getReturnsForSale } from '../services/returnService';
 import { useAuth } from '../contexts/AuthContext';
 import { useSettings } from '../contexts/SettingsContext';
+import { useProfitLock } from '../contexts/ProfitLockContext';
 import { useData } from '../contexts/DataContext';
 import { usePrint } from '../contexts/PrintContext';
 import { calculateSaleTotals, computeSaleProfit } from '../utils/calculations';
@@ -42,6 +44,7 @@ const PAGE_SIZE = 15;
 export default function SalesHistoryPage() {
   const { user, isManagerOrAdmin } = useAuth();
   const { settings } = useSettings();
+  const { isLocked, openUnlockModal } = useProfitLock();
   const { products: catalogProducts, applyStockUpdatesLocal } = useData();
   const { printReceipt } = usePrint();
   const currency = settings.currency || 'PKR';
@@ -466,7 +469,7 @@ export default function SalesHistoryPage() {
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700"
             >
               <Printer className="w-3.5 h-3.5" />
-              Reprint 58mm Invoice
+              Reprint {settings.paperWidth || '80mm'} Invoice
             </button>
           </>
         }
@@ -535,6 +538,20 @@ export default function SalesHistoryPage() {
                 </div>
               )}
               {isManagerOrAdmin && (() => {
+                if (isLocked) {
+                  return (
+                    <div className="border-t border-slate-200 pt-1.5 flex items-center justify-between">
+                      <span className="text-slate-500">Cost &amp; Profit</span>
+                      <button
+                        type="button"
+                        onClick={openUnlockModal}
+                        className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded hover:bg-amber-100"
+                      >
+                        <Lock className="w-3 h-3" /> Unlock Profit
+                      </button>
+                    </div>
+                  );
+                }
                 const { cost, profit } = computeSaleProfit(viewSale);
                 return (
                   <div className="border-t border-slate-200 pt-1.5 space-y-1">
