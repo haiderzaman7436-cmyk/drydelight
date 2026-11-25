@@ -2,7 +2,11 @@ import { createContext, useContext, useState, useCallback, useMemo } from 'react
 import { createPortal, flushSync } from 'react-dom';
 import toast from 'react-hot-toast';
 import { useSettings } from './SettingsContext';
-import { printViaQzTray, triggerBrowserThermalPrint } from '../services/printService';
+import {
+  printViaQzTray,
+  printViaWebSerial,
+  triggerBrowserThermalPrint,
+} from '../services/printService';
 import ThermalReceipt from '../components/printing/ThermalReceipt';
 
 const PrintContext = createContext(null);
@@ -41,6 +45,19 @@ export function PrintProvider({ children }) {
           } catch (qzErr) {
             console.warn('QZ Tray unavailable, falling back to browser direct print:', qzErr);
             toast.error(`QZ Tray error (${qzErr.message}). Falling back to browser print.`);
+          }
+        } else if (activeSettings.printerMode === 'serial') {
+          try {
+            await printViaWebSerial({
+              documentData,
+              type,
+              settings: activeSettings,
+            });
+            toast.success('Printed directly to serial thermal printer');
+            return;
+          } catch (serialErr) {
+            console.warn('WebSerial unavailable, falling back to browser print:', serialErr);
+            toast.error(`Serial printer error (${serialErr.message}). Falling back to browser print.`);
           }
         }
 

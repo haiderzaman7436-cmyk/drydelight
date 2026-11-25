@@ -10,8 +10,9 @@ export const DEFAULT_SETTINGS = {
   invoiceFooter: 'Thank you for shopping at Dry Delight! Goods once sold can be returned with original receipt.',
   currency: 'PKR',
   defaultMinStockLevel: 5,
-  printerMode: 'browser', // 'browser' | 'qz_tray'
+  printerMode: 'browser', // 'browser' | 'qz_tray' | 'serial'
   printerName: '',
+  serialBaudRate: 9600,
   paperWidth: '80mm', // '80mm' | '58mm'
   paperWidthExplicit: false,
   autoPrintAfterSale: true,
@@ -78,8 +79,13 @@ export async function saveStoreSettings(settingsData, userId) {
     invoiceFooter: String(settingsData.invoiceFooter || DEFAULT_SETTINGS.invoiceFooter).trim(),
     currency: String(settingsData.currency || 'PKR').trim().toUpperCase(),
     defaultMinStockLevel: Math.max(0, Math.floor(Number(settingsData.defaultMinStockLevel) || 0)),
-    printerMode: settingsData.printerMode === 'qz_tray' ? 'qz_tray' : 'browser',
+    printerMode: ['qz_tray', 'serial'].includes(settingsData.printerMode)
+      ? settingsData.printerMode
+      : 'browser',
     printerName: String(settingsData.printerName || '').trim(),
+    serialBaudRate: [9600, 19200, 38400, 57600, 115200].includes(Number(settingsData.serialBaudRate))
+      ? Number(settingsData.serialBaudRate)
+      : 9600,
     paperWidth: settingsData.paperWidth === '58mm' ? '58mm' : '80mm',
     paperWidthExplicit: true,
     autoPrintAfterSale: Boolean(settingsData.autoPrintAfterSale),

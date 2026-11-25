@@ -10,14 +10,19 @@ import {
   Lock,
   Eye,
   EyeOff,
+  Copy,
+  Usb,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useSettings } from '../contexts/SettingsContext';
 import { useAuth } from '../contexts/AuthContext';
 import { usePrint } from '../contexts/PrintContext';
-import { checkQzTrayStatus } from '../services/printService';
-import Modal from '../components/common/Modal';
-import ThermalReceipt from '../components/printing/ThermalReceipt';
+import {
+  checkQzTrayStatus,
+  getPairedSerialPorts,
+  isWebSerialSupported,
+  requestSerialPrinterPort,
+} from '../services/printService';
 import CatalogImportModal from '../components/inventory/CatalogImportModal';
 
 export default function SettingsPage() {
@@ -33,12 +38,42 @@ export default function SettingsPage() {
 
   const [qzStatus, setQzStatus] = useState({ checked: false, connected: false, printers: [], error: '' });
   const [checkingQz, setCheckingQz] = useState(false);
+  const [serialCount, setSerialCount] = useState(0);
   const [importModalOpen, setImportModalOpen] = useState(false);
-  const [previewOpen, setPreviewOpen] = useState(false);
 
   useEffect(() => {
     setForm(settings);
   }, [settings]);
+
+  useEffect(() => {
+    getPairedSerialPorts().then((ports) => setSerialCount(ports.length));
+  }, []);
+
+  const appOrigin = typeof window !== 'undefined' ? window.location.origin : 'https://drydelight.vercel.app';
+  const chromeKioskCmd = `"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" --kiosk-printing --app=${appOrigin}`;
+  const edgeKioskCmd = `"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" --kiosk-printing --app=${appOrigin}`;
+
+  const handleCopyCommand = async (cmd, label) => {
+    try {
+      await navigator.clipboard.writeText(cmd);
+      toast.success(`${label} copied! Paste it into a Windows Desktop Shortcut.`);
+    } catch {
+      toast.error('Unable to copy automatically — please select and copy the command manually.');
+    }
+  };
+
+  const handlePairSerialPrinter = async () => {
+    try {
+      await requestSerialPrinterPort();
+      const ports = await getPairedSerialPorts();
+      setSerialCount(ports.length);
+      toast.success('Serial/COM printer connected and ready for direct printing!');
+    } catch (err) {
+      if (err?.name !== 'NotFoundError') {
+        toast.error(err?.message || 'Failed to pair serial printer');
+      }
+    }
+  };
 
   const sampleSale = useMemo(
     () => ({
@@ -381,27 +416,17 @@ export default function SettingsPage() {
                 Thermal Printer Configuration (80mm POS Receipt)
               </h2>
               <p className="text-xs text-slate-500">
-                High-contrast bold 80mm receipt formatting for clear reading on thermal printers.
+                High-contrast bold 80mm direct receipt printing without print preview dialogs.
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setPreviewOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700"
-              >
-                <Eye className="w-3.5 h-3.5" />
-                Preview {form.paperWidth || '80mm'} Invoice
-              </button>
-              <button
-                type="button"
-                onClick={handleTestPrint}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700"
-              >
-                <Printer className="w-3.5 h-3.5" />
-                Test Print Receipt
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleTestPrint}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              Direct Test Print
+            </button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -415,8 +440,9 @@ export default function SettingsPage() {
                 onChange={(e) => setForm({ ...form, printerMode: e.target.value })}
                 className="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white disabled:bg-slate-50"
               >
-                <option value="browser">Browser Direct Print (@media print 80mm)</option>
-                <option value="qz_tray">QZ Tray Silent ESC/POS Print (Recommended for Windows)</option>
+                <option value="browser">Browser Kiosk Direct Print (--kiosk-printing)</option>
+                <option value="qz_tray">QZ Tray Silent ESC/POS (Any Tab — Zero Preview)</option>
+                <option value="serial">Direct USB / COM Port (WebSerial — Zero Preview)</option>
               </select>
             </div>
 
@@ -440,7 +466,7 @@ export default function SettingsPage() {
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-xs font-semibold text-slate-800">
-                  QZ Tray Local Bridge (Silent ESC/POS)
+                  QZ Tray Local Bridge (Zero-Preview Silent ESC/POS)
                 </span>
                 <button
                   type="button"
@@ -502,17 +528,89 @@ export default function SettingsPage() {
                 )}
               </div>
             </div>
+          ) : form.printerMode === 'serial' ? (
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <span className="text-xs font-semibold text-slate-800 block">
+                    Direct USB / COM Port Thermal Printer (WebSerial)
+                  </span>
+                  <span className="text-[11px] text-slate-500">
+                    {isWebSerialSupported()
+                      ? `${serialCount} printer port(s) paired — prints directly with zero preview dialog.`
+                      : 'WebSerial requires Google Chrome or Microsoft Edge.'}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handlePairSerialPrinter}
+                  disabled={!isWebSerialSupported()}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-50"
+                >
+                  <Usb className="w-3.5 h-3.5" />
+                  Connect Serial / COM Printer
+                </button>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Printer Baud Rate
+                </label>
+                <select
+                  disabled={!isAdmin}
+                  value={Number(form.serialBaudRate || 9600)}
+                  onChange={(e) => setForm({ ...form, serialBaudRate: Number(e.target.value) })}
+                  className="w-full sm:w-56 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white"
+                >
+                  <option value={9600}>9600 bps (Standard 80mm POS)</option>
+                  <option value={19200}>19200 bps</option>
+                  <option value={38400}>38400 bps</option>
+                  <option value={57600}>57600 bps</option>
+                  <option value={115200}>115200 bps (High-speed)</option>
+                </select>
+              </div>
+            </div>
           ) : (
-            <div className="p-3.5 rounded-xl bg-blue-50/70 border border-blue-100 text-xs text-blue-900 leading-relaxed">
-              <p className="font-semibold">Silent Printing Tip for Windows Chrome/Edge:</p>
-              <p className="mt-1">
-                Standard browsers show a print dialog for security reasons. To enable{' '}
-                <strong>zero-dialog silent 80mm printing</strong> without QZ Tray, set your 80mm
-                thermal printer as the Windows default printer and launch Chrome with{' '}
-                <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-blue-200">
-                  chrome.exe --kiosk-printing
-                </code>
-                . Or switch to <strong>QZ Tray</strong> above for native raw ESC/POS silent printing.
+            <div className="p-3.5 rounded-xl bg-blue-50/70 border border-blue-100 text-xs text-blue-900 space-y-2.5 leading-relaxed">
+              <div>
+                <p className="font-bold">How to Print Directly Without Preview Dialog (30-Second Setup):</p>
+                <p className="mt-0.5 text-blue-800">
+                  Browsers block silent printing in normal tabs for security. To skip Chrome&apos;s print preview dialog completely, set your <strong>80mm printer as Windows Default Printer</strong>, then create a Desktop shortcut using one of these targets:
+                </p>
+              </div>
+
+              <div className="space-y-1.5">
+                <div className="flex flex-wrap items-center justify-between gap-2 bg-white border border-blue-200 rounded-lg px-2.5 py-1.5">
+                  <code className="text-[11px] font-mono text-slate-800 break-all">
+                    {chromeKioskCmd}
+                  </code>
+                  <button
+                    type="button"
+                    onClick={() => handleCopyCommand(chromeKioskCmd, 'Chrome Shortcut')}
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold shrink-0"
+                  >
+                    <Copy className="w-3 h-3" />
+                    Copy Chrome
+                  </button>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-2 bg-white border border-blue-200 rounded-lg px-2.5 py-1.5">
+                  <code className="text-[11px] font-mono text-slate-800 break-all">
+                    {edgeKioskCmd}
+                  </code>
+                  <button
+                    type="button"
+                    onClick={() => handleCopyCommand(edgeKioskCmd, 'Edge Shortcut')}
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-800 hover:bg-slate-900 text-white text-[11px] font-semibold shrink-0"
+                  >
+                    <Copy className="w-3 h-3" />
+                    Copy Edge
+                  </button>
+                </div>
+              </div>
+
+              <p className="text-[11px] text-blue-800">
+                Or switch Printing Engine above to <strong>QZ Tray</strong> for zero-preview printing from any regular browser tab.
               </p>
             </div>
           )}
@@ -565,39 +663,6 @@ export default function SettingsPage() {
           </div>
         )}
       </form>
-
-      <Modal
-        isOpen={previewOpen}
-        onClose={() => setPreviewOpen(false)}
-        title={`${form.paperWidth || '80mm'} POS Receipt Preview`}
-        subtitle="Exact bold thermal print layout shown on paper."
-        size="md"
-        footer={
-          <>
-            <button
-              type="button"
-              onClick={() => setPreviewOpen(false)}
-              className="px-4 py-2 text-xs font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50"
-            >
-              Close
-            </button>
-            <button
-              type="button"
-              onClick={handleTestPrint}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700"
-            >
-              <Printer className="w-3.5 h-3.5" />
-              Print Test Receipt
-            </button>
-          </>
-        }
-      >
-        <div className="bg-slate-200/80 p-4 rounded-xl flex justify-center overflow-x-auto">
-          <div className="bg-white shadow-md border border-slate-300 rounded-sm">
-            <ThermalReceipt documentData={sampleSale} type="sale" settings={form} />
-          </div>
-        </div>
-      </Modal>
 
       <CatalogImportModal
         isOpen={importModalOpen}
