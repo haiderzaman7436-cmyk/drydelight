@@ -39,8 +39,8 @@ import {
   compressImageFileToDataUrl,
 } from '../utils/productImages';
 
-const TABLE_PAGE_SIZE = 15;
-const GRID_PAGE_SIZE = 24;
+const TABLE_PAGE_SIZE = 200;
+const GRID_PAGE_SIZE = 200;
 
 export default function ProductsPage() {
   const { user, isManagerOrAdmin } = useAuth();
