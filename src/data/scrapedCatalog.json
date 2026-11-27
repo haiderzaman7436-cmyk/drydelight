@@ -75,7 +75,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.864Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/flour-sack.webp"
     },
     {
       "id": "prod-scraped-002",
@@ -90,7 +91,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/flour-sack.webp"
     },
     {
       "id": "prod-scraped-003",
@@ -105,7 +107,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-004",
@@ -120,7 +123,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-005",
@@ -135,7 +139,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-006",
@@ -150,7 +155,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-shredded.webp"
     },
     {
       "id": "prod-scraped-007",
@@ -165,7 +171,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-008",
@@ -180,7 +187,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-shredded.webp"
     },
     {
       "id": "prod-scraped-009",
@@ -195,7 +203,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-slices.webp"
     },
     {
       "id": "prod-scraped-010",
@@ -210,7 +219,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-011",
@@ -225,7 +235,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-slices.webp"
     },
     {
       "id": "prod-scraped-012",
@@ -240,7 +251,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-013",
@@ -255,7 +267,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-014",
@@ -270,7 +283,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-015",
@@ -285,7 +299,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-slices.webp"
     },
     {
       "id": "prod-scraped-016",
@@ -300,7 +315,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cheese-slices.webp"
     },
     {
       "id": "prod-scraped-017",
@@ -315,7 +331,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-018",
@@ -330,7 +347,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-019",
@@ -345,7 +363,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-020",
@@ -360,7 +379,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-021",
@@ -375,7 +395,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/flour-sack.webp"
     },
     {
       "id": "prod-scraped-022",
@@ -390,7 +411,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-023",
@@ -405,7 +427,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-024",
@@ -420,7 +443,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-025",
@@ -435,7 +459,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-026",
@@ -450,7 +475,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-027",
@@ -465,7 +491,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-028",
@@ -480,7 +507,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-029",
@@ -495,7 +523,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/bakery-flatbread.webp"
     },
     {
       "id": "prod-scraped-030",
@@ -510,7 +539,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/canned-olives.webp"
     },
     {
       "id": "prod-scraped-031",
@@ -525,7 +555,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/canned-jalapenos.webp"
     },
     {
       "id": "prod-scraped-032",
@@ -540,7 +571,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/canned-jalapenos.webp"
     },
     {
       "id": "prod-scraped-033",
@@ -555,7 +587,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/canned-jalapenos.webp"
     },
     {
       "id": "prod-scraped-034",
@@ -570,7 +603,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/canned-mushrooms.webp"
     },
     {
       "id": "prod-scraped-035",
@@ -585,7 +619,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/canned-corn.webp"
     },
     {
       "id": "prod-scraped-036",
@@ -600,7 +635,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-037",
@@ -615,7 +651,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/flour-sack.webp"
     },
     {
       "id": "prod-scraped-038",
@@ -630,7 +667,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/pasta-assorted.webp"
     },
     {
       "id": "prod-scraped-039",
@@ -645,7 +683,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/pasta-assorted.webp"
     },
     {
       "id": "prod-scraped-040",
@@ -660,7 +699,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.874Z"
+      "updatedAt": "2026-11-20T10:55:57.874Z",
+      "imageUrl": "/product-images/pasta-assorted.webp"
     },
     {
       "id": "prod-scraped-041",
@@ -675,7 +715,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.874Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/herbs-dried.webp"
     },
     {
       "id": "prod-scraped-042",
@@ -690,7 +731,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/herbs-dried.webp"
     },
     {
       "id": "prod-scraped-043",
@@ -705,7 +747,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-chili.webp"
     },
     {
       "id": "prod-scraped-044",
@@ -720,7 +763,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/herbs-dried.webp"
     },
     {
       "id": "prod-scraped-045",
@@ -735,7 +779,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/herbs-dried.webp"
     },
     {
       "id": "prod-scraped-046",
@@ -750,7 +795,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/herbs-dried.webp"
     },
     {
       "id": "prod-scraped-047",
@@ -765,7 +811,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-048",
@@ -780,7 +827,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/frozen-nuggets.webp"
     },
     {
       "id": "prod-scraped-049",
@@ -795,7 +843,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-050",
@@ -810,7 +859,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-051",
@@ -825,7 +875,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-052",
@@ -840,7 +891,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-053",
@@ -855,7 +907,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/hygiene-gloves.webp"
     },
     {
       "id": "prod-scraped-054",
@@ -870,7 +923,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-055",
@@ -885,7 +939,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-056",
@@ -900,7 +955,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/cheese-shredded.webp"
     },
     {
       "id": "prod-scraped-057",
@@ -915,7 +971,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/cleaning-supplies.webp"
     },
     {
       "id": "prod-scraped-058",
@@ -930,7 +987,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bread-crumbs.webp"
     },
     {
       "id": "prod-scraped-059",
@@ -945,7 +1003,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-060",
@@ -960,7 +1019,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-cutlery.webp"
     },
     {
       "id": "prod-scraped-061",
@@ -975,7 +1035,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-cutlery.webp"
     },
     {
       "id": "prod-scraped-062",
@@ -990,7 +1051,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-foil-wrap.webp"
     },
     {
       "id": "prod-scraped-063",
@@ -1005,7 +1067,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-foil-wrap.webp"
     },
     {
       "id": "prod-scraped-064",
@@ -1020,7 +1083,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-065",
@@ -1035,7 +1099,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-066",
@@ -1050,7 +1115,8 @@
       "minStockLevel": 25,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/cleaning-supplies.webp"
     },
     {
       "id": "prod-scraped-067",
@@ -1065,7 +1131,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-foil-wrap.webp"
     },
     {
       "id": "prod-scraped-068",
@@ -1080,7 +1147,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-foil-wrap.webp"
     },
     {
       "id": "prod-scraped-069",
@@ -1095,7 +1163,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/flour-sack.webp"
     },
     {
       "id": "prod-scraped-070",
@@ -1110,7 +1179,8 @@
       "minStockLevel": 30,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-071",
@@ -1125,7 +1195,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-072",
@@ -1140,7 +1211,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/cooking-ghee.webp"
     },
     {
       "id": "prod-scraped-073",
@@ -1155,7 +1227,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/cooking-ghee.webp"
     },
     {
       "id": "prod-scraped-074",
@@ -1170,7 +1243,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/cooking-ghee.webp"
     },
     {
       "id": "prod-scraped-075",
@@ -1185,7 +1259,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-076",
@@ -1200,7 +1275,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-077",
@@ -1215,7 +1291,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-078",
@@ -1230,7 +1307,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-079",
@@ -1245,7 +1323,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-080",
@@ -1260,7 +1339,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bread-crumbs.webp"
     },
     {
       "id": "prod-scraped-081",
@@ -1275,7 +1355,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bakery-buns.webp"
     },
     {
       "id": "prod-scraped-082",
@@ -1290,7 +1371,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bakery-buns.webp"
     },
     {
       "id": "prod-scraped-083",
@@ -1305,7 +1387,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bakery-buns.webp"
     },
     {
       "id": "prod-scraped-084",
@@ -1320,7 +1403,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bakery-flatbread.webp"
     },
     {
       "id": "prod-scraped-085",
@@ -1335,7 +1419,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bakery-flatbread.webp"
     },
     {
       "id": "prod-scraped-086",
@@ -1350,7 +1435,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bakery-flatbread.webp"
     },
     {
       "id": "prod-scraped-087",
@@ -1365,7 +1451,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bakery-flatbread.webp"
     },
     {
       "id": "prod-scraped-088",
@@ -1380,7 +1467,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-089",
@@ -1395,7 +1483,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-090",
@@ -1410,7 +1499,8 @@
       "minStockLevel": 50,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-091",
@@ -1425,7 +1515,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/whipping-cream.webp"
     },
     {
       "id": "prod-scraped-092",
@@ -1440,7 +1531,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-093",
@@ -1455,7 +1547,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-094",
@@ -1470,7 +1563,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-pizza.webp"
     },
     {
       "id": "prod-scraped-095",
@@ -1485,7 +1579,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-096",
@@ -1500,7 +1595,8 @@
       "minStockLevel": 50,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-097",
@@ -1515,7 +1611,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-098",
@@ -1530,7 +1627,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-099",
@@ -1545,7 +1643,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-foil-wrap.webp"
     },
     {
       "id": "prod-scraped-100",
@@ -1560,7 +1659,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-foil-wrap.webp"
     },
     {
       "id": "prod-scraped-101",
@@ -1575,7 +1675,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-102",
@@ -1590,7 +1691,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-103",
@@ -1605,7 +1707,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-104",
@@ -1620,7 +1723,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-105",
@@ -1635,7 +1739,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/pasta-assorted.webp"
     },
     {
       "id": "prod-scraped-106",
@@ -1650,7 +1755,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-107",
@@ -1665,7 +1771,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-108",
@@ -1680,7 +1787,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-109",
@@ -1695,7 +1803,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-cutlery.webp"
     },
     {
       "id": "prod-scraped-110",
@@ -1710,7 +1819,8 @@
       "minStockLevel": 25,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-cutlery.webp"
     },
     {
       "id": "prod-scraped-111",
@@ -1725,7 +1835,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/hygiene-gloves.webp"
     },
     {
       "id": "prod-scraped-112",
@@ -1740,7 +1851,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-cutlery.webp"
     },
     {
       "id": "prod-scraped-113",
@@ -1755,7 +1867,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-114",
@@ -1770,7 +1883,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-115",
@@ -1785,7 +1899,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-116",
@@ -1800,7 +1915,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-117",
@@ -1815,7 +1931,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-118",
@@ -1830,7 +1947,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-119",
@@ -1845,7 +1963,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-120",
@@ -1860,7 +1979,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-121",
@@ -1875,7 +1995,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-122",
@@ -1890,7 +2011,8 @@
       "minStockLevel": 200,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-123",
@@ -1905,7 +2027,8 @@
       "minStockLevel": 200,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-124",
@@ -1920,7 +2043,8 @@
       "minStockLevel": 200,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-pizza-box.webp"
     },
     {
       "id": "prod-scraped-125",
@@ -1935,7 +2059,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-126",
@@ -1950,7 +2075,8 @@
       "minStockLevel": 30,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-127",
@@ -1965,7 +2091,8 @@
       "minStockLevel": 30,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-128",
@@ -1980,7 +2107,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/frozen-fries.webp"
     },
     {
       "id": "prod-scraped-129",
@@ -1995,7 +2123,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-130",
@@ -2010,7 +2139,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-131",
@@ -2025,7 +2155,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-132",
@@ -2040,7 +2171,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-133",
@@ -2055,7 +2187,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-134",
@@ -2070,7 +2203,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-135",
@@ -2085,7 +2219,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-136",
@@ -2100,7 +2235,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-137",
@@ -2115,7 +2251,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-138",
@@ -2130,7 +2267,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-139",
@@ -2145,7 +2283,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/pasta-assorted.webp"
     },
     {
       "id": "prod-scraped-140",
@@ -2160,7 +2299,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-141",
@@ -2175,7 +2315,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-142",
@@ -2190,7 +2331,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-143",
@@ -2205,7 +2347,8 @@
       "minStockLevel": 1,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-144",
@@ -2220,7 +2363,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-145",
@@ -2235,7 +2379,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-146",
@@ -2250,7 +2395,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-147",
@@ -2265,7 +2411,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-148",
@@ -2280,7 +2427,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-149",
@@ -2295,7 +2443,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/sauce-pizza.webp"
     },
     {
       "id": "prod-scraped-150",
@@ -2310,7 +2459,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/canned-olives.webp"
     },
     {
       "id": "prod-scraped-151",
@@ -2325,7 +2475,8 @@
       "minStockLevel": 1,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/canned-olives.webp"
     },
     {
       "id": "prod-scraped-152",
@@ -2340,7 +2491,8 @@
       "minStockLevel": 25,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/bread-crumbs.webp"
     },
     {
       "id": "prod-scraped-153",
@@ -2355,7 +2507,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-154",
@@ -2370,7 +2523,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-155",
@@ -2385,7 +2539,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/canned-jalapenos.webp"
     },
     {
       "id": "prod-scraped-156",
@@ -2400,7 +2555,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.875Z",
-      "updatedAt": "2026-11-20T10:55:57.875Z"
+      "updatedAt": "2026-11-20T10:55:57.875Z",
+      "imageUrl": "/product-images/canned-jalapenos.webp"
     },
     {
       "id": "prod-scraped-157",
@@ -2415,7 +2571,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-mushrooms.webp"
     },
     {
       "id": "prod-scraped-158",
@@ -2430,7 +2587,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-corn.webp"
     },
     {
       "id": "prod-scraped-159",
@@ -2445,7 +2603,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-corn.webp"
     },
     {
       "id": "prod-scraped-160",
@@ -2460,7 +2619,8 @@
       "minStockLevel": 25,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-161",
@@ -2475,7 +2635,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-162",
@@ -2490,7 +2651,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-163",
@@ -2505,7 +2667,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-164",
@@ -2520,7 +2683,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-165",
@@ -2535,7 +2699,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-vinegar.webp"
     },
     {
       "id": "prod-scraped-166",
@@ -2550,7 +2715,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cleaning-supplies.webp"
     },
     {
       "id": "prod-scraped-167",
@@ -2565,7 +2731,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cleaning-supplies.webp"
     },
     {
       "id": "prod-scraped-168",
@@ -2580,7 +2747,8 @@
       "minStockLevel": 2,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-169",
@@ -2595,7 +2763,8 @@
       "minStockLevel": 1,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-170",
@@ -2610,7 +2779,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-171",
@@ -2625,7 +2795,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-172",
@@ -2640,7 +2811,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-173",
@@ -2655,7 +2827,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-174",
@@ -2670,7 +2843,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-175",
@@ -2685,7 +2859,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-pizza.webp"
     },
     {
       "id": "prod-scraped-176",
@@ -2700,7 +2875,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-177",
@@ -2715,7 +2891,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-178",
@@ -2730,7 +2907,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-179",
@@ -2745,7 +2923,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cooking-ghee.webp"
     },
     {
       "id": "prod-scraped-180",
@@ -2760,7 +2939,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-181",
@@ -2775,7 +2955,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-182",
@@ -2790,7 +2971,8 @@
       "minStockLevel": 400,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/packaging-pizza-box.webp"
     },
     {
       "id": "prod-scraped-183",
@@ -2805,7 +2987,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cleaning-supplies.webp"
     },
     {
       "id": "prod-scraped-184",
@@ -2820,7 +3003,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-fries.webp"
     },
     {
       "id": "prod-scraped-185",
@@ -2835,7 +3019,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-186",
@@ -2850,7 +3035,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-187",
@@ -2865,7 +3051,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-188",
@@ -2880,7 +3067,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-nuggets.webp"
     },
     {
       "id": "prod-scraped-189",
@@ -2895,7 +3083,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-190",
@@ -2910,7 +3099,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/pasta-assorted.webp"
     },
     {
       "id": "prod-scraped-191",
@@ -2925,7 +3115,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/pasta-assorted.webp"
     },
     {
       "id": "prod-scraped-192",
@@ -2940,7 +3131,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cleaning-supplies.webp"
     },
     {
       "id": "prod-scraped-193",
@@ -2955,7 +3147,8 @@
       "minStockLevel": 300,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/packaging-pizza-box.webp"
     },
     {
       "id": "prod-scraped-194",
@@ -2970,7 +3163,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-195",
@@ -2985,7 +3179,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cooking-ghee.webp"
     },
     {
       "id": "prod-scraped-196",
@@ -3000,7 +3195,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-197",
@@ -3015,7 +3211,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-198",
@@ -3030,7 +3227,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-199",
@@ -3045,7 +3243,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-200",
@@ -3060,7 +3259,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-201",
@@ -3075,7 +3275,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-202",
@@ -3090,7 +3291,8 @@
       "minStockLevel": 30,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/whipping-cream.webp"
     },
     {
       "id": "prod-scraped-203",
@@ -3105,7 +3307,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-204",
@@ -3120,7 +3323,8 @@
       "minStockLevel": 1,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-205",
@@ -3135,7 +3339,8 @@
       "minStockLevel": 2,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-206",
@@ -3150,7 +3355,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-mushrooms.webp"
     },
     {
       "id": "prod-scraped-207",
@@ -3165,7 +3371,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-208",
@@ -3180,7 +3387,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-209",
@@ -3195,7 +3403,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-210",
@@ -3210,7 +3419,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-211",
@@ -3225,7 +3435,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-212",
@@ -3240,7 +3451,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-213",
@@ -3255,7 +3467,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-214",
@@ -3270,7 +3483,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-215",
@@ -3285,7 +3499,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-216",
@@ -3300,7 +3515,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-217",
@@ -3315,7 +3531,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-218",
@@ -3330,7 +3547,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-219",
@@ -3345,7 +3563,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-220",
@@ -3360,7 +3579,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-221",
@@ -3375,7 +3595,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-222",
@@ -3390,7 +3611,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-223",
@@ -3405,7 +3627,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-224",
@@ -3420,7 +3643,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-225",
@@ -3435,7 +3659,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-pizza.webp"
     },
     {
       "id": "prod-scraped-226",
@@ -3450,7 +3675,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-227",
@@ -3465,7 +3691,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cheese-block.webp"
     },
     {
       "id": "prod-scraped-228",
@@ -3480,7 +3707,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/whipping-cream.webp"
     },
     {
       "id": "prod-scraped-229",
@@ -3495,7 +3723,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-230",
@@ -3510,7 +3739,8 @@
       "minStockLevel": 30,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-231",
@@ -3525,7 +3755,8 @@
       "minStockLevel": 2,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-232",
@@ -3540,7 +3771,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-fries.webp"
     },
     {
       "id": "prod-scraped-233",
@@ -3555,7 +3787,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-fries.webp"
     },
     {
       "id": "prod-scraped-234",
@@ -3570,7 +3803,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/bread-crumbs.webp"
     },
     {
       "id": "prod-scraped-235",
@@ -3585,7 +3819,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-236",
@@ -3600,7 +3835,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-237",
@@ -3615,7 +3851,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-pepperoni-sausage.webp"
     },
     {
       "id": "prod-scraped-238",
@@ -3630,7 +3867,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/marinade-coating.webp"
     },
     {
       "id": "prod-scraped-239",
@@ -3645,7 +3883,8 @@
       "minStockLevel": 50,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/packaging-pizza-box.webp"
     },
     {
       "id": "prod-scraped-240",
@@ -3660,7 +3899,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-241",
@@ -3675,7 +3915,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/supplies-tissue-rolls.webp"
     },
     {
       "id": "prod-scraped-242",
@@ -3690,7 +3931,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/supplies-tissue-rolls.webp"
     },
     {
       "id": "prod-scraped-243",
@@ -3705,7 +3947,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-244",
@@ -3720,7 +3963,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-245",
@@ -3735,7 +3979,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/pasta-assorted.webp"
     },
     {
       "id": "prod-scraped-246",
@@ -3750,7 +3995,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cleaning-supplies.webp"
     },
     {
       "id": "prod-scraped-247",
@@ -3765,7 +4011,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-vinegar.webp"
     },
     {
       "id": "prod-scraped-248",
@@ -3780,7 +4027,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/supplies-tissue-rolls.webp"
     },
     {
       "id": "prod-scraped-249",
@@ -3795,7 +4043,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-250",
@@ -3810,7 +4059,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-251",
@@ -3825,7 +4075,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cocoa-vanilla.webp"
     },
     {
       "id": "prod-scraped-252",
@@ -3840,7 +4091,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/cocoa-vanilla.webp"
     },
     {
       "id": "prod-scraped-253",
@@ -3855,7 +4107,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/milk-carton.webp"
     },
     {
       "id": "prod-scraped-254",
@@ -3870,7 +4123,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-255",
@@ -3885,7 +4139,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-256",
@@ -3900,7 +4155,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-257",
@@ -3915,7 +4171,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-258",
@@ -3930,7 +4187,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-vinegar.webp"
     },
     {
       "id": "prod-scraped-259",
@@ -3945,7 +4203,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-260",
@@ -3960,7 +4219,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-261",
@@ -3975,7 +4235,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-262",
@@ -3990,7 +4251,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/herbs-dried.webp"
     },
     {
       "id": "prod-scraped-263",
@@ -4005,7 +4267,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-chili.webp"
     },
     {
       "id": "prod-scraped-264",
@@ -4020,7 +4283,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/herbs-dried.webp"
     },
     {
       "id": "prod-scraped-265",
@@ -4035,7 +4299,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-266",
@@ -4050,7 +4315,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-267",
@@ -4065,7 +4331,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-nuggets.webp"
     },
     {
       "id": "prod-scraped-268",
@@ -4080,7 +4347,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-269",
@@ -4095,7 +4363,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-nuggets.webp"
     },
     {
       "id": "prod-scraped-270",
@@ -4110,7 +4379,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-271",
@@ -4125,7 +4395,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-272",
@@ -4140,7 +4411,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-273",
@@ -4155,7 +4427,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-274",
@@ -4170,7 +4443,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-275",
@@ -4185,7 +4459,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-276",
@@ -4200,7 +4475,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-277",
@@ -4215,7 +4491,8 @@
       "minStockLevel": 25,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-278",
@@ -4230,7 +4507,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-279",
@@ -4245,7 +4523,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-280",
@@ -4260,7 +4539,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-281",
@@ -4275,7 +4555,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-pizza.webp"
     },
     {
       "id": "prod-scraped-282",
@@ -4290,7 +4571,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-pizza.webp"
     },
     {
       "id": "prod-scraped-283",
@@ -4305,7 +4587,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-honey.webp"
     },
     {
       "id": "prod-scraped-284",
@@ -4320,7 +4603,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-honey.webp"
     },
     {
       "id": "prod-scraped-285",
@@ -4335,7 +4619,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-286",
@@ -4350,7 +4635,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-pepperoni-sausage.webp"
     },
     {
       "id": "prod-scraped-287",
@@ -4365,7 +4651,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-288",
@@ -4380,7 +4667,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-289",
@@ -4395,7 +4683,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-290",
@@ -4410,7 +4699,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-291",
@@ -4425,7 +4715,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-292",
@@ -4440,7 +4731,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/frozen-kabab-patty.webp"
     },
     {
       "id": "prod-scraped-293",
@@ -4455,7 +4747,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-294",
@@ -4470,7 +4763,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/spice-masala.webp"
     },
     {
       "id": "prod-scraped-295",
@@ -4485,7 +4779,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/canned-preserves.webp"
     },
     {
       "id": "prod-scraped-296",
@@ -4500,7 +4795,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-297",
@@ -4515,7 +4811,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-298",
@@ -4530,7 +4827,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-299",
@@ -4545,7 +4843,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-300",
@@ -4560,7 +4859,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-301",
@@ -4575,7 +4875,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-302",
@@ -4590,7 +4891,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-303",
@@ -4605,7 +4907,8 @@
       "minStockLevel": 30,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-304",
@@ -4620,7 +4923,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-305",
@@ -4635,7 +4939,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-306",
@@ -4650,7 +4955,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-mustard-green.webp"
     },
     {
       "id": "prod-scraped-307",
@@ -4665,7 +4971,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-308",
@@ -4680,7 +4987,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-309",
@@ -4695,7 +5003,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-pizza.webp"
     },
     {
       "id": "prod-scraped-310",
@@ -4710,7 +5019,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-pizza.webp"
     },
     {
       "id": "prod-scraped-311",
@@ -4725,7 +5035,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-312",
@@ -4740,7 +5051,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-313",
@@ -4755,7 +5067,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-314",
@@ -4770,7 +5083,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-315",
@@ -4785,7 +5099,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-316",
@@ -4800,7 +5115,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-317",
@@ -4815,7 +5131,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-318",
@@ -4830,7 +5147,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-319",
@@ -4845,7 +5163,8 @@
       "minStockLevel": 30,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-320",
@@ -4860,7 +5179,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-321",
@@ -4875,7 +5195,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.876Z"
+      "updatedAt": "2026-11-20T10:55:57.876Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-322",
@@ -4890,7 +5211,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.876Z",
-      "updatedAt": "2026-11-20T10:55:57.877Z"
+      "updatedAt": "2026-11-20T10:55:57.877Z",
+      "imageUrl": "/product-images/sauce-bbq-soya.webp"
     },
     {
       "id": "prod-scraped-323",
@@ -4905,7 +5227,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.877Z",
-      "updatedAt": "2026-11-20T10:55:57.877Z"
+      "updatedAt": "2026-11-20T10:55:57.877Z",
+      "imageUrl": "/product-images/sauce-vinegar.webp"
     },
     {
       "id": "prod-scraped-324",
@@ -4920,7 +5243,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.877Z",
-      "updatedAt": "2026-11-20T10:55:57.877Z"
+      "updatedAt": "2026-11-20T10:55:57.877Z",
+      "imageUrl": "/product-images/sauce-vinegar.webp"
     },
     {
       "id": "prod-scraped-325",
@@ -4935,7 +5259,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.877Z",
-      "updatedAt": "2026-11-20T10:55:57.877Z"
+      "updatedAt": "2026-11-20T10:55:57.877Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-326",
@@ -4950,7 +5275,8 @@
       "minStockLevel": 350,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.879Z",
-      "updatedAt": "2026-11-20T10:55:57.879Z"
+      "updatedAt": "2026-11-20T10:55:57.879Z",
+      "imageUrl": "/product-images/packaging-pizza-box.webp"
     },
     {
       "id": "prod-scraped-327",
@@ -4965,7 +5291,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.879Z",
-      "updatedAt": "2026-11-20T10:55:57.879Z"
+      "updatedAt": "2026-11-20T10:55:57.879Z",
+      "imageUrl": "/product-images/flour-sack.webp"
     },
     {
       "id": "prod-scraped-328",
@@ -4980,7 +5307,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-329",
@@ -4995,7 +5323,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/packaging-containers.webp"
     },
     {
       "id": "prod-scraped-330",
@@ -5010,7 +5339,8 @@
       "minStockLevel": 2,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/cooking-ghee.webp"
     },
     {
       "id": "prod-scraped-331",
@@ -5025,7 +5355,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/cooking-ghee.webp"
     },
     {
       "id": "prod-scraped-332",
@@ -5040,7 +5371,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-333",
@@ -5055,7 +5387,8 @@
       "minStockLevel": 2,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-334",
@@ -5070,7 +5403,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-335",
@@ -5085,7 +5419,8 @@
       "minStockLevel": 30,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/cooking-oil.webp"
     },
     {
       "id": "prod-scraped-336",
@@ -5100,7 +5435,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-337",
@@ -5115,7 +5451,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/flour-sack.webp"
     },
     {
       "id": "prod-scraped-338",
@@ -5130,7 +5467,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/cleaning-supplies.webp"
     },
     {
       "id": "prod-scraped-339",
@@ -5145,7 +5483,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/hygiene-gloves.webp"
     },
     {
       "id": "prod-scraped-340",
@@ -5160,7 +5499,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-341",
@@ -5175,7 +5515,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/canned-corn.webp"
     },
     {
       "id": "prod-scraped-342",
@@ -5190,7 +5531,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-343",
@@ -5205,7 +5547,8 @@
       "minStockLevel": 2,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/baking-powder-seasoning.webp"
     },
     {
       "id": "prod-scraped-344",
@@ -5220,7 +5563,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/supplies-tissue-rolls.webp"
     },
     {
       "id": "prod-scraped-345",
@@ -5235,7 +5579,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/supplies-tissue-rolls.webp"
     },
     {
       "id": "prod-scraped-346",
@@ -5250,7 +5595,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/bakery-flatbread.webp"
     },
     {
       "id": "prod-scraped-347",
@@ -5265,7 +5611,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/cocoa-vanilla.webp"
     },
     {
       "id": "prod-scraped-348",
@@ -5280,7 +5627,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-vinegar.webp"
     },
     {
       "id": "prod-scraped-349",
@@ -5295,7 +5643,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/canned-olives.webp"
     },
     {
       "id": "prod-scraped-350",
@@ -5310,7 +5659,8 @@
       "minStockLevel": 50,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-351",
@@ -5325,7 +5675,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-chili.webp"
     },
     {
       "id": "prod-scraped-352",
@@ -5340,7 +5691,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-353",
@@ -5355,7 +5707,8 @@
       "minStockLevel": 15,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-354",
@@ -5370,7 +5723,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-355",
@@ -5385,7 +5739,8 @@
       "minStockLevel": 50,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-ketchup.webp"
     },
     {
       "id": "prod-scraped-356",
@@ -5400,7 +5755,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/whipping-cream.webp"
     },
     {
       "id": "prod-scraped-357",
@@ -5415,7 +5771,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/whipping-cream.webp"
     },
     {
       "id": "prod-scraped-358",
@@ -5430,7 +5787,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-359",
@@ -5445,7 +5803,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-360",
@@ -5460,7 +5819,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-361",
@@ -5475,7 +5835,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-362",
@@ -5490,7 +5851,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-363",
@@ -5505,7 +5867,8 @@
       "minStockLevel": 3,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-364",
@@ -5520,7 +5883,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/whipping-cream.webp"
     },
     {
       "id": "prod-scraped-365",
@@ -5535,7 +5899,8 @@
       "minStockLevel": 25,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-366",
@@ -5550,7 +5915,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-367",
@@ -5565,7 +5931,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-368",
@@ -5580,7 +5947,8 @@
       "minStockLevel": 10,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-369",
@@ -5595,7 +5963,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/sauce-mayo.webp"
     },
     {
       "id": "prod-scraped-370",
@@ -5610,7 +5979,8 @@
       "minStockLevel": 20,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/whipping-cream.webp"
     },
     {
       "id": "prod-scraped-371",
@@ -5625,7 +5995,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     },
     {
       "id": "prod-scraped-372",
@@ -5640,7 +6011,8 @@
       "minStockLevel": 5,
       "description": "",
       "createdAt": "2026-11-20T10:55:57.880Z",
-      "updatedAt": "2026-11-20T10:55:57.880Z"
+      "updatedAt": "2026-11-20T10:55:57.880Z",
+      "imageUrl": "/product-images/spice-whole.webp"
     }
   ]
 }

@@ -8,6 +8,7 @@ import {
 import { db } from '../firebase/config';
 import scrapedCatalog from '../data/scrapedCatalog.json';
 import { invalidateCachePrefix } from './queryCache';
+import { isValidProductImageUrl, matchProductImageByName } from '../utils/productImages';
 
 const CATEGORIES_COL = () => collection(db, 'categories');
 const PRODUCTS_COL = () => collection(db, 'products');
@@ -113,6 +114,7 @@ export async function importScrapedCatalog({
           availableQuantity: item.availableQuantity,
           purchasePrice: item.purchasePrice,
           sellingPrice: item.sellingPrice,
+          imageUrl: existing.imageUrl || item.imageUrl || matchProductImageByName({ name: item.name, categoryName }),
           description: '',
           updatedAt: serverTimestamp(),
         });
@@ -133,6 +135,7 @@ export async function importScrapedCatalog({
         sellingPrice: Number(item.sellingPrice) || 0,
         availableQuantity: Math.max(0, Number(item.availableQuantity) || 0),
         minStockLevel: Math.max(0, Number(item.minStockLevel) || 5),
+        imageUrl: item.imageUrl || matchProductImageByName({ name: item.name, categoryName }),
         description: '',
         createdBy: user?.uid || null,
         createdAt: serverTimestamp(),
@@ -189,4 +192,36 @@ export async function importScrapedCatalog({
     skipped,
     totalCatalogItems: totalProducts,
   };
+}
+
+/**
+ * Automatically assigns and persists matched studio imageUrl onto any Firestore
+ * product documents that do not yet have a valid imageUrl.
+ *
+ * @param {Array<Object>} products Current product list loaded from Firestore
+ * @returns {Promise<Array<{ id: string, imageUrl: string }>>} Updated product patches
+ */
+export async function syncMissingProductImages(products = []) {
+  const missing = products.filter((p) => p?.id && !isValidProductImageUrl(p.imageUrl));
+  if (missing.length === 0) return [];
+
+  const BATCH_SIZE = 250;
+  const applied = [];
+
+  for (let i = 0; i < missing.length; i += BATCH_SIZE) {
+    const chunk = missing.slice(i, i + BATCH_SIZE);
+    const batch = writeBatch(db);
+    for (const p of chunk) {
+      const imageUrl = matchProductImageByName(p);
+      batch.update(doc(db, 'products', p.id), {
+        imageUrl,
+        updatedAt: serverTimestamp(),
+      });
+      applied.push({ id: p.id, imageUrl });
+    }
+    await batch.commit();
+  }
+
+  invalidateCachePrefix('products:');
+  return applied;
 }

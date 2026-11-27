@@ -15,6 +15,11 @@ import { shiftDateKey, toLocalMonthKey } from '../src/utils/formatters';
 import { buildEscPosReceipt, padRow, wrapText } from '../src/utils/escpos';
 import { DEFAULT_PROFIT_PIN, hashProfitPin, verifyProfitPin } from '../src/utils/profitLock';
 import { DEFAULT_SETTINGS, normalizeBrandSettings } from '../src/services/settingsService';
+import {
+  getProductImage,
+  isValidProductImageUrl,
+  matchProductImageByName,
+} from '../src/utils/productImages';
 
 describe('Sales Calculation & Payment Integrity', () => {
   it('calculates subtotal, grand total, paid, remaining, and change accurately', () => {
@@ -317,5 +322,49 @@ describe('Profit Lock PIN & Store Settings Defaults', () => {
     // Explicit 58mm choice by admin is respected
     const explicit58 = normalizeBrandSettings({ paperWidth: '58mm', paperWidthExplicit: true });
     expect(explicit58.paperWidth).toBe('58mm');
+  });
+});
+
+describe('Product Image Resolution & Validation', () => {
+  it('matches inventory product names accurately across categories', () => {
+    expect(matchProductImageByName('Acha Mozzarella Crush', 'Cheese & Dairy')).toBe(
+      '/product-images/cheese-shredded.webp'
+    );
+    expect(matchProductImageByName('Adam Cheddar Block', 'Cheese & Dairy')).toBe(
+      '/product-images/cheese-block.webp'
+    );
+    expect(matchProductImageByName('2 Sher Maida', 'Atta, Maida & Flours')).toBe(
+      '/product-images/flour-sack.webp'
+    );
+    expect(matchProductImageByName('Dawn Bread Crumbs 250g', 'Bakery, Buns & Breads')).toBe(
+      '/product-images/bread-crumbs.webp'
+    );
+    expect(matchProductImageByName('Large Pizza Boxes', 'Packaging, Disposables & Boxes')).toBe(
+      '/product-images/packaging-pizza-box.webp'
+    );
+    expect(matchProductImageByName('Arizona Black Olives Can', 'Canned & Preserved Foods')).toBe(
+      '/product-images/canned-olives.webp'
+    );
+  });
+
+  it('prefers valid custom imageUrl and validates safe formats', () => {
+    expect(isValidProductImageUrl('/product-images/cheese-block.webp')).toBe(true);
+    expect(isValidProductImageUrl('https://example.com/item.webp')).toBe(true);
+    expect(isValidProductImageUrl('javascript:alert(1)')).toBe(false);
+    expect(isValidProductImageUrl('not-a-valid-path')).toBe(false);
+
+    expect(
+      getProductImage({
+        name: 'Adam Cheddar Block',
+        imageUrl: 'https://cdn.example.com/custom-cheddar.webp',
+      })
+    ).toBe('https://cdn.example.com/custom-cheddar.webp');
+
+    expect(
+      getProductImage({
+        name: 'Adam Cheddar Block',
+        imageUrl: 'javascript:bad',
+      })
+    ).toBe('/product-images/cheese-block.webp');
   });
 });

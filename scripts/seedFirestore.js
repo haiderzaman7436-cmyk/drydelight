@@ -152,6 +152,7 @@ async function seed() {
       sellingPrice: Number(item.sellingPrice) || 0,
       availableQuantity: Math.max(0, Number(item.availableQuantity) || 0),
       minStockLevel: Math.max(0, Number(item.minStockLevel) || 5),
+      imageUrl: item.imageUrl || '',
       description: '',
       createdBy: user?.uid || null,
       createdAt: serverTimestamp(),

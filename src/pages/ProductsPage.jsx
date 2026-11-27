@@ -9,6 +9,13 @@ import {
   RefreshCw,
   Barcode,
   Filter,
+  Image as ImageIcon,
+  Upload,
+  Sparkles,
+  ChevronDown,
+  ChevronUp,
+  LayoutGrid,
+  List,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Modal from '../components/common/Modal';
@@ -25,8 +32,15 @@ import { useData } from '../contexts/DataContext';
 import { generateInternalBarcode, generateSku } from '../utils/barcode';
 import { downloadBarcodesPdf } from '../utils/barcodePdfGenerator';
 import { formatCurrency, formatDate } from '../utils/formatters';
+import {
+  getProductImage,
+  isValidProductImageUrl,
+  PRODUCT_IMAGE_LIBRARY,
+  compressImageFileToDataUrl,
+} from '../utils/productImages';
 
-const PAGE_SIZE = 15;
+const TABLE_PAGE_SIZE = 15;
+const GRID_PAGE_SIZE = 24;
 
 export default function ProductsPage() {
   const { user, isManagerOrAdmin } = useAuth();
@@ -46,6 +60,7 @@ export default function ProductsPage() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [stockFilter, setStockFilter] = useState('all');
   const [sortBy, setSortBy] = useState('name_asc');
+  const [viewMode, setViewMode] = useState('grid');
   const [page, setPage] = useState(1);
 
   const [formOpen, setFormOpen] = useState(false);
@@ -60,8 +75,11 @@ export default function ProductsPage() {
     sellingPrice: '',
     availableQuantity: '0',
     minStockLevel: '5',
+    imageUrl: '',
     description: '',
   });
+  const [showStudioGallery, setShowStudioGallery] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   const [viewProduct, setViewProduct] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
@@ -105,14 +123,16 @@ export default function ProductsPage() {
     });
   }, [products, deferredSearch, categoryFilter, stockFilter, sortBy]);
 
+  const effectivePageSize = viewMode === 'grid' ? GRID_PAGE_SIZE : TABLE_PAGE_SIZE;
+
   useEffect(() => {
     setPage(1);
-  }, [deferredSearch, categoryFilter, stockFilter, sortBy]);
+  }, [deferredSearch, categoryFilter, stockFilter, sortBy, viewMode]);
 
   const paginated = useMemo(() => {
-    const start = (page - 1) * PAGE_SIZE;
-    return filteredProducts.slice(start, start + PAGE_SIZE);
-  }, [filteredProducts, page]);
+    const start = (page - 1) * effectivePageSize;
+    return filteredProducts.slice(start, start + effectivePageSize);
+  }, [filteredProducts, page, effectivePageSize]);
 
   const openCreateModal = () => {
     if (categories.length === 0) {
@@ -120,6 +140,7 @@ export default function ProductsPage() {
       return;
     }
     setEditing(null);
+    setShowStudioGallery(false);
     setForm({
       name: '',
       sku: '',
@@ -129,6 +150,7 @@ export default function ProductsPage() {
       sellingPrice: '',
       availableQuantity: '0',
       minStockLevel: String(settings.defaultMinStockLevel ?? 5),
+      imageUrl: '',
       description: '',
     });
     setFormOpen(true);
@@ -136,6 +158,7 @@ export default function ProductsPage() {
 
   const openEditModal = (prod) => {
     setEditing(prod);
+    setShowStudioGallery(false);
     setForm({
       name: prod.name || '',
       sku: prod.sku || '',
@@ -145,9 +168,26 @@ export default function ProductsPage() {
       sellingPrice: String(prod.sellingPrice ?? 0),
       availableQuantity: String(prod.availableQuantity ?? 0),
       minStockLevel: String(prod.minStockLevel ?? 5),
+      imageUrl: prod.imageUrl || '',
       description: prod.description || '',
     });
     setFormOpen(true);
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    setUploadingImage(true);
+    try {
+      const dataUrl = await compressImageFileToDataUrl(file);
+      setForm((prev) => ({ ...prev, imageUrl: dataUrl }));
+      toast.success('Product photo attached');
+    } catch (err) {
+      toast.error(err.message || 'Could not process image');
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   const handleGenerateBarcode = () => {
@@ -299,13 +339,43 @@ export default function ProductsPage() {
             <option value="newest">Newest Added</option>
           </select>
 
-          <span className="ml-auto text-xs text-slate-500">
-            {filteredProducts.length} product(s)
-          </span>
+          <div className="ml-auto flex items-center gap-2.5">
+            <span className="text-xs text-slate-500">
+              {filteredProducts.length} product(s)
+            </span>
+            <div className="inline-flex bg-white border border-slate-300 rounded-lg p-0.5">
+              <button
+                type="button"
+                onClick={() => setViewMode('grid')}
+                className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium transition-colors ${
+                  viewMode === 'grid'
+                    ? 'bg-slate-900 text-white'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+                title="Visual Photo Cards"
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                Cards
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode('table')}
+                className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium transition-colors ${
+                  viewMode === 'table'
+                    ? 'bg-slate-900 text-white'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+                title="Table View"
+              >
+                <List className="w-3.5 h-3.5" />
+                Table
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
         {!catalogLoaded ? (
           <LoadingSpinner label="Loading products..." />
         ) : paginated.length === 0 ? (
@@ -331,6 +401,131 @@ export default function ProductsPage() {
               )
             }
           />
+        ) : viewMode === 'grid' ? (
+          <>
+            <div className="p-3.5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+              {paginated.map((prod) => {
+                const qty = Number(prod.availableQuantity || 0);
+                const min = Number(prod.minStockLevel || 0);
+                const isOut = qty === 0;
+                const isLow = qty > 0 && qty <= min;
+                const unitProfit =
+                  Number(prod.sellingPrice || 0) - Number(prod.purchasePrice || 0);
+
+                return (
+                  <div
+                    key={prod.id}
+                    className={`rounded-xl border bg-white p-2.5 flex flex-col justify-between gap-2 transition-all hover:shadow-sm ${
+                      isOut
+                        ? 'border-red-200 bg-red-50/15'
+                        : isLow
+                          ? 'border-amber-200 bg-amber-50/15'
+                          : 'border-slate-200 hover:border-blue-300'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-1 mb-1.5">
+                        <span className="text-[10px] font-medium text-slate-400 truncate">
+                          {prod.categoryName || 'Uncategorized'}
+                        </span>
+                        {isOut ? (
+                          <span className="px-1.5 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-bold shrink-0">
+                            Out of Stock
+                          </span>
+                        ) : isLow ? (
+                          <span className="px-1.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-bold shrink-0">
+                            Low Stock
+                          </span>
+                        ) : (
+                          <span className="px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold shrink-0">
+                            {qty} pcs
+                          </span>
+                        )}
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setViewProduct(prod)}
+                        className="w-full h-24 rounded-lg bg-white border border-slate-100 flex items-center justify-center p-1.5 overflow-hidden hover:border-blue-200 transition-colors"
+                        title="View product details"
+                      >
+                        <img
+                          src={getProductImage(prod)}
+                          alt={prod.name}
+                          loading="lazy"
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      </button>
+
+                      <p
+                        className="text-xs font-bold text-slate-900 mt-2 line-clamp-2 leading-tight text-center"
+                        title={prod.name}
+                      >
+                        {prod.name}
+                      </p>
+                      <p className="text-[10px] font-mono text-slate-400 text-center mt-0.5 truncate">
+                        {prod.sku}
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-slate-100 space-y-1.5">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-xs font-extrabold text-slate-900">
+                          {formatCurrency(prod.sellingPrice, currency)}
+                        </span>
+                        <span
+                          className={`text-[10px] font-semibold ${
+                            unitProfit >= 0 ? 'text-emerald-700' : 'text-red-600'
+                          }`}
+                        >
+                          +{formatCurrency(unitProfit, currency)}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-1 pt-0.5">
+                        <button
+                          type="button"
+                          onClick={() => setViewProduct(prod)}
+                          className="flex-1 py-1 rounded-md border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-[11px] font-medium inline-flex items-center justify-center gap-1"
+                          title="View details"
+                        >
+                          <Eye className="w-3 h-3" />
+                          View
+                        </button>
+                        {isManagerOrAdmin && (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => openEditModal(prod)}
+                              className="p-1.5 rounded-md border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50"
+                              title="Edit product"
+                            >
+                              <Pencil className="w-3 h-3" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setDeleteTarget(prod)}
+                              className="p-1.5 rounded-md border border-slate-200 text-slate-600 hover:text-red-600 hover:border-red-300 hover:bg-red-50"
+                              title="Delete product"
+                            >
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <Pagination
+              currentPage={page}
+              totalItems={filteredProducts.length}
+              pageSize={effectivePageSize}
+              onPageChange={setPage}
+            />
+          </>
         ) : (
           <>
             <div className="overflow-x-auto">
@@ -354,12 +549,22 @@ export default function ProductsPage() {
                     return (
                     <tr key={prod.id} className="hover:bg-slate-50/70 transition-colors">
                       <td className="px-3.5 py-2">
-                        <p className="font-semibold text-slate-900 leading-tight">{prod.name}</p>
-                        {prod.description && (
-                          <p className="text-[11px] text-slate-500 truncate max-w-xs mt-0.5">
-                            {prod.description}
-                          </p>
-                        )}
+                        <div className="flex items-center gap-2.5">
+                          <img
+                            src={getProductImage(prod)}
+                            alt={prod.name}
+                            loading="lazy"
+                            className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                          />
+                          <div className="min-w-0">
+                            <p className="font-semibold text-slate-900 leading-tight">{prod.name}</p>
+                            {prod.description && (
+                              <p className="text-[11px] text-slate-500 truncate max-w-xs mt-0.5">
+                                {prod.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
                       </td>
                       <td className="px-3.5 py-2">
                         <p className="font-mono text-xs font-semibold text-slate-800">
@@ -436,7 +641,7 @@ export default function ProductsPage() {
             <Pagination
               currentPage={page}
               totalItems={filteredProducts.length}
-              pageSize={PAGE_SIZE}
+              pageSize={effectivePageSize}
               onPageChange={setPage}
             />
           </>
@@ -485,6 +690,110 @@ export default function ProductsPage() {
                 placeholder="e.g., Basmati Rice 5kg"
                 className="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
               />
+            </div>
+
+            {/* Product Image Picker & Preview */}
+            <div className="sm:col-span-2 bg-slate-50/80 border border-slate-200 rounded-xl p-3 space-y-2.5">
+              <div className="flex items-start gap-3">
+                <img
+                  src={getProductImage({
+                    name: form.name,
+                    categoryName: categories.find((c) => c.id === form.categoryId)?.name || '',
+                    imageUrl: form.imageUrl,
+                  })}
+                  alt={form.name || 'Product preview'}
+                  className="w-16 h-16 rounded-xl object-contain bg-white border border-slate-200 p-1 shrink-0 shadow-xs"
+                />
+                <div className="flex-1 min-w-0 space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <p className="text-xs font-semibold text-slate-800 flex items-center gap-1.5">
+                        <ImageIcon className="w-3.5 h-3.5 text-blue-600" />
+                        Product Photo
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        {isValidProductImageUrl(form.imageUrl)
+                          ? 'Custom or selected studio photo attached'
+                          : 'Auto-matched studio photo from product name'}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <label className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-slate-300 bg-white hover:bg-slate-50 text-xs font-medium text-slate-700 cursor-pointer">
+                        <Upload className="w-3.5 h-3.5" />
+                        {uploadingImage ? 'Processing...' : 'Upload'}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          disabled={uploadingImage}
+                          onChange={handleImageUpload}
+                          className="hidden"
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setShowStudioGallery((prev) => !prev)}
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-slate-300 bg-white hover:bg-slate-50 text-xs font-medium text-slate-700"
+                      >
+                        Studio Library
+                        {showStudioGallery ? (
+                          <ChevronUp className="w-3.5 h-3.5" />
+                        ) : (
+                          <ChevronDown className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                      {form.imageUrl && (
+                        <button
+                          type="button"
+                          onClick={() => setForm((prev) => ({ ...prev, imageUrl: '' }))}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-blue-200 bg-blue-50 hover:bg-blue-100 text-xs font-medium text-blue-700"
+                        >
+                          <Sparkles className="w-3.5 h-3.5" />
+                          Auto-Match
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={form.imageUrl}
+                    onChange={(e) => setForm((prev) => ({ ...prev, imageUrl: e.target.value }))}
+                    placeholder="Optional custom image URL or leave blank for automatic match"
+                    className="w-full px-2.5 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
+              {showStudioGallery && (
+                <div className="pt-2 border-t border-slate-200 grid grid-cols-4 sm:grid-cols-6 gap-2 max-h-48 overflow-y-auto pr-1">
+                  {PRODUCT_IMAGE_LIBRARY.map((item) => {
+                    const selected = form.imageUrl === item.path;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => {
+                          setForm((prev) => ({ ...prev, imageUrl: item.path }));
+                          setShowStudioGallery(false);
+                        }}
+                        title={item.label}
+                        className={`p-1 rounded-lg border text-center transition-all bg-white ${
+                          selected
+                            ? 'border-blue-600 ring-2 ring-blue-500/25'
+                            : 'border-slate-200 hover:border-blue-400'
+                        }`}
+                      >
+                        <img
+                          src={item.path}
+                          alt={item.label}
+                          loading="lazy"
+                          className="w-full aspect-square object-contain rounded"
+                        />
+                        <p className="text-[10px] text-slate-600 truncate mt-0.5">{item.label}</p>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             <div>
@@ -676,8 +985,15 @@ export default function ProductsPage() {
       >
         {viewProduct && (
           <div className="space-y-4 text-sm">
-            <div className="flex justify-center py-2">
-              <BarcodeDisplay value={viewProduct.barcode} height={48} fontSize={12} />
+            <div className="flex items-center gap-4 bg-slate-50/70 border border-slate-200 rounded-xl p-3">
+              <img
+                src={getProductImage(viewProduct)}
+                alt={viewProduct.name}
+                className="w-20 h-20 rounded-xl object-contain bg-white border border-slate-200 p-1 shrink-0"
+              />
+              <div className="flex-1 flex justify-center overflow-hidden">
+                <BarcodeDisplay value={viewProduct.barcode} height={46} fontSize={11} />
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3 bg-slate-50 border border-slate-200 rounded-lg p-3.5 text-xs">

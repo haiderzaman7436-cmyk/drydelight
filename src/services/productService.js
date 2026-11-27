@@ -13,6 +13,7 @@ import {
   serverTimestamp,
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { isValidProductImageUrl, matchProductImageByName } from '../utils/productImages';
 import { normalizeBarcode } from '../utils/barcode';
 import { roundMoney } from '../utils/formatters';
 import { invalidateCachePrefix } from './queryCache';
@@ -95,6 +96,13 @@ function validateProductFields(data) {
   const availableQuantity = Math.floor(Number(data.availableQuantity ?? 0));
   const minStockLevel = Math.floor(Number(data.minStockLevel ?? 0));
   const description = String(data.description || '').trim();
+  const rawImageUrl = String(data.imageUrl || '').trim();
+
+  if (rawImageUrl && !isValidProductImageUrl(rawImageUrl)) {
+    throw new Error('Please provide a valid image URL or choose a studio image.');
+  }
+
+  const imageUrl = rawImageUrl || matchProductImageByName({ name, categoryName });
 
   if (!name) throw new Error('Product name is required.');
   if (!sku) throw new Error('Product SKU / Code is required.');
@@ -123,6 +131,7 @@ function validateProductFields(data) {
     availableQuantity,
     minStockLevel,
     description,
+    imageUrl,
   };
 }
 

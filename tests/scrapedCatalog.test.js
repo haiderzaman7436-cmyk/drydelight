@@ -1,6 +1,9 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { describe, it, expect } from 'vitest';
 import scrapedCatalog from '../src/data/scrapedCatalog.json';
 import { isValidEan13, calculateEan13CheckDigit } from '../src/utils/barcode';
+import { getProductImage, isValidProductImageUrl, PRODUCT_IMAGE_LIBRARY } from '../src/utils/productImages';
 
 describe('Scraped Inventory & Product Catalog Verification', () => {
   it('contains the scraped catalog with 11 categories and all transcribed products', () => {
@@ -75,6 +78,21 @@ describe('Scraped Inventory & Product Catalog Verification', () => {
       const current = scrapedCatalog.products[i].name;
       const next = scrapedCatalog.products[i + 1].name;
       expect(current.localeCompare(next)).toBeLessThanOrEqual(0);
+    }
+  });
+
+  it('every product has a valid resolved local studio product image asset on disk', () => {
+    const publicDir = path.resolve(process.cwd(), 'public');
+    for (const p of scrapedCatalog.products) {
+      const resolved = getProductImage(p);
+      expect(isValidProductImageUrl(resolved)).toBe(true);
+      expect(resolved).toMatch(/^\/product-images\/[a-z0-9-]+\.webp$/);
+      const diskPath = path.join(publicDir, resolved.slice(1));
+      expect(fs.existsSync(diskPath)).toBe(true);
+    }
+    for (const entry of PRODUCT_IMAGE_LIBRARY) {
+      const diskPath = path.join(publicDir, entry.path.slice(1));
+      expect(fs.existsSync(diskPath)).toBe(true);
     }
   });
 });

@@ -47,11 +47,12 @@ import {
   toLocalDateKey,
   toLocalMonthKey,
 } from '../utils/formatters';
+import { getProductImage } from '../utils/productImages';
 
 export default function DashboardPage() {
   const { settings } = useSettings();
   const { lockEnabled, isLocked, openUnlockModal, lockNow } = useProfitLock();
-  const { products, categories, refreshCatalog } = useData();
+  const { products, categories, productById, refreshCatalog } = useData();
   const { printReceipt } = usePrint();
   const currency = settings.currency || 'PKR';
 
@@ -511,26 +512,38 @@ export default function DashboardPage() {
               <EmptyState title="No sales this month" description="Top products will appear once sales are recorded." />
             ) : (
               <ul className="divide-y divide-slate-100">
-                {monthSummary.bestSellingProducts.slice(0, 5).map((item, idx) => (
-                  <li key={item.productId} className="px-5 py-3 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <span className="w-5 h-5 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold flex items-center justify-center shrink-0">
-                        {idx + 1}
-                      </span>
-                      <div className="min-w-0">
-                        <p className="text-xs font-semibold text-slate-800 truncate">
-                          {item.productName}
-                        </p>
-                        <p className="text-[11px] text-slate-500">
-                          {item.netQuantity} net units sold
-                        </p>
+                {monthSummary.bestSellingProducts.slice(0, 5).map((item, idx) => {
+                  const catalogProd = productById?.get(item.productId);
+                  const imageSrc = getProductImage(
+                    catalogProd || { name: item.productName }
+                  );
+                  return (
+                    <li key={item.productId} className="px-4 py-2.5 flex items-center justify-between gap-2.5">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="w-5 h-5 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold flex items-center justify-center shrink-0">
+                          {idx + 1}
+                        </span>
+                        <img
+                          src={imageSrc}
+                          alt={item.productName}
+                          loading="lazy"
+                          className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                        />
+                        <div className="min-w-0">
+                          <p className="text-xs font-semibold text-slate-800 truncate">
+                            {item.productName}
+                          </p>
+                          <p className="text-[11px] text-slate-500">
+                            {item.netQuantity} net units sold
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                    <span className="text-xs font-semibold text-slate-900 shrink-0">
-                      {formatCurrency(item.netRevenue, currency)}
-                    </span>
-                  </li>
-                ))}
+                      <span className="text-xs font-semibold text-slate-900 shrink-0">
+                        {formatCurrency(item.netRevenue, currency)}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </div>
@@ -552,14 +565,22 @@ export default function DashboardPage() {
             ) : (
               <ul className="divide-y divide-slate-100 max-h-64 overflow-y-auto">
                 {lowStockProducts.slice(0, 8).map((prod) => (
-                  <li key={prod.id} className="px-5 py-3 flex items-center justify-between gap-3">
-                    <div className="min-w-0">
-                      <p className="text-xs font-semibold text-slate-800 truncate">
-                        {prod.name}
-                      </p>
-                      <p className="text-[11px] text-slate-500">
-                        SKU: {prod.sku} · Min: {prod.minStockLevel}
-                      </p>
+                  <li key={prod.id} className="px-4 py-2.5 flex items-center justify-between gap-2.5">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <img
+                        src={getProductImage(prod)}
+                        alt={prod.name}
+                        loading="lazy"
+                        className="w-8 h-8 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-xs font-semibold text-slate-800 truncate">
+                          {prod.name}
+                        </p>
+                        <p className="text-[11px] text-slate-500">
+                          SKU: {prod.sku} · Min: {prod.minStockLevel}
+                        </p>
+                      </div>
                     </div>
                     <span
                       className={`px-2 py-0.5 rounded-full text-[11px] font-semibold shrink-0 ${

@@ -2,24 +2,26 @@ import { useEffect, useState, useMemo, useCallback, useDeferredValue } from 'rea
 import {
   Package,
   Boxes,
+  Banknote,
   AlertTriangle,
   XCircle,
   ArrowUpDown,
   Search,
   RefreshCw,
-  Filter,
   Barcode,
   ArrowRight,
   Plus,
   Minus,
+  LayoutGrid,
+  List,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import StatCard from '../components/common/StatCard';
 import Modal from '../components/common/Modal';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import EmptyState from '../components/common/EmptyState';
 import Pagination from '../components/common/Pagination';
 import { downloadBarcodesPdf } from '../utils/barcodePdfGenerator';
+import { getProductImage } from '../utils/productImages';
 import { adjustProductStock } from '../services/productService';
 import { getRecentStockMovements } from '../services/inventoryService';
 import { invalidateCachePrefix } from '../services/queryCache';
@@ -40,11 +42,19 @@ const MOVEMENT_BADGES = {
 };
 
 const PAGE_SIZE = 15;
+const GRID_PAGE_SIZE = 24;
 
 export default function InventoryPage() {
   const { user, isManagerOrAdmin } = useAuth();
   const { settings } = useSettings();
-  const { products, categories, catalogLoaded, applyStockUpdatesLocal, refreshCatalog } = useData();
+  const {
+    products,
+    categories,
+    catalogLoaded,
+    productById,
+    applyStockUpdatesLocal,
+    refreshCatalog,
+  } = useData();
   const currency = settings.currency || 'PKR';
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -54,6 +64,9 @@ export default function InventoryPage() {
   const [ledgerSearch, setLedgerSearch] = useState('');
   const deferredLedgerSearch = useDeferredValue(ledgerSearch);
   const [ledgerCategory, setLedgerCategory] = useState('all');
+  const [ledgerStockFilter, setLedgerStockFilter] = useState('all');
+  const [ledgerView, setLedgerView] = useState('grid');
+  const [ledgerPage, setLedgerPage] = useState(1);
 
   const [movementSearch, setMovementSearch] = useState('');
   const deferredMovementSearch = useDeferredValue(movementSearch);
@@ -144,6 +157,11 @@ export default function InventoryPage() {
     const q = deferredLedgerSearch.trim().toLowerCase();
     const list = products.filter((p) => {
       if (ledgerCategory !== 'all' && p.categoryId !== ledgerCategory) return false;
+      const qty = Number(p.availableQuantity || 0);
+      const min = Number(p.minStockLevel || 0);
+      if (ledgerStockFilter === 'low' && (qty === 0 || qty > min)) return false;
+      if (ledgerStockFilter === 'out' && qty > 0) return false;
+      if (ledgerStockFilter === 'healthy' && qty <= min) return false;
       if (!q) return true;
       return (
         p.name?.toLowerCase().includes(q) ||
@@ -152,7 +170,16 @@ export default function InventoryPage() {
       );
     });
     return [...list].sort((a, b) => (a.name || '').localeCompare(b.name || ''));
-  }, [products, deferredLedgerSearch, ledgerCategory]);
+  }, [products, deferredLedgerSearch, ledgerCategory, ledgerStockFilter]);
+
+  useEffect(() => {
+    setLedgerPage(1);
+  }, [deferredLedgerSearch, ledgerCategory, ledgerStockFilter, ledgerView]);
+
+  const paginatedLedgerProducts = useMemo(() => {
+    const start = (ledgerPage - 1) * GRID_PAGE_SIZE;
+    return sortedLedgerProducts.slice(start, start + GRID_PAGE_SIZE);
+  }, [sortedLedgerProducts, ledgerPage]);
 
   const filteredMovements = useMemo(() => {
     const q = deferredMovementSearch.trim().toLowerCase();
@@ -219,35 +246,72 @@ export default function InventoryPage() {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
-        <StatCard
-          title="Total Products"
-          value={formatNumber(metrics.totalProducts)}
-          subtitle={`Cost value: ${formatCurrency(metrics.totalCostValue, currency)}`}
-          icon={Package}
-          tone="blue"
-        />
-        <StatCard
-          title="Total Available Stock"
-          value={`${formatNumber(metrics.totalUnits)} units`}
-          subtitle={`Retail: ${formatCurrency(metrics.totalRetailValue, currency)} · Est. Profit: ${formatCurrency(metrics.totalRetailValue - metrics.totalCostValue, currency)}`}
-          icon={Boxes}
-          tone="emerald"
-        />
-        <StatCard
-          title="Low-Stock Products"
-          value={formatNumber(metrics.lowStockCount)}
-          subtitle="At or below minimum level"
-          icon={AlertTriangle}
-          tone={metrics.lowStockCount > 0 ? 'amber' : 'emerald'}
-        />
-        <StatCard
-          title="Out-of-Stock Products"
-          value={formatNumber(metrics.outOfStockCount)}
-          subtitle="Unavailable for POS sale"
-          icon={XCircle}
-          tone={metrics.outOfStockCount > 0 ? 'red' : 'emerald'}
-        />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 text-white p-3.5 shadow-sm flex items-center gap-3.5">
+          <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+            <Package className="w-6 h-6 text-white" />
+          </div>
+          <div className="min-w-0">
+            <p className="text-xl font-bold leading-tight truncate">
+              {formatNumber(metrics.totalProducts)}
+            </p>
+            <p className="text-xs font-medium text-blue-100">Total Products</p>
+            <p className="text-[11px] text-blue-100/80 mt-0.5 truncate">
+              Cost: {formatCurrency(metrics.totalCostValue, currency)}
+            </p>
+          </div>
+        </div>
+
+        <div className="rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white p-3.5 shadow-sm flex items-center gap-3.5">
+          <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+            <Banknote className="w-6 h-6 text-white" />
+          </div>
+          <div className="min-w-0">
+            <p className="text-xl font-bold leading-tight truncate">
+              {formatCurrency(metrics.totalRetailValue, currency)}
+            </p>
+            <p className="text-xs font-medium text-amber-50">Stock Value</p>
+            <p className="text-[11px] text-amber-100/90 mt-0.5 truncate">
+              Est. margin: {formatCurrency(metrics.totalRetailValue - metrics.totalCostValue, currency)}
+            </p>
+          </div>
+        </div>
+
+        <div className="rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white p-3.5 shadow-sm flex items-center gap-3.5">
+          <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+            <Boxes className="w-6 h-6 text-white" />
+          </div>
+          <div className="min-w-0">
+            <p className="text-xl font-bold leading-tight truncate">
+              {formatNumber(metrics.totalUnits)} pcs
+            </p>
+            <p className="text-xs font-medium text-emerald-100">Total Stock Units</p>
+            <p className="text-[11px] text-emerald-100/85 mt-0.5 truncate">
+              Across {metrics.categoryBreakdown.length} categories
+            </p>
+          </div>
+        </div>
+
+        <div
+          className={`rounded-xl text-white p-3.5 shadow-sm flex items-center gap-3.5 ${
+            metrics.lowStockCount > 0
+              ? 'bg-gradient-to-br from-violet-600 to-purple-700'
+              : 'bg-gradient-to-br from-slate-700 to-slate-800'
+          }`}
+        >
+          <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+            <AlertTriangle className="w-6 h-6 text-white" />
+          </div>
+          <div className="min-w-0">
+            <p className="text-xl font-bold leading-tight truncate">
+              {formatNumber(metrics.lowStockCount)}
+            </p>
+            <p className="text-xs font-medium text-purple-100">Low Stock Items</p>
+            <p className="text-[11px] text-purple-100/85 mt-0.5 truncate">
+              {metrics.outOfStockCount} out of stock
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -365,112 +429,265 @@ export default function InventoryPage() {
             )}
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-            <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-slate-900">
-                Low &amp; Out-of-Stock Products
-              </h3>
-              <span className="text-xs text-slate-500">{lowAndOutProducts.length} item(s)</span>
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#0f2347] text-white flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-400" />
+                <h3 className="text-sm font-semibold">Stock Alerts</h3>
+              </div>
+              <span className="text-xs text-slate-200 font-medium">
+                {lowAndOutProducts.length} item(s)
+              </span>
             </div>
             {lowAndOutProducts.length === 0 ? (
               <div className="p-8 text-center text-xs font-medium text-emerald-700 bg-emerald-50/30">
                 All products have healthy inventory levels.
               </div>
             ) : (
-              <div className="overflow-x-auto max-h-80 overflow-y-auto">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200 sticky top-0">
-                    <tr>
-                      <th className="px-3.5 py-2 font-semibold">Product</th>
-                      <th className="px-3.5 py-2 font-semibold text-center">Stock / Min</th>
-                      {isManagerOrAdmin && (
-                        <th className="px-3.5 py-2 font-semibold text-right">Action</th>
-                      )}
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {lowAndOutProducts.map((p) => (
-                      <tr key={p.id} className="hover:bg-slate-50/70 transition-colors">
-                        <td className="px-3.5 py-2">
-                          <p className="font-semibold text-slate-900 leading-tight">{p.name}</p>
-                          <p className="text-[10px] font-mono text-slate-400 mt-0.5">{p.sku}</p>
-                        </td>
-                        <td className="px-3.5 py-2 text-center">
-                          <span
-                            className={`px-2 py-0.5 rounded-full font-semibold text-[11px] ${
-                              Number(p.availableQuantity || 0) === 0
-                                ? 'bg-red-100 text-red-700'
-                                : 'bg-amber-100 text-amber-800'
+              <div className="p-3 space-y-2 max-h-80 overflow-y-auto">
+                {lowAndOutProducts.map((p) => {
+                  const qty = Number(p.availableQuantity || 0);
+                  const isOut = qty === 0;
+                  return (
+                    <div
+                      key={p.id}
+                      className={`rounded-xl border px-3 py-2 flex items-center justify-between gap-2.5 transition-colors ${
+                        isOut
+                          ? 'bg-red-50/80 border-red-200/80'
+                          : 'bg-rose-50/70 border-rose-100'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <img
+                          src={getProductImage(p)}
+                          alt={p.name}
+                          loading="lazy"
+                          className="w-10 h-10 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                        />
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-slate-900 truncate">{p.name}</p>
+                          <p
+                            className={`text-[11px] font-semibold mt-0.5 ${
+                              isOut ? 'text-red-700' : 'text-rose-600'
                             }`}
                           >
-                            {p.availableQuantity} / {p.minStockLevel}
-                          </span>
-                        </td>
+                            {isOut
+                              ? `Out of stock (Min: ${p.minStockLevel})`
+                              : `Only ${qty} left (Min: ${p.minStockLevel})`}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold text-white ${
+                            isOut ? 'bg-red-600' : 'bg-rose-600'
+                          }`}
+                        >
+                          {isOut ? 'Out of Stock' : 'Low Stock'}
+                        </span>
                         {isManagerOrAdmin && (
-                          <td className="px-3.5 py-2 text-right">
-                            <button
-                              type="button"
-                              onClick={() => openAdjustModal(p)}
-                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 hover:bg-blue-100 font-semibold text-xs"
-                            >
-                              <ArrowUpDown className="w-3 h-3" />
-                              Adjust
-                            </button>
-                          </td>
+                          <button
+                            type="button"
+                            onClick={() => openAdjustModal(p)}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-800 hover:bg-slate-50 font-semibold text-xs shadow-2xs"
+                          >
+                            <ArrowUpDown className="w-3 h-3 text-blue-600" />
+                            Adjust
+                          </button>
                         )}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
 
-          {isManagerOrAdmin && products.length > 0 && (
-            <div className="xl:col-span-2 bg-white border border-slate-200 rounded-xl overflow-hidden">
-              <div className="p-4 border-b border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-semibold text-slate-900">
-                    All Products Stock Ledger
-                  </h3>
-                  <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">
-                    {sortedLedgerProducts.length} items (A-Z)
-                  </span>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-2">
-                  <div className="relative flex-1 sm:w-64">
-                    <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="text"
-                      value={ledgerSearch}
-                      onChange={(e) => setLedgerSearch(e.target.value)}
-                      placeholder="Filter by name, SKU, barcode..."
-                      className="w-full pl-8 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                    />
-                  </div>
-
-                  <select
-                    value={ledgerCategory}
-                    onChange={(e) => setLedgerCategory(e.target.value)}
-                    className="text-xs px-2.5 py-1.5 border border-slate-300 rounded-lg bg-white text-slate-700 focus:outline-none"
-                  >
-                    <option value="all">All Categories</option>
-                    {categories.map((c) => (
-                      <option key={c.id} value={c.id}>
-                        {c.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+          <div className="xl:col-span-2 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+            <div className="p-3.5 sm:p-4 border-b border-slate-200 flex flex-col lg:flex-row lg:items-center justify-between gap-3 bg-slate-50/40">
+              <div className="flex items-center gap-2.5">
+                <h3 className="text-sm font-bold text-slate-900">
+                  Visual Inventory Showcase
+                </h3>
+                <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100">
+                  {sortedLedgerProducts.length} items
+                </span>
               </div>
 
-              {sortedLedgerProducts.length === 0 ? (
-                <div className="p-8 text-center text-xs text-slate-500">
-                  No products match your filter.
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="relative flex-1 sm:w-56">
+                  <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={ledgerSearch}
+                    onChange={(e) => setLedgerSearch(e.target.value)}
+                    placeholder="Filter by name, SKU, barcode..."
+                    className="w-full pl-8 pr-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  />
                 </div>
-              ) : (
-                <div className="overflow-x-auto max-h-80 overflow-y-auto">
+
+                <select
+                  value={ledgerCategory}
+                  onChange={(e) => setLedgerCategory(e.target.value)}
+                  className="text-xs px-2.5 py-1.5 border border-slate-300 rounded-lg bg-white text-slate-700 focus:outline-none"
+                >
+                  <option value="all">All Categories</option>
+                  {categories.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  value={ledgerStockFilter}
+                  onChange={(e) => setLedgerStockFilter(e.target.value)}
+                  className="text-xs px-2.5 py-1.5 border border-slate-300 rounded-lg bg-white text-slate-700 focus:outline-none"
+                >
+                  <option value="all">All Stock Status</option>
+                  <option value="healthy">In Stock Only</option>
+                  <option value="low">Low Stock Only</option>
+                  <option value="out">Out of Stock</option>
+                </select>
+
+                <div className="inline-flex bg-white border border-slate-300 rounded-lg p-0.5">
+                  <button
+                    type="button"
+                    onClick={() => setLedgerView('grid')}
+                    className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium ${
+                      ledgerView === 'grid'
+                        ? 'bg-slate-900 text-white'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                    title="Photo Cards View"
+                  >
+                    <LayoutGrid className="w-3.5 h-3.5" />
+                    Cards
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLedgerView('table')}
+                    className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium ${
+                      ledgerView === 'table'
+                        ? 'bg-slate-900 text-white'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                    title="Compact Table View"
+                  >
+                    <List className="w-3.5 h-3.5" />
+                    Table
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {paginatedLedgerProducts.length === 0 ? (
+              <div className="p-8 text-center text-xs text-slate-500">
+                No products match your filter.
+              </div>
+            ) : ledgerView === 'grid' ? (
+              <>
+                <div className="p-3.5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+                  {paginatedLedgerProducts.map((p) => {
+                    const qty = Number(p.availableQuantity || 0);
+                    const min = Number(p.minStockLevel || 0);
+                    const isOut = qty === 0;
+                    const isLow = qty > 0 && qty <= min;
+                    const stockVal = qty * Number(p.sellingPrice || 0);
+
+                    return (
+                      <div
+                        key={p.id}
+                        className={`rounded-xl border bg-white p-2.5 flex flex-col justify-between gap-2 transition-all hover:shadow-sm ${
+                          isOut
+                            ? 'border-red-200 bg-red-50/20'
+                            : isLow
+                              ? 'border-amber-200 bg-amber-50/15'
+                              : 'border-slate-200 hover:border-blue-300'
+                        }`}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-1 mb-1.5">
+                            <span className="text-[10px] font-medium text-slate-400 truncate">
+                              {p.categoryName}
+                            </span>
+                            {isOut ? (
+                              <span className="px-1.5 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-bold shrink-0">
+                                Out of Stock
+                              </span>
+                            ) : isLow ? (
+                              <span className="px-1.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-bold shrink-0">
+                                Low Stock
+                              </span>
+                            ) : (
+                              <span className="px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold shrink-0">
+                                In Stock
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="w-full h-24 rounded-lg bg-white border border-slate-100 flex items-center justify-center p-1.5 overflow-hidden">
+                            <img
+                              src={getProductImage(p)}
+                              alt={p.name}
+                              loading="lazy"
+                              className="max-h-full max-w-full object-contain"
+                            />
+                          </div>
+
+                          <p
+                            className="text-xs font-bold text-slate-900 mt-2 line-clamp-2 leading-tight text-center"
+                            title={p.name}
+                          >
+                            {p.name}
+                          </p>
+                          <p
+                            className={`text-[11px] font-semibold text-center mt-0.5 ${
+                              isOut
+                                ? 'text-red-600'
+                                : isLow
+                                  ? 'text-rose-600'
+                                  : 'text-slate-600'
+                            }`}
+                          >
+                            {isOut ? '0 pcs left' : isLow ? `Only ${qty} left` : `${qty} pcs`}
+                          </p>
+                        </div>
+
+                        <div className="pt-2 border-t border-slate-100 space-y-1.5">
+                          <div className="flex items-center justify-between text-[11px]">
+                            <span className="text-slate-400">Stock Value</span>
+                            <span className="font-bold text-slate-900">
+                              {formatCurrency(stockVal, currency)}
+                            </span>
+                          </div>
+                          {isManagerOrAdmin && (
+                            <button
+                              type="button"
+                              onClick={() => openAdjustModal(p)}
+                              className="w-full py-1 rounded-lg border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 text-slate-700 text-[11px] font-semibold transition-colors inline-flex items-center justify-center gap-1"
+                            >
+                              <ArrowUpDown className="w-3 h-3" />
+                              Adjust Stock
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <Pagination
+                  currentPage={ledgerPage}
+                  totalItems={sortedLedgerProducts.length}
+                  pageSize={GRID_PAGE_SIZE}
+                  onPageChange={setLedgerPage}
+                />
+              </>
+            ) : (
+              <>
+                <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
                     <thead className="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200 sticky top-0">
                       <tr>
@@ -481,54 +698,92 @@ export default function InventoryPage() {
                         <th className="px-3.5 py-2 font-semibold text-center">Min Level</th>
                         <th className="px-3.5 py-2 font-semibold text-right">Selling Price</th>
                         <th className="px-3.5 py-2 font-semibold text-right">Stock Value</th>
-                        <th className="px-3.5 py-2 font-semibold text-right">Adjust</th>
+                        {isManagerOrAdmin && (
+                          <th className="px-3.5 py-2 font-semibold text-right">Adjust</th>
+                        )}
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
-                      {sortedLedgerProducts.map((p) => (
-                        <tr key={p.id} className="hover:bg-slate-50/70 transition-colors">
-                          <td className="px-3.5 py-2">
-                            <span className="font-semibold text-slate-900 leading-tight">{p.name}</span>
-                            <span className="ml-2 font-mono text-[10px] text-slate-400">
-                              {p.sku}
-                            </span>
-                          </td>
-                          <td className="px-3.5 py-2 font-mono text-[11px] text-slate-600">
-                            {p.barcode || '—'}
-                          </td>
-                          <td className="px-3.5 py-2 text-slate-600 text-[11px]">{p.categoryName}</td>
-                          <td className="px-3.5 py-2 text-center font-semibold text-slate-900">
-                            {p.availableQuantity}
-                          </td>
-                          <td className="px-3.5 py-2 text-center text-slate-500 text-xs">
-                            {p.minStockLevel}
-                          </td>
-                          <td className="px-3.5 py-2 text-right font-medium text-slate-800">
-                            {formatCurrency(p.sellingPrice || 0, currency)}
-                          </td>
-                          <td className="px-3.5 py-2 text-right font-semibold text-slate-900">
-                            {formatCurrency(
-                              Number(p.availableQuantity || 0) * Number(p.sellingPrice || 0),
-                              currency
+                      {paginatedLedgerProducts.map((p) => {
+                        const qty = Number(p.availableQuantity || 0);
+                        const min = Number(p.minStockLevel || 0);
+                        const isOut = qty === 0;
+                        const isLow = qty > 0 && qty <= min;
+                        return (
+                          <tr key={p.id} className="hover:bg-slate-50/70 transition-colors">
+                            <td className="px-3.5 py-2">
+                              <div className="flex items-center gap-2">
+                                <img
+                                  src={getProductImage(p)}
+                                  alt={p.name}
+                                  loading="lazy"
+                                  className="w-8 h-8 rounded-md object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                                />
+                                <div className="min-w-0">
+                                  <span className="font-semibold text-slate-900 leading-tight">
+                                    {p.name}
+                                  </span>
+                                  <span className="ml-2 font-mono text-[10px] text-slate-400">
+                                    {p.sku}
+                                  </span>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-3.5 py-2 font-mono text-[11px] text-slate-600">
+                              {p.barcode || '—'}
+                            </td>
+                            <td className="px-3.5 py-2 text-slate-600 text-[11px]">
+                              {p.categoryName}
+                            </td>
+                            <td className="px-3.5 py-2 text-center">
+                              <span
+                                className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
+                                  isOut
+                                    ? 'bg-red-600 text-white'
+                                    : isLow
+                                      ? 'bg-rose-600 text-white'
+                                      : 'bg-emerald-100 text-emerald-800'
+                                }`}
+                              >
+                                {qty} pcs
+                              </span>
+                            </td>
+                            <td className="px-3.5 py-2 text-center text-slate-500 text-xs">
+                              {p.minStockLevel}
+                            </td>
+                            <td className="px-3.5 py-2 text-right font-medium text-slate-800">
+                              {formatCurrency(p.sellingPrice || 0, currency)}
+                            </td>
+                            <td className="px-3.5 py-2 text-right font-semibold text-slate-900">
+                              {formatCurrency(qty * Number(p.sellingPrice || 0), currency)}
+                            </td>
+                            {isManagerOrAdmin && (
+                              <td className="px-3.5 py-2 text-right">
+                                <button
+                                  type="button"
+                                  onClick={() => openAdjustModal(p)}
+                                  className="px-2 py-0.5 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-100 font-medium text-xs transition-colors"
+                                >
+                                  Adjust Stock
+                                </button>
+                              </td>
                             )}
-                          </td>
-                          <td className="px-3.5 py-2 text-right">
-                            <button
-                              type="button"
-                              onClick={() => openAdjustModal(p)}
-                              className="px-2 py-0.5 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-100 font-medium text-xs transition-colors"
-                            >
-                              Adjust Stock
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
-              )}
-            </div>
-          )}
+
+                <Pagination
+                  currentPage={ledgerPage}
+                  totalItems={sortedLedgerProducts.length}
+                  pageSize={GRID_PAGE_SIZE}
+                  onPageChange={setLedgerPage}
+                />
+              </>
+            )}
+          </div>
         </div>
       ) : (
         <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
@@ -593,8 +848,20 @@ export default function InventoryPage() {
                             {formatDateTime(m.createdAt)}
                           </td>
                           <td className="px-4 py-3">
-                            <p className="font-semibold text-slate-900">{m.productName}</p>
-                            <p className="font-mono text-[11px] text-slate-400">{m.sku}</p>
+                            <div className="flex items-center gap-2.5">
+                              <img
+                                src={getProductImage(
+                                  productById?.get(m.productId) || { name: m.productName }
+                                )}
+                                alt={m.productName}
+                                loading="lazy"
+                                className="w-7 h-7 rounded-md object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                              />
+                              <div className="min-w-0">
+                                <p className="font-semibold text-slate-900">{m.productName}</p>
+                                <p className="font-mono text-[11px] text-slate-400">{m.sku}</p>
+                              </div>
+                            </div>
                           </td>
                           <td className="px-4 py-3">
                             <span

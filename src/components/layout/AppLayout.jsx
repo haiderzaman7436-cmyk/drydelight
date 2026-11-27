@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Sidebar from './Sidebar';
 import TopBar from './TopBar';
 import ConfirmDialog from '../common/ConfirmDialog';
 import { useAuth } from '../../contexts/AuthContext';
+import { useData } from '../../contexts/DataContext';
+import { syncMissingProductImages } from '../../services/catalogImportService';
+import { isValidProductImageUrl } from '../../utils/productImages';
 
 export default function AppLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -17,8 +20,35 @@ export default function AppLayout() {
   });
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
-  const { logout } = useAuth();
+  const { logout, isManagerOrAdmin } = useAuth();
+  const { products, catalogLoaded, upsertProductLocal } = useData();
+  const syncedImagesRef = useRef(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isManagerOrAdmin || !catalogLoaded || syncedImagesRef.current || products.length === 0) {
+      return;
+    }
+    const hasMissing = products.some((p) => p?.id && !isValidProductImageUrl(p.imageUrl));
+    if (!hasMissing) {
+      syncedImagesRef.current = true;
+      return;
+    }
+
+    syncedImagesRef.current = true;
+    syncMissingProductImages(products)
+      .then((patches) => {
+        if (!patches?.length) return;
+        const byId = new Map(products.map((p) => [p.id, p]));
+        for (const patch of patches) {
+          const orig = byId.get(patch.id);
+          if (orig) upsertProductLocal({ ...orig, imageUrl: patch.imageUrl });
+        }
+      })
+      .catch(() => {
+        // Non-blocking: UI always falls back cleanly to getProductImage(product)
+      });
+  }, [isManagerOrAdmin, catalogLoaded, products, upsertProductLocal]);
 
   const handleToggleSidebarCollapse = () => {
     setSidebarCollapsed((prev) => {

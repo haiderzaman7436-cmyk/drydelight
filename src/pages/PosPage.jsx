@@ -24,6 +24,7 @@ import { useBarcodeScanner } from '../hooks/useBarcodeScanner';
 import { calculateSaleTotals } from '../utils/calculations';
 import { formatCurrency } from '../utils/formatters';
 import { createClientRequestId } from '../utils/ids';
+import { getProductImage } from '../utils/productImages';
 
 const PosProductCard = memo(function PosProductCard({ prod, cartQty, currency, onSelect }) {
   const stock = Number(prod.availableQuantity || 0);
@@ -42,19 +43,27 @@ const PosProductCard = memo(function PosProductCard({ prod, cartQty, currency, o
             : 'bg-white border-slate-200 hover:border-blue-400 hover:bg-slate-50/50 hover:shadow-xs'
       }`}
     >
-      <div>
-        <div className="flex items-start justify-between gap-1.5">
-          <p className="text-xs font-semibold text-slate-900 line-clamp-2 leading-tight">{prod.name}</p>
-          {cartQty > 0 && (
-            <span className="px-1.5 py-0.2 rounded-md bg-blue-600 text-white text-[10px] font-bold shrink-0">
-              x{cartQty}
-            </span>
-          )}
+      <div className="flex items-start gap-2">
+        <img
+          src={getProductImage(prod)}
+          alt={prod.name}
+          loading="lazy"
+          className="w-11 h-11 rounded-lg object-contain bg-white border border-slate-200/80 p-0.5 shrink-0"
+        />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-start justify-between gap-1">
+            <p className="text-xs font-semibold text-slate-900 line-clamp-2 leading-tight">{prod.name}</p>
+            {cartQty > 0 && (
+              <span className="px-1.5 py-0.2 rounded-md bg-blue-600 text-white text-[10px] font-bold shrink-0">
+                x{cartQty}
+              </span>
+            )}
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 mt-0.5 truncate">
+            {prod.sku}
+            {prod.barcode ? ` · ${prod.barcode}` : ''}
+          </p>
         </div>
-        <p className="text-[10px] font-mono text-slate-400 mt-0.5 truncate">
-          {prod.sku}
-          {prod.barcode ? ` · ${prod.barcode}` : ''}
-        </p>
       </div>
 
       <div className="flex items-center justify-between gap-1.5 pt-1 border-t border-slate-100">
