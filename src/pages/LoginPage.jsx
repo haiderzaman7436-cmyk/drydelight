@@ -55,23 +55,23 @@ export default function LoginPage() {
   const displayError = error || authError;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f2347] via-[#132b57] to-[#0b1933] flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Brand */}
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center mx-auto shadow-sm">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-[#0f2347] flex items-center justify-center mx-auto shadow-md">
             <Store className="w-6 h-6" />
           </div>
-          <h1 className="text-xl font-bold text-slate-900 mt-3">
+          <h1 className="text-xl font-bold text-white mt-3">
             Dry Delight
           </h1>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-sm text-blue-200 mt-1">
             Inventory &amp; POS Management · Staff Sign In
           </p>
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 sm:p-8">
+        <div className="bg-white rounded-2xl border border-white/10 shadow-xl p-6 sm:p-8">
           {!isFirebaseConfigured && (
             <div className="mb-5 p-3.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-xs leading-relaxed flex gap-2.5">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />

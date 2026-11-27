@@ -14,6 +14,10 @@ import {
   Wallet,
   Lock,
   Unlock,
+  ShoppingCart,
+  Boxes,
+  BarChart3,
+  Star,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -223,11 +227,11 @@ export default function DashboardPage() {
   return (
     <div className="space-y-3.5 sm:space-y-4">
       {/* Filter bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2.5 bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2.5 bg-white border border-slate-200/90 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-xs">
         <div>
-          <h2 className="text-xs sm:text-sm font-semibold text-slate-900">Business Overview</h2>
+          <h2 className="text-sm sm:text-base font-bold text-[#0f2347]">Welcome Back!</h2>
           <p className="text-[11px] text-slate-500">
-            Live figures for {selectedDate} &amp; {formatMonthLabel(selectedMonthKey)}
+            Your Shop Overview · {selectedDate} &amp; {formatMonthLabel(selectedMonthKey)}
           </p>
         </div>
 
@@ -314,7 +318,7 @@ export default function DashboardPage() {
           value={formatCurrency(monthSummary.netSales, currency)}
           subtitle={`${monthSummary.invoiceCount} invoices in ${formatMonthLabel(selectedMonthKey)}`}
           icon={TrendingUp}
-          tone="blue"
+          tone="amber"
         />
         <StatCard
           title="Monthly Profit"
@@ -351,8 +355,67 @@ export default function DashboardPage() {
           value={lowStockProducts.length}
           subtitle={`${outOfStockCount} out of stock`}
           icon={AlertTriangle}
-          tone={lowStockProducts.length > 0 ? 'amber' : 'emerald'}
+          tone="purple"
         />
+      </div>
+
+      {/* Quick Actions Grid (example layout) */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
+        <Link
+          to="/products"
+          className="group bg-white border border-slate-200/90 hover:border-blue-400 rounded-xl p-3 flex flex-col items-center text-center gap-1.5 shadow-2xs hover:shadow-sm transition-all"
+        >
+          <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200/60 text-amber-600 flex items-center justify-center">
+            <Package className="w-5 h-5" />
+          </div>
+          <p className="text-xs sm:text-sm font-bold text-[#0f2347]">Add Product</p>
+          <p className="text-[11px] text-slate-500">Catalog &amp; Photos</p>
+          <span className="mt-0.5 w-8 h-6 rounded-full bg-blue-600 group-hover:bg-blue-700 text-white flex items-center justify-center transition-colors">
+            <ArrowRight className="w-3.5 h-3.5" />
+          </span>
+        </Link>
+
+        <Link
+          to="/pos"
+          className="group bg-white border border-slate-200/90 hover:border-blue-400 rounded-xl p-3 flex flex-col items-center text-center gap-1.5 shadow-2xs hover:shadow-sm transition-all"
+        >
+          <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200/60 text-blue-600 flex items-center justify-center">
+            <ShoppingCart className="w-5 h-5" />
+          </div>
+          <p className="text-xs sm:text-sm font-bold text-[#0f2347]">New Sale</p>
+          <p className="text-[11px] text-slate-500">Sell Products (POS)</p>
+          <span className="mt-0.5 w-8 h-6 rounded-full bg-blue-600 group-hover:bg-blue-700 text-white flex items-center justify-center transition-colors">
+            <ArrowRight className="w-3.5 h-3.5" />
+          </span>
+        </Link>
+
+        <Link
+          to="/inventory"
+          className="group bg-white border border-slate-200/90 hover:border-blue-400 rounded-xl p-3 flex flex-col items-center text-center gap-1.5 shadow-2xs hover:shadow-sm transition-all"
+        >
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200/60 text-indigo-600 flex items-center justify-center">
+            <Boxes className="w-5 h-5" />
+          </div>
+          <p className="text-xs sm:text-sm font-bold text-[#0f2347]">Inventory Stock</p>
+          <p className="text-[11px] text-slate-500">Stock &amp; Alerts</p>
+          <span className="mt-0.5 w-8 h-6 rounded-full bg-blue-600 group-hover:bg-blue-700 text-white flex items-center justify-center transition-colors">
+            <ArrowRight className="w-3.5 h-3.5" />
+          </span>
+        </Link>
+
+        <Link
+          to="/reports"
+          className="group bg-white border border-slate-200/90 hover:border-blue-400 rounded-xl p-3 flex flex-col items-center text-center gap-1.5 shadow-2xs hover:shadow-sm transition-all"
+        >
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200/60 text-emerald-600 flex items-center justify-center">
+            <BarChart3 className="w-5 h-5" />
+          </div>
+          <p className="text-xs sm:text-sm font-bold text-[#0f2347]">View Reports</p>
+          <p className="text-[11px] text-slate-500">Sales &amp; Profit Reports</p>
+          <span className="mt-0.5 w-8 h-6 rounded-full bg-blue-600 group-hover:bg-blue-700 text-white flex items-center justify-center transition-colors">
+            <ArrowRight className="w-3.5 h-3.5" />
+          </span>
+        </Link>
       </div>
 
       {/* Charts Row */}
@@ -441,11 +504,11 @@ export default function DashboardPage() {
       {/* Bottom analytics */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-3.5 sm:gap-4">
         <div className="xl:col-span-2 bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col shadow-xs">
-          <div className="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
-            <h3 className="text-xs sm:text-sm font-semibold text-slate-900">Recent Sales Transactions</h3>
+          <div className="px-4 py-3 bg-[#0f2347] text-white flex items-center justify-between">
+            <h3 className="text-xs sm:text-sm font-semibold">Recent Sales Transactions</h3>
             <Link
               to="/sales"
-              className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-medium text-blue-600 hover:text-blue-700"
+              className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-medium text-blue-200 hover:text-white"
             >
               View All <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -500,62 +563,71 @@ export default function DashboardPage() {
           )}
         </div>
 
-        <div className="space-y-6">
-          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-            <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-slate-900">Top-Selling Products</h3>
-              <span className="text-[11px] text-slate-400">
-                {formatMonthLabel(selectedMonthKey)}
-              </span>
+        <div className="space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#0f2347] text-white flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                <h3 className="text-sm font-semibold">Top Selling Products</h3>
+              </div>
+              <Link
+                to="/reports"
+                className="inline-flex items-center gap-1 text-xs font-medium text-blue-200 hover:text-white"
+              >
+                View All <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
             {monthSummary.bestSellingProducts.length === 0 ? (
               <EmptyState title="No sales this month" description="Top products will appear once sales are recorded." />
             ) : (
-              <ul className="divide-y divide-slate-100">
-                {monthSummary.bestSellingProducts.slice(0, 5).map((item, idx) => {
+              <div className="p-3 grid grid-cols-3 gap-2.5">
+                {monthSummary.bestSellingProducts.slice(0, 3).map((item) => {
                   const catalogProd = productById?.get(item.productId);
                   const imageSrc = getProductImage(
                     catalogProd || { name: item.productName }
                   );
                   return (
-                    <li key={item.productId} className="px-4 py-2.5 flex items-center justify-between gap-2.5">
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <span className="w-5 h-5 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold flex items-center justify-center shrink-0">
-                          {idx + 1}
-                        </span>
+                    <div
+                      key={item.productId}
+                      className="rounded-xl border border-slate-100 bg-slate-50/40 p-2 text-center flex flex-col items-center justify-between gap-1.5"
+                    >
+                      <div className="w-16 h-16 rounded-lg bg-white border border-slate-200/80 p-1 flex items-center justify-center overflow-hidden">
                         <img
                           src={imageSrc}
                           alt={item.productName}
                           loading="lazy"
-                          className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                          className="max-w-full max-h-full object-contain"
                         />
-                        <div className="min-w-0">
-                          <p className="text-xs font-semibold text-slate-800 truncate">
-                            {item.productName}
-                          </p>
-                          <p className="text-[11px] text-slate-500">
-                            {item.netQuantity} net units sold
-                          </p>
-                        </div>
                       </div>
-                      <span className="text-xs font-semibold text-slate-900 shrink-0">
-                        {formatCurrency(item.netRevenue, currency)}
-                      </span>
-                    </li>
+                      <div className="w-full min-w-0">
+                        <p className="text-[11px] font-bold text-[#0f2347] line-clamp-2 leading-tight">
+                          {item.productName}
+                        </p>
+                        <p className="text-[10px] font-semibold text-slate-600 mt-0.5">
+                          {item.netQuantity} pcs
+                        </p>
+                        <p className="text-[10px] font-bold text-emerald-700">
+                          {formatCurrency(item.netRevenue, currency)}
+                        </p>
+                      </div>
+                    </div>
                   );
                 })}
-              </ul>
+              </div>
             )}
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-            <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-slate-900">Low-Stock Alerts</h3>
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#0f2347] text-white flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-400" />
+                <h3 className="text-sm font-semibold">Stock Alerts</h3>
+              </div>
               <Link
                 to="/inventory"
-                className="text-xs font-medium text-blue-600 hover:text-blue-700"
+                className="inline-flex items-center gap-1 text-xs font-medium text-blue-200 hover:text-white"
               >
-                Manage
+                View All <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
             {lowStockProducts.length === 0 ? (
@@ -563,37 +635,44 @@ export default function DashboardPage() {
                 All products are above minimum stock levels.
               </div>
             ) : (
-              <ul className="divide-y divide-slate-100 max-h-64 overflow-y-auto">
-                {lowStockProducts.slice(0, 8).map((prod) => (
-                  <li key={prod.id} className="px-4 py-2.5 flex items-center justify-between gap-2.5">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <img
-                        src={getProductImage(prod)}
-                        alt={prod.name}
-                        loading="lazy"
-                        className="w-8 h-8 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
-                      />
-                      <div className="min-w-0">
-                        <p className="text-xs font-semibold text-slate-800 truncate">
-                          {prod.name}
-                        </p>
-                        <p className="text-[11px] text-slate-500">
-                          SKU: {prod.sku} · Min: {prod.minStockLevel}
-                        </p>
-                      </div>
-                    </div>
-                    <span
-                      className={`px-2 py-0.5 rounded-full text-[11px] font-semibold shrink-0 ${
-                        Number(prod.availableQuantity || 0) === 0
-                          ? 'bg-red-100 text-red-700'
-                          : 'bg-amber-100 text-amber-800'
+              <div className="p-2.5 space-y-2 max-h-64 overflow-y-auto">
+                {lowStockProducts.slice(0, 6).map((prod) => {
+                  const qty = Number(prod.availableQuantity || 0);
+                  const isOut = qty === 0;
+                  return (
+                    <div
+                      key={prod.id}
+                      className={`rounded-xl border px-3 py-2 flex items-center justify-between gap-2.5 ${
+                        isOut ? 'bg-red-50/80 border-red-200' : 'bg-rose-50/70 border-rose-100'
                       }`}
                     >
-                      {prod.availableQuantity} left
-                    </span>
-                  </li>
-                ))}
-              </ul>
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <img
+                          src={getProductImage(prod)}
+                          alt={prod.name}
+                          loading="lazy"
+                          className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                        />
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-[#0f2347] truncate">
+                            {prod.name}
+                          </p>
+                          <p className="text-[11px] font-semibold text-rose-600">
+                            {isOut ? 'Out of stock' : `Only ${qty} left`}
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold text-white shrink-0 ${
+                          isOut ? 'bg-red-600' : 'bg-rose-600'
+                        }`}
+                      >
+                        {isOut ? 'Out of Stock' : 'Low Stock'}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             )}
           </div>
         </div>

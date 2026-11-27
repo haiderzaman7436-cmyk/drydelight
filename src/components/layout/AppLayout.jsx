@@ -77,7 +77,7 @@ export default function AppLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 antialiased text-slate-900">
+    <div className="min-h-screen bg-[#f1f5fb] antialiased text-slate-900">
       <Sidebar
         mobileOpen={mobileOpen}
         onClose={() => setMobileOpen(false)}

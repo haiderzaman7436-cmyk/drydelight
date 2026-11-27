@@ -1,12 +1,14 @@
 import { Lock } from 'lucide-react';
 
-const TONE_MAP = {
-  blue: 'bg-blue-50 text-blue-600',
-  emerald: 'bg-emerald-50 text-emerald-600',
-  amber: 'bg-amber-50 text-amber-600',
-  red: 'bg-red-50 text-red-600',
-  slate: 'bg-slate-100 text-slate-600',
-  indigo: 'bg-indigo-50 text-indigo-600',
+const GRADIENT_MAP = {
+  blue: 'bg-gradient-to-br from-blue-600 to-blue-700 text-white',
+  emerald: 'bg-gradient-to-br from-emerald-500 to-green-600 text-white',
+  amber: 'bg-gradient-to-br from-amber-500 to-orange-600 text-white',
+  red: 'bg-gradient-to-br from-rose-600 to-red-700 text-white',
+  indigo: 'bg-gradient-to-br from-indigo-600 to-blue-700 text-white',
+  purple: 'bg-gradient-to-br from-violet-600 to-purple-700 text-white',
+  slate: 'bg-gradient-to-br from-[#0f2347] to-[#1e3a6e] text-white',
+  locked: 'bg-gradient-to-br from-amber-500 to-orange-600 text-white',
 };
 
 export default function StatCard({
@@ -19,47 +21,37 @@ export default function StatCard({
   onClick,
 }) {
   const DisplayIcon = locked ? Lock : Icon;
-  const effectiveTone = locked ? 'amber' : tone;
+  const cardGradient = locked
+    ? GRADIENT_MAP.locked
+    : GRADIENT_MAP[tone] || GRADIENT_MAP.blue;
   const isInteractive = Boolean(onClick);
 
   const content = (
-    <>
+    <div className="flex items-center gap-3 w-full min-w-0">
+      {DisplayIcon && (
+        <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+          <DisplayIcon className="w-5 h-5 text-white" />
+        </div>
+      )}
       <div className="min-w-0 flex-1">
-        <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider truncate flex items-center gap-1.5">
+        <p className="text-base sm:text-lg font-bold tracking-tight text-white truncate leading-tight">
+          {locked ? 'Protected' : value}
+        </p>
+        <p className="text-[11px] font-medium text-white/90 truncate flex items-center gap-1.5 mt-0.5">
           <span className="truncate">{title}</span>
           {locked && (
-            <span className="px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 text-[9px] font-bold tracking-normal">
+            <span className="px-1.5 py-0.2 rounded bg-white/25 text-white text-[9px] font-bold tracking-normal">
               LOCKED
             </span>
           )}
         </p>
-        <p
-          className={`text-lg sm:text-xl font-bold mt-0.5 tracking-tight truncate ${
-            locked ? 'text-slate-400 select-none' : 'text-slate-900'
-          }`}
-        >
-          {locked ? 'Protected' : value}
-        </p>
         {(locked || subtitle) && (
-          <p
-            className={`text-[11px] sm:text-xs mt-0.5 truncate leading-tight ${
-              locked ? 'text-amber-700 font-medium' : 'text-slate-500'
-            }`}
-          >
+          <p className="text-[10px] sm:text-[11px] text-white/80 mt-0.5 truncate leading-tight">
             {locked ? 'Click to unlock with PIN' : subtitle}
           </p>
         )}
       </div>
-      {DisplayIcon && (
-        <div
-          className={`p-2 sm:p-2.5 rounded-lg shrink-0 ${
-            TONE_MAP[effectiveTone] || TONE_MAP.blue
-          }`}
-        >
-          <DisplayIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
-        </div>
-      )}
-    </>
+    </div>
   );
 
   if (isInteractive) {
@@ -67,7 +59,7 @@ export default function StatCard({
       <button
         type="button"
         onClick={onClick}
-        className="w-full text-left bg-white rounded-xl border border-amber-300/90 hover:border-amber-400 hover:bg-amber-50/30 p-3 sm:p-3.5 flex items-start justify-between gap-2.5 transition-all shadow-xs cursor-pointer"
+        className={`w-full text-left rounded-xl p-3 sm:p-3.5 shadow-sm transition-all hover:brightness-105 cursor-pointer ${cardGradient}`}
         title="Click to unlock profit view"
       >
         {content}
@@ -76,7 +68,7 @@ export default function StatCard({
   }
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200/90 p-3 sm:p-3.5 flex items-start justify-between gap-2.5 transition-shadow hover:shadow-xs">
+    <div className={`rounded-xl p-3 sm:p-3.5 shadow-sm ${cardGradient}`}>
       {content}
     </div>
   );
