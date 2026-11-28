@@ -8,7 +8,11 @@ import {
 import { db } from '../firebase/config';
 import scrapedCatalog from '../data/scrapedCatalog.json';
 import { invalidateCachePrefix } from './queryCache';
-import { isValidProductImageUrl, matchProductImageByName } from '../utils/productImages';
+import {
+  getExactProductImage,
+  matchProductImageByName,
+  needsProductImageSync,
+} from '../utils/productImages';
 
 const CATEGORIES_COL = () => collection(db, 'categories');
 const PRODUCTS_COL = () => collection(db, 'products');
@@ -202,7 +206,7 @@ export async function importScrapedCatalog({
  * @returns {Promise<Array<{ id: string, imageUrl: string }>>} Updated product patches
  */
 export async function syncMissingProductImages(products = []) {
-  const missing = products.filter((p) => p?.id && !isValidProductImageUrl(p.imageUrl));
+  const missing = products.filter((p) => needsProductImageSync(p));
   if (missing.length === 0) return [];
 
   const BATCH_SIZE = 250;
@@ -212,7 +216,7 @@ export async function syncMissingProductImages(products = []) {
     const chunk = missing.slice(i, i + BATCH_SIZE);
     const batch = writeBatch(db);
     for (const p of chunk) {
-      const imageUrl = matchProductImageByName(p);
+      const imageUrl = getExactProductImage(p.name) || matchProductImageByName(p);
       batch.update(doc(db, 'products', p.id), {
         imageUrl,
         updatedAt: serverTimestamp(),

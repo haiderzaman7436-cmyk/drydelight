@@ -4,7 +4,28 @@
  * cleanly to optimized studio photos in `/product-images/`.
  */
 
+import { BY_NAME_IMAGE_SLUGS } from '../data/productImageSlugs';
+
 export const DEFAULT_PRODUCT_IMAGE = '/product-images/flour-sack.webp';
+
+export function toProductImageSlug(name) {
+  return String(name || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 60);
+}
+
+export function getExactProductImage(name) {
+  const slug = toProductImageSlug(name);
+  if (slug && BY_NAME_IMAGE_SLUGS.has(slug)) {
+    return `/product-images/by-name/${slug}.webp`;
+  }
+  return null;
+}
 
 export const PRODUCT_IMAGE_LIBRARY = [
   { id: 'flour-sack', label: 'Flour / Maida / Atta', path: '/product-images/flour-sack.webp' },
@@ -232,7 +253,7 @@ export function isValidProductImageUrl(value) {
   if (!trimmed) return false;
   if (trimmed.startsWith('/')) return true;
   if (/^https?:\/\/\S+$/i.test(trimmed)) return true;
-  if (/^data:image\/(png|jpe?g|webp|gif);base64,[A-Za-z0-9+/=]+$/i.test(trimmed)) {
+  if (/^data:image\/(png|jpe?g|webp|gif|svg\+xml);base64,[A-Za-z0-9+/=]+$/i.test(trimmed)) {
     return trimmed.length <= 220000;
   }
   return false;
@@ -269,15 +290,39 @@ export function matchProductImageByName(productOrName, categoryName = '') {
   return DEFAULT_PRODUCT_IMAGE;
 }
 
+export function isGenericStudioImageUrl(value) {
+  if (!value || typeof value !== 'string') return false;
+  const trimmed = value.trim();
+  return /^\/product-images\/[^/]+\.webp$/i.test(trimmed);
+}
+
+export function needsProductImageSync(product) {
+  if (!product?.id) return false;
+  if (!isValidProductImageUrl(product.imageUrl)) return true;
+  return isGenericStudioImageUrl(product.imageUrl) && Boolean(getExactProductImage(product.name));
+}
+
 /**
  * Resolves the display image URL for any product document:
- * uses explicit `product.imageUrl` when set, otherwise falls back deterministically
- * to a matching local studio photo based on product name & category.
+ * uses custom/by-name `product.imageUrl` when set, upgrades legacy generic
+ * studio paths when a per-product `.webp` exists, and falls back cleanly.
  */
 export function getProductImage(product) {
-  if (isValidProductImageUrl(product?.imageUrl)) {
-    return product.imageUrl.trim();
+  const rawUrl = isValidProductImageUrl(product?.imageUrl) ? product.imageUrl.trim() : '';
+  // 1. Custom uploaded / external / already by-name URL wins
+  if (rawUrl && !isGenericStudioImageUrl(rawUrl)) {
+    return rawUrl;
   }
+  // 2. Exact per-product real WebP by slug of the product name
+  const exact = getExactProductImage(product?.name);
+  if (exact) {
+    return exact;
+  }
+  // 3. Existing generic studio URL if valid
+  if (rawUrl) {
+    return rawUrl;
+  }
+  // 4. Fall back to name/category keyword matching → generic .webp
   return matchProductImageByName(product);
 }
 

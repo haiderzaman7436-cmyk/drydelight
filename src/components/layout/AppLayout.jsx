@@ -7,7 +7,7 @@ import ConfirmDialog from '../common/ConfirmDialog';
 import { useAuth } from '../../contexts/AuthContext';
 import { useData } from '../../contexts/DataContext';
 import { syncMissingProductImages } from '../../services/catalogImportService';
-import { isValidProductImageUrl } from '../../utils/productImages';
+import { needsProductImageSync } from '../../utils/productImages';
 
 export default function AppLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -29,7 +29,7 @@ export default function AppLayout() {
     if (!isManagerOrAdmin || !catalogLoaded || syncedImagesRef.current || products.length === 0) {
       return;
     }
-    const hasMissing = products.some((p) => p?.id && !isValidProductImageUrl(p.imageUrl));
+    const hasMissing = products.some((p) => needsProductImageSync(p));
     if (!hasMissing) {
       syncedImagesRef.current = true;
       return;
@@ -91,7 +91,7 @@ export default function AppLayout() {
 
       <div
         className={`flex flex-col min-h-screen transition-[padding] duration-200 ${
-          sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-56'
+          sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-60'
         }`}
       >
         <TopBar

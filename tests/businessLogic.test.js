@@ -365,6 +365,6 @@ describe('Product Image Resolution & Validation', () => {
         name: 'Adam Cheddar Block',
         imageUrl: 'javascript:bad',
       })
-    ).toBe('/product-images/cheese-block.webp');
+    ).toBe('/product-images/by-name/adam-cheddar-block.webp');
   });
 });

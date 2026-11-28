@@ -86,7 +86,8 @@ describe('Scraped Inventory & Product Catalog Verification', () => {
     for (const p of scrapedCatalog.products) {
       const resolved = getProductImage(p);
       expect(isValidProductImageUrl(resolved)).toBe(true);
-      expect(resolved).toMatch(/^\/product-images\/[a-z0-9-]+\.webp$/);
+      // Accept both .webp (generic or per-product by-name)
+      expect(resolved).toMatch(/^\/product-images\/by-name\/[a-z0-9-]+\.webp$/);
       const diskPath = path.join(publicDir, resolved.slice(1));
       expect(fs.existsSync(diskPath)).toBe(true);
     }

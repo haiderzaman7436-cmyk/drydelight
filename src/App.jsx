@@ -22,6 +22,7 @@ const loadSalesSummary = () => import('./pages/SalesSummaryPage');
 const loadSalesReturns = () => import('./pages/SalesReturnsPage');
 const loadReports = () => import('./pages/ReportsPage');
 const loadSettings = () => import('./pages/SettingsPage');
+const loadProductPhotos = () => import('./pages/ProductPhotosPage');
 
 const DashboardPage = lazy(loadDashboard);
 const CategoriesPage = lazy(loadCategories);
@@ -33,6 +34,7 @@ const SalesSummaryPage = lazy(loadSalesSummary);
 const SalesReturnsPage = lazy(loadSalesReturns);
 const ReportsPage = lazy(loadReports);
 const SettingsPage = lazy(loadSettings);
+const ProductPhotosPage = lazy(loadProductPhotos);
 
 /**
  * Silently prefetches core page chunks during browser idle time after login
@@ -112,6 +114,7 @@ export default function App() {
                       <Route index element={<DashboardPage />} />
                       <Route path="/categories" element={<CategoriesPage />} />
                       <Route path="/products" element={<ProductsPage />} />
+                      <Route path="/product-photos" element={<ProductPhotosPage />} />
                       <Route path="/inventory" element={<InventoryPage />} />
                       <Route path="/pos" element={<PosPage />} />
                       <Route path="/sales" element={<SalesHistoryPage />} />

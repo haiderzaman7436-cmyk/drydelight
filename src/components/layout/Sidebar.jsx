@@ -15,6 +15,8 @@ import {
   Store,
   X,
   Clock,
+  MapPin,
+  Camera,
 } from 'lucide-react';
 import { useSettings } from '../../contexts/SettingsContext';
 import { useAuth } from '../../contexts/AuthContext';
@@ -23,6 +25,7 @@ const NAV_ITEMS = [
   { label: 'Dashboard', to: '/', icon: LayoutDashboard, end: true },
   { label: 'Categories', to: '/categories', icon: FolderTree },
   { label: 'Products', to: '/products', icon: Package },
+  { label: 'Product Photos', to: '/product-photos', icon: Camera },
   { label: 'Inventory', to: '/inventory', icon: Boxes },
   { label: 'New Sale / POS', to: '/pos', icon: ShoppingCart, highlight: true },
   { label: 'Sales History', to: '/sales', icon: Receipt },
@@ -61,21 +64,27 @@ export default function Sidebar({
   const sidebarContent = (
     <div
       className={`flex flex-col h-full bg-[#0f2347] text-white border-r border-[#1b3563] transition-all duration-200 select-none ${
-        collapsed ? 'w-16' : 'w-56'
+        collapsed ? 'w-16' : 'w-60'
       }`}
     >
       {/* Brand header */}
-      <div className="h-14 px-3 flex items-center justify-between border-b border-white/10 shrink-0">
-        <div className={`flex items-center gap-2.5 min-w-0 ${collapsed ? 'mx-auto' : ''}`}>
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 text-[#0f2347] flex items-center justify-center shrink-0 shadow-sm">
-            <Store className="w-4.5 h-4.5" />
+      <div className={`${collapsed ? 'px-2 py-3' : 'px-4 py-4'} flex items-center justify-between border-b border-white/10 shrink-0`}>
+        <div className={`flex items-center gap-3 min-w-0 ${collapsed ? 'mx-auto' : ''}`}>
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-[#0f2347] flex items-center justify-center shrink-0 shadow-md">
+            <Store className="w-5 h-5" />
           </div>
           {!collapsed && (
             <div className="min-w-0">
-              <p className="text-xs font-bold text-white truncate leading-tight">
+              <p className="text-sm font-extrabold text-white truncate leading-tight">
                 {settings.businessName || 'Dry Delight'}
               </p>
-              <p className="text-[10px] text-blue-200/80 truncate">Retail &amp; Wholesale POS</p>
+              <p className="text-[10px] text-blue-200/80 truncate">Retail Store</p>
+              {settings.businessAddress && (
+                <p className="text-[10px] text-amber-300 flex items-center gap-0.5 mt-0.5 truncate">
+                  <MapPin className="w-2.5 h-2.5 shrink-0" />
+                  <span className="truncate">{settings.businessAddress}</span>
+                </p>
+              )}
             </div>
           )}
         </div>
