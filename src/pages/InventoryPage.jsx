@@ -462,6 +462,7 @@ export default function InventoryPage() {
                           src={getProductImage(p)}
                           alt={p.name}
                           loading="lazy"
+                          decoding="async"
                           className="w-14 h-14 rounded-xl object-contain bg-white border border-slate-200 p-1 shrink-0"
                         />
                         <div className="min-w-0">
@@ -632,6 +633,7 @@ export default function InventoryPage() {
                               src={getProductImage(p)}
                               alt={p.name}
                               loading="lazy"
+                              decoding="async"
                               className="max-h-full max-w-full object-contain"
                             />
                           </div>
@@ -717,6 +719,7 @@ export default function InventoryPage() {
                                   src={getProductImage(p)}
                                   alt={p.name}
                                   loading="lazy"
+                                  decoding="async"
                                   className="w-12 h-12 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
                                 />
                                 <div className="min-w-0">
@@ -855,6 +858,7 @@ export default function InventoryPage() {
                                 )}
                                 alt={m.productName}
                                 loading="lazy"
+                                decoding="async"
                                 className="w-11 h-11 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
                               />
                               <div className="min-w-0">

@@ -588,6 +588,7 @@ export default function DashboardPage() {
                           src={imageSrc}
                           alt={item.productName}
                           loading="lazy"
+                          decoding="async"
                           className="max-w-full max-h-full object-contain"
                         />
                       </div>
@@ -640,6 +641,7 @@ export default function DashboardPage() {
                           src={getProductImage(prod)}
                           alt={prod.name}
                           loading="lazy"
+                          decoding="async"
                           className="w-12 h-12 rounded-xl object-contain bg-white border border-slate-200 p-0.5 shrink-0"
                         />
                         <div className="min-w-0">

@@ -48,6 +48,7 @@ const PosProductCard = memo(function PosProductCard({ prod, cartQty, currency, o
           src={getProductImage(prod)}
           alt={prod.name}
           loading="lazy"
+          decoding="async"
           className="w-16 h-16 rounded-xl object-contain bg-white border border-slate-200/80 p-1 shrink-0"
         />
         <div className="min-w-0 flex-1">

@@ -453,6 +453,7 @@ export default function ProductsPage() {
                           src={getProductImage(prod)}
                           alt={prod.name}
                           loading="lazy"
+                          decoding="async"
                           className="max-h-full max-w-full object-contain"
                         />
                       </button>
@@ -554,6 +555,7 @@ export default function ProductsPage() {
                             src={getProductImage(prod)}
                             alt={prod.name}
                             loading="lazy"
+                            decoding="async"
                             className="w-14 h-14 rounded-xl object-contain bg-white border border-slate-200 p-1 shrink-0"
                           />
                           <div className="min-w-0">
