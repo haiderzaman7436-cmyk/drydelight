@@ -583,7 +583,7 @@ export default function DashboardPage() {
                       key={item.productId}
                       className="rounded-xl border border-slate-100 bg-slate-50/50 p-2 text-center flex flex-col items-center gap-1.5"
                     >
-                      <div className="w-16 h-16 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center overflow-hidden shadow-xs">
+                      <div className="w-24 h-24 rounded-xl bg-white border border-slate-200 p-1.5 flex items-center justify-center overflow-hidden shadow-xs">
                         <img
                           src={imageSrc}
                           alt={item.productName}
@@ -640,7 +640,7 @@ export default function DashboardPage() {
                           src={getProductImage(prod)}
                           alt={prod.name}
                           loading="lazy"
-                          className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                          className="w-12 h-12 rounded-xl object-contain bg-white border border-slate-200 p-0.5 shrink-0"
                         />
                         <div className="min-w-0">
                           <p className="text-xs font-bold text-[#0f2347] truncate">{prod.name}</p>

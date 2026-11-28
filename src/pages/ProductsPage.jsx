@@ -446,7 +446,7 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         onClick={() => setViewProduct(prod)}
-                        className="w-full h-24 rounded-lg bg-white border border-slate-100 flex items-center justify-center p-1.5 overflow-hidden hover:border-blue-200 transition-colors"
+                        className="w-full h-36 sm:h-40 rounded-xl bg-white border border-slate-100 flex items-center justify-center p-2 overflow-hidden hover:border-blue-200 transition-colors"
                         title="View product details"
                       >
                         <img
@@ -554,7 +554,7 @@ export default function ProductsPage() {
                             src={getProductImage(prod)}
                             alt={prod.name}
                             loading="lazy"
-                            className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                            className="w-14 h-14 rounded-xl object-contain bg-white border border-slate-200 p-1 shrink-0"
                           />
                           <div className="min-w-0">
                             <p className="font-semibold text-slate-900 leading-tight">{prod.name}</p>
@@ -702,7 +702,7 @@ export default function ProductsPage() {
                     imageUrl: form.imageUrl,
                   })}
                   alt={form.name || 'Product preview'}
-                  className="w-16 h-16 rounded-xl object-contain bg-white border border-slate-200 p-1 shrink-0 shadow-xs"
+                  className="w-24 h-24 rounded-xl object-contain bg-white border border-slate-200 p-1.5 shrink-0 shadow-xs"
                 />
                 <div className="flex-1 min-w-0 space-y-2">
                   <div className="flex flex-wrap items-center justify-between gap-2">
@@ -989,7 +989,7 @@ export default function ProductsPage() {
               <img
                 src={getProductImage(viewProduct)}
                 alt={viewProduct.name}
-                className="w-20 h-20 rounded-xl object-contain bg-white border border-slate-200 p-1 shrink-0"
+                className="w-28 h-28 rounded-xl object-contain bg-white border border-slate-200 p-1.5 shrink-0"
               />
               <div className="flex-1 flex justify-center overflow-hidden">
                 <BarcodeDisplay value={viewProduct.barcode} height={46} fontSize={11} />

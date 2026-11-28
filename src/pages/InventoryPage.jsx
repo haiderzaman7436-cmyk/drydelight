@@ -462,7 +462,7 @@ export default function InventoryPage() {
                           src={getProductImage(p)}
                           alt={p.name}
                           loading="lazy"
-                          className="w-10 h-10 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                          className="w-14 h-14 rounded-xl object-contain bg-white border border-slate-200 p-1 shrink-0"
                         />
                         <div className="min-w-0">
                           <p className="text-xs font-bold text-slate-900 truncate">{p.name}</p>
@@ -627,7 +627,7 @@ export default function InventoryPage() {
                             )}
                           </div>
 
-                          <div className="w-full h-24 rounded-lg bg-white border border-slate-100 flex items-center justify-center p-1.5 overflow-hidden">
+                          <div className="w-full h-36 sm:h-40 rounded-xl bg-white border border-slate-100 flex items-center justify-center p-2 overflow-hidden">
                             <img
                               src={getProductImage(p)}
                               alt={p.name}
@@ -717,7 +717,7 @@ export default function InventoryPage() {
                                   src={getProductImage(p)}
                                   alt={p.name}
                                   loading="lazy"
-                                  className="w-8 h-8 rounded-md object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                                  className="w-12 h-12 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
                                 />
                                 <div className="min-w-0">
                                   <span className="font-semibold text-slate-900 leading-tight">
@@ -855,7 +855,7 @@ export default function InventoryPage() {
                                 )}
                                 alt={m.productName}
                                 loading="lazy"
-                                className="w-7 h-7 rounded-md object-contain bg-white border border-slate-200 p-0.5 shrink-0"
+                                className="w-11 h-11 rounded-lg object-contain bg-white border border-slate-200 p-0.5 shrink-0"
                               />
                               <div className="min-w-0">
                                 <p className="font-semibold text-slate-900">{m.productName}</p>

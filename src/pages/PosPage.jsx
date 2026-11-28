@@ -48,7 +48,7 @@ const PosProductCard = memo(function PosProductCard({ prod, cartQty, currency, o
           src={getProductImage(prod)}
           alt={prod.name}
           loading="lazy"
-          className="w-11 h-11 rounded-lg object-contain bg-white border border-slate-200/80 p-0.5 shrink-0"
+          className="w-16 h-16 rounded-xl object-contain bg-white border border-slate-200/80 p-1 shrink-0"
         />
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-1">
